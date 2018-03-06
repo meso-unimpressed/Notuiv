@@ -11,6 +11,7 @@ assembly_info:
 before_build:
 - cmd: nuget restore Notuiv.sln -verbosity quiet
 build:
+  project: Notuiv.sln
   verbosity: minimal
 artifacts:
 - path: deploy
