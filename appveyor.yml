@@ -1,0 +1,22 @@
+version: 0.1.{build}
+image: Visual Studio 2017
+configuration: Release
+platform: Any CPU
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+before_build:
+- cmd: nuget restore Notuiv.sln -verbosity quiet
+build:
+  verbosity: minimal
+artifacts:
+- path: deploy
+  name: Notuiv
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: YQ0zEVewHeKx2BEx2KQZV/n7rjTzeY+p8q5Zc78XYlUG/jBGyj8LXlM47ipy/zcW
+  artifact: Notuiv
