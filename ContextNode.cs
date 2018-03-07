@@ -67,7 +67,6 @@ namespace Notuiv
 
         private double _prevFrameTime = 0;
         private bool _onConnectedFrame;
-        private readonly List<TouchPrototype> _touchlist = new List<TouchPrototype>(40);
 
         public bool IsTouchDefault()
         {
@@ -108,13 +107,14 @@ namespace Notuiv
             if (FElements.IsChanged)
                 Context.AddOrUpdateElements(true, FElements.ToArray());
 
+            if(Context.InputTouches == null) Context.InputTouches = new List<TouchPrototype>(40);
             var touchcount = Math.Min(FTouchId.SliceCount, FTouchCoords.SliceCount);
             if (!IsTouchDefault())
             {
-                _touchlist.Clear();
+                Context.InputTouches.Clear();
                 for (int i = 0; i < touchcount; i++)
                 {
-                    _touchlist.Add(new TouchPrototype
+                    Context.InputTouches.Add(new TouchPrototype
                     {
                         Point = FTouchCoords[i].AsSystemVector(),
                         Id = FTouchId[i],
@@ -122,7 +122,7 @@ namespace Notuiv
                     });
                 }
             }
-            Context.Mainloop(_touchlist, (float)dt);
+            Context.Mainloop((float)dt);
 
             FContext[0] = Context;
 
