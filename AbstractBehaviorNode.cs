@@ -74,7 +74,21 @@ namespace Notuiv
         public virtual void OnChangedBegin() { }
         public virtual void OnChangedEnd() { }
 
+        /// <summary>
+        /// If an input property is IEnumerable, please specify how to clear it
+        /// </summary>
+        /// <param name="enumerable">extracted enumerable</param>
+        /// <param name="member">Current property info</param>
+        /// <param name="i">Current Slice</param>
         public virtual void ClearEnumerable(IEnumerable enumerable, PropertyInfo member, int i) { }
+
+        /// <summary>
+        /// If an input property is IEnumerable, please specify how to add objects to it
+        /// </summary>
+        /// <param name="enumerable">extracted enumerable</param>
+        /// <param name="member">Current property info</param>
+        /// <param name="obj">The object to be added to the IEnumerable</param>
+        /// <param name="i">Current Slice</param>
         public virtual void AddToEnumerable(IEnumerable enumerable, object obj, PropertyInfo member, int i) { }
 
         /// <summary>
@@ -210,11 +224,10 @@ namespace Notuiv
                     return;
                 }
                 var spread = (ISpread)Pd.InputPins[member.Name].Spread[i];
-                spread.SliceCount = 0;
                 ClearEnumerable(enumerable, member, i);
-                foreach (var o in enumerable)
+                for (int j = 0; j < spread.SliceCount; j++)
                 {
-                    AddToEnumerable(enumerable, o, member, i);
+                    AddToEnumerable(enumerable, spread[j], member, i);
                 }
             }
             else
