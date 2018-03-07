@@ -30,14 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="md.stdl, Version=0.1.38.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\md-stdl.0.1.38-beta\lib\net461\md.stdl.dll</HintPath>
+    <Reference Include="md.stdl, Version=0.1.40.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\md-stdl.0.1.40-beta\lib\net461\md.stdl.dll</HintPath>
     </Reference>
     <Reference Include="mp.pddn, Version=1.1.14.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\mp.pddn.1.1.14\lib\net461\mp.pddn.dll</HintPath>
     </Reference>
-    <Reference Include="Notui, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Notui.0.1.1-beta\lib\net461\Notui.dll</HintPath>
+    <Reference Include="Notui, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Notui.0.1.2-beta\lib\net461\Notui.dll</HintPath>
     </Reference>
     <Reference Include="SevenZip, Version=9.20.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\LZMA-SDK.9.20\lib\net20\SevenZip.dll</HintPath>
@@ -54,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition.CodePlex">
       <HintPath>dlls\System.ComponentModel.Composition.CodePlex.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Interactive, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
@@ -80,6 +81,7 @@
     </Reference>
     <Reference Include="System.Reflection.Context.CodePlex">
       <HintPath>dlls\System.Reflection.Context.CodePlex.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -89,24 +91,31 @@
     <Reference Include="System.Xml" />
     <Reference Include="VVVV.Core">
       <HintPath>dlls\VVVV.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.Hosting">
       <HintPath>dlls\VVVV.Hosting.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.Nodes.Generic">
       <HintPath>dlls\VVVV.Nodes.Generic.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.PluginInterfaces">
       <HintPath>dlls\VVVV.PluginInterfaces.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.Utils">
       <HintPath>dlls\VVVV.Utils.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.Utils3rdParty">
       <HintPath>dlls\VVVV.Utils3rdParty.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.UtilsIL">
       <HintPath>dlls\VVVV.UtilsIL.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +127,7 @@
     <Compile Include="ContextNode.cs" />
     <Compile Include="ElementInfoNode.cs" />
     <Compile Include="EventsSplit.cs" />
+    <Compile Include="Filters\ContextElementFilterNode.cs" />
     <Compile Include="GenericBehaviorNodes.cs" />
     <Compile Include="GenericElementInstanceNodes.cs" />
     <Compile Include="GenericElementPrototypeNodes.cs" />
