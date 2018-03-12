@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\IntersectionPoint (Notui Split) help.v4p" scrollx="0" scrolly="0">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\IntersectionPoint (Notui Split) help.v4p" scrollx="0" scrolly="7560">
    <BOUNDS type="Window" left="6255" top="11640" width="14775" height="13215">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -210,18 +210,6 @@
    <PIN pinname="Input Value" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="Sift (Notui.Context Opaq)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context Opaq)" componentmode="Hidden" id="22">
-   <BOUNDS type="Node" left="5235" top="3450" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="5235" top="3450" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Use Name" slicecount="1" visible="1" values="0">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="20" srcpinname="Input Value" dstnodeid="22" dstpinname="Context">
-   </LINK>
    <NODE systemname="Rectangle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Rectangle (Notui.ElementPrototype Join)" componentmode="Hidden" id="23">
    <BOUNDS type="Node" left="3240" top="2370" width="100" height="100">
    </BOUNDS>
@@ -230,8 +218,6 @@
    <PIN pinname="Display Transform" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="23" srcpinname="Element Id" dstnodeid="22" dstpinname="Query">
-   </LINK>
    <NODE systemname="Context (Notui)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui)" componentmode="Hidden" id="24">
    <BOUNDS type="Node" left="4830" top="13725" width="3615" height="270">
    </BOUNDS>
@@ -255,9 +241,9 @@
    <LINK srcnodeid="23" srcpinname="Element Prototype" dstnodeid="24" dstpinname="Element Prototypes">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="25">
-   <BOUNDS type="Box" left="6000" top="3255" width="285" height="240">
+   <BOUNDS type="Box" left="6150" top="3255" width="285" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="6000" top="3255" width="0" height="0">
+   <BOUNDS type="Node" left="6150" top="3255" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -270,14 +256,12 @@
    <PIN pinname="Behavior" slicecount="1" values="Toggle">
    </PIN>
    </NODE>
-   <LINK srcnodeid="25" srcpinname="Y Output Value" dstnodeid="22" dstpinname="Use Name">
-   </LINK>
    <NODE systemname="InstanceInfo (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="InstanceInfo (Notui.Element Split)" componentmode="Hidden" id="26">
    <BOUNDS type="Node" left="5235" top="4035" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="5235" top="4035" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Element" visible="1">
+   <PIN pinname="Element" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Display Transformation Out" visible="1">
    </PIN>
@@ -288,8 +272,6 @@
    <PIN pinname="Hitting Intersections" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="22" srcpinname="Output" dstnodeid="26" dstpinname="Element">
-   </LINK>
    <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="29">
    <BOUNDS type="Node" left="5130" top="10125" width="100" height="100">
    </BOUNDS>
@@ -715,5 +697,23 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="6" srcpinname="Transform Out" dstnodeid="24" dstpinname="Projection">
+   </LINK>
+   <NODE systemname="Sift (Notui.Context String)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context String)" componentmode="Hidden" id="22">
+   <BOUNDS type="Node" left="5235" top="3450" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5235" top="3450" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Use Name" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="20" srcpinname="Input Value" dstnodeid="22" dstpinname="Context">
+   </LINK>
+   <LINK srcnodeid="23" srcpinname="Element Id" dstnodeid="22" dstpinname="Query">
+   </LINK>
+   <LINK srcnodeid="25" srcpinname="Y Output Value" dstnodeid="22" dstpinname="Use Name">
+   </LINK>
+   <LINK srcnodeid="22" srcpinname="Output" dstnodeid="26" dstpinname="Element">
    </LINK>
    </PATCH>

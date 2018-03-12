@@ -149,9 +149,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="19">
-   <BOUNDS type="Node" left="2205" top="2415" width="1185" height="270">
+   <BOUNDS type="Node" left="2955" top="2415" width="1185" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="2205" top="2415" width="1185" height="270">
+   <BOUNDS type="Box" left="2955" top="2415" width="1185" height="270">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|The main node|">
    </PIN>

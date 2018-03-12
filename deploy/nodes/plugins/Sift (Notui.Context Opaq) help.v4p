@@ -323,9 +323,9 @@
    <LINK srcnodeid="20" srcpinname="ID" dstnodeid="28" dstpinname="Input">
    </LINK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="29">
-   <BOUNDS type="Node" left="1545" top="13065" width="2940" height="270">
+   <BOUNDS type="Node" left="780" top="12885" width="2940" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="1545" top="13065" width="3015" height="270">
+   <BOUNDS type="Box" left="780" top="12885" width="3015" height="270">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|VVVV has a great Cheat Sheet for regex ;)|">
    </PIN>
@@ -337,7 +337,7 @@
    </PIN>
    </NODE>
    <NODE systemname="RegExpr (String)" nodename="RegExpr (String)" componentmode="Hidden" id="30">
-   <BOUNDS type="Node" left="4575" top="13065" width="100" height="100">
+   <BOUNDS type="Node" left="3810" top="12885" width="100" height="100">
    </BOUNDS>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="31">
@@ -421,9 +421,9 @@
    <LINK srcnodeid="36" srcpinname="Output" dstnodeid="33" dstpinname="Index">
    </LINK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="37">
-   <BOUNDS type="Node" left="1575" top="13680" width="2355" height="270">
+   <BOUNDS type="Node" left="810" top="13500" width="2355" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="1575" top="13680" width="2355" height="270">
+   <BOUNDS type="Box" left="810" top="13500" width="2355" height="270">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|For filtering via type check out:|">
    </PIN>
@@ -435,9 +435,9 @@
    </PIN>
    </NODE>
    <NODE systemname="Sift (Notui.Context Type)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context Type)" componentmode="Hidden" id="38">
-   <BOUNDS type="Node" left="3945" top="13680" width="100" height="100">
+   <BOUNDS type="Node" left="3180" top="13500" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="3945" top="13680" width="3000" height="3000">
+   <BOUNDS type="Box" left="3180" top="13500" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="39">
@@ -491,5 +491,25 @@
    </PIN>
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="43">
+   <BOUNDS type="Node" left="810" top="13800" width="2355" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="810" top="13800" width="3810" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|For filtering via simple string comparison check out:|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="Sift (Notui.Context String)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context String)" componentmode="Hidden" id="42">
+   <BOUNDS type="Node" left="4680" top="13800" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4680" top="13800" width="3000" height="3000">
+   </BOUNDS>
    </NODE>
    </PATCH>

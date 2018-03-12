@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
    <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\ValueSlider2D (Notui.Behavior Join) help.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="57765" top="19320" width="21465" height="12120">
+   <BOUNDS type="Window" left="240" top="5940" width="21465" height="12120">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
    <BOUNDS type="Node" left="225" top="225" width="5100" height="450">
@@ -35,7 +35,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="5640" top="11910" width="6000" height="4500">
    </BOUNDS>
-   <BOUNDS type="Window" left="71385" top="24045" width="9945" height="5085">
+   <BOUNDS type="Window" left="270" top="570" width="9945" height="5085">
    </BOUNDS>
    <PIN pinname="Mouse State" visible="1">
    </PIN>
@@ -645,7 +645,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="8340" top="7125" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Element" visible="1">
+   <PIN pinname="Element" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Values" visible="1">
    </PIN>
@@ -788,36 +788,16 @@
    </NODE>
    <LINK srcnodeid="49" srcpinname="Output 1XY" dstnodeid="54" dstpinname="XY">
    </LINK>
-   <NODE systemname="Sift (Notui.Context Opaq)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context Opaq)" componentmode="Hidden" id="56">
-   <BOUNDS type="Node" left="8340" top="6630" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="8340" top="6630" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Query" visible="1" slicecount="3" values="Horizontal,Vertical,Both">
-   </PIN>
-   <PIN pinname="Context" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   <PIN pinname="Use Name" slicecount="1" visible="1" values="0">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="39" srcpinname="Input Value" dstnodeid="56" dstpinname="Context">
-   </LINK>
    <NODE systemname="InstanceInfo (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="InstanceInfo (Notui.Element Split)" componentmode="Hidden" id="57">
    <BOUNDS type="Node" left="11130" top="6855" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="11130" top="6855" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Element" visible="1">
+   <PIN pinname="Element" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Display Transformation Out" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="56" srcpinname="Output" dstnodeid="41" dstpinname="Element">
-   </LINK>
-   <LINK srcnodeid="56" srcpinname="Output" dstnodeid="57" dstpinname="Element">
-   </LINK>
    <LINK srcnodeid="57" srcpinname="Display Transformation Out" dstnodeid="47" dstpinname="Transform In">
    </LINK>
    <LINK srcnodeid="54" srcpinname="Y" dstnodeid="53" dstpinname="ScaleY">
@@ -984,12 +964,10 @@
    </NODE>
    <LINK srcnodeid="51" srcpinname="Transform Out" dstnodeid="50" dstpinname="Transform In">
    </LINK>
-   <LINK srcnodeid="43" srcpinname="Element Id" dstnodeid="56" dstpinname="Query">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="68">
-   <BOUNDS type="Box" left="9120" top="6525" width="285" height="240">
+   <BOUNDS type="Box" left="9270" top="6525" width="285" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="9120" top="6525" width="0" height="0">
+   <BOUNDS type="Node" left="9270" top="6525" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -1002,8 +980,6 @@
    <PIN pinname="Behavior" slicecount="1" values="Toggle">
    </PIN>
    </NODE>
-   <LINK srcnodeid="68" srcpinname="Y Output Value" dstnodeid="56" dstpinname="Use Name">
-   </LINK>
    <LINK srcnodeid="49" srcpinname="Output 3XY" dstnodeid="65" dstpinname="CenterXY">
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="69">
@@ -1055,5 +1031,29 @@
    <LINK srcnodeid="57" srcpinname="Display Transformation Out" dstnodeid="71" dstpinname="Transform In">
    </LINK>
    <LINK srcnodeid="71" srcpinname="Transform Out" dstnodeid="70" dstpinname="Transform In">
+   </LINK>
+   <NODE id="56" systemname="Sift (Notui.Context String)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context String)" componentmode="Hidden">
+   <BOUNDS type="Node" left="8340" top="6630" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8340" top="6630" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Query" visible="1" slicecount="3" values="Horizontal,Vertical,Both">
+   </PIN>
+   <PIN pinname="Context" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Use Name" slicecount="1" visible="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="68" srcpinname="Y Output Value" dstnodeid="56" dstpinname="Use Name">
+   </LINK>
+   <LINK srcnodeid="43" srcpinname="Element Id" dstnodeid="56" dstpinname="Query">
+   </LINK>
+   <LINK srcnodeid="56" srcpinname="Output" dstnodeid="57" dstpinname="Element">
+   </LINK>
+   <LINK srcnodeid="56" srcpinname="Output" dstnodeid="41" dstpinname="Element">
+   </LINK>
+   <LINK srcnodeid="39" srcpinname="Input Value" dstnodeid="56" dstpinname="Context">
    </LINK>
    </PATCH>

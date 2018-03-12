@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Sliding (Notui.Behavior Join) help.v4p" scrollx="0" scrolly="4320">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Sliding (Notui.Behavior Join) help.v4p" scrollx="0" scrolly="-360">
    <BOUNDS type="Window" left="10545" top="5955" width="16380" height="13800">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -67,9 +67,9 @@
    </PIN>
    </NODE>
    <NODE systemname="Context (Notui)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui)" componentmode="Hidden" id="4">
-   <BOUNDS type="Node" left="2430" top="1245" width="100" height="100">
+   <BOUNDS type="Node" left="2430" top="1380" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="2430" top="1245" width="3000" height="3000">
+   <BOUNDS type="Box" left="2430" top="1380" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="5">

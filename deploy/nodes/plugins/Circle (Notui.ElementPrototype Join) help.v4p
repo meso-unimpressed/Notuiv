@@ -461,9 +461,9 @@
    <LINK srcnodeid="13" srcpinname="Output Node" dstnodeid="9" dstpinname="Element Prototypes">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="8">
-   <BOUNDS type="Box" left="4275" top="24690" width="285" height="240">
+   <BOUNDS type="Box" left="4425" top="24690" width="285" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="4275" top="24690" width="0" height="0">
+   <BOUNDS type="Node" left="4425" top="24690" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -478,32 +478,16 @@
    <PIN pinname="X Input Value" slicecount="1" values="0">
    </PIN>
    </NODE>
-   <NODE systemname="Sift (Notui.Context Opaq)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context Opaq)" componentmode="Hidden" id="7">
-   <BOUNDS type="Node" left="3735" top="25035" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="3735" top="25035" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="11" srcpinname="Output String" dstnodeid="7" dstpinname="Query">
-   </LINK>
-   <LINK srcnodeid="8" srcpinname="Y Output Value" dstnodeid="7" dstpinname="Use Name">
-   </LINK>
-   <LINK srcnodeid="9" srcpinname="Context" dstnodeid="7" dstpinname="Context">
-   </LINK>
    <NODE systemname="InstanceInfo (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="InstanceInfo (Notui.Element Split)" componentmode="Hidden" id="5">
    <BOUNDS type="Node" left="3735" top="25500" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="3735" top="25500" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Element" visible="1">
+   <PIN pinname="Element" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="ID" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="7" srcpinname="Output" dstnodeid="5" dstpinname="Element">
-   </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="4">
    <BOUNDS type="Box" left="4515" top="26040" width="3240" height="270">
    </BOUNDS>
@@ -560,4 +544,20 @@
    </PACK>
    <PACK Name="addonpack" Version="36.0.0">
    </PACK>
+   <NODE systemname="Sift (Notui.Context String)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context String)" componentmode="Hidden" id="7">
+   <BOUNDS type="Node" left="3735" top="25035" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3735" top="25035" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="11" srcpinname="Output String" dstnodeid="7" dstpinname="Query">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Y Output Value" dstnodeid="7" dstpinname="Use Name">
+   </LINK>
+   <LINK srcnodeid="9" srcpinname="Context" dstnodeid="7" dstpinname="Context">
+   </LINK>
+   <LINK srcnodeid="7" srcpinname="Output" dstnodeid="5" dstpinname="Element">
+   </LINK>
    </PATCH>
