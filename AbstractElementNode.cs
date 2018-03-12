@@ -79,7 +79,6 @@ namespace Notuiv
 
             var trupdmode = FTrUpdateMode[i].Aggregate(ApplyTransformMode.None, (current, mode) => current | mode);
             el.TransformApplication = trupdmode;
-
             if(FChildren[i].All(chel => chel != null))
             {
                 el.Children.Clear();
@@ -100,9 +99,10 @@ namespace Notuiv
 
         public void Evaluate(int SpreadMax)
         {
-            bool changed = FChildren.IsChanged || FName.IsChanged || FFadeIn.IsChanged || FFadeOut.IsChanged ||
-                           FBehaviors.IsChanged || FDispTr.IsChanged || FInterTr.IsChanged || FSeparateInter.IsChanged ||
-                           FTransparent.IsChanged || FActive.IsChanged || FId.IsChanged;
+            bool changewochildren = FName.IsChanged || FFadeIn.IsChanged || FFadeOut.IsChanged ||
+                                    FBehaviors.IsChanged || FDispTr.IsChanged || FInterTr.IsChanged || FSeparateInter.IsChanged ||
+                                    FTransparent.IsChanged || FActive.IsChanged || FId.IsChanged;
+            bool changed = FChildren.IsChanged || changewochildren;
 
             int sprmax = SpreadUtils.SpreadMax(FChildren, FName, FBehaviors, FDispTr, FInterTr);
 
@@ -110,6 +110,7 @@ namespace Notuiv
 
             if (changed || init < 2)
             {
+                var filternilchange = true;
                 if (init < 1) FElementProt.SliceCount = 0;
                 else
                 {
@@ -120,16 +121,25 @@ namespace Notuiv
                         {
                             FElementProt[i].Id = FId[i];
                         }
-                        FillElement(FElementProt[i], i);
+
+                        var filternilchangeslice = FChildren.SliceCount > 0 ||
+                                              FChildren.SliceCount == 0 && FElementProt[i].Children.Count > 0 ||
+                                              changewochildren;
+
+                        filternilchange = filternilchange && filternilchangeslice;
+                        if (filternilchangeslice)
+                            FillElement(FElementProt[i], i);
                     }
                 }
 
+                var prevsc = FElementProt.SliceCount;
                 FElementProt.ResizeAndDismiss(sprmax, i =>
                 {
                     var res = ConstructPrototype(i, FId[i]);
                     return FillElement(res, i);
                 });
-                FElementProt.Stream.IsChanged = true;
+                if(filternilchange || FElementProt.SliceCount != prevsc)
+                    FElementProt.Stream.IsChanged = true;
             }
             init++;
         }

@@ -135,11 +135,7 @@ namespace Notuiv.Filters
                 FOut[i].SliceCount = 0;
             else
             {
-                FOut[i].SliceCount = 0;
-                foreach (var element in FContext[0].RootElements.Values)
-                {
-                    FOut[i].AddRange(element.Opaq(FQuery[i], FSeparator[i], FUseName[i]));
-                }
+                FOut[i].AssignFrom(FContext[i].Opaq(FQuery[i], FSeparator[i], FUseName[i]));
             }
         }
     }
