@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using md.stdl.Boolean;
 using md.stdl.Interaction;
 using Notui;
 using md.stdl.Mathematics;
 using mp.pddn;
+using VVVV.DX11.Nodes.Renderers.Graphics.Touch;
 using VVVV.PluginInterfaces.V1;
 using VVVV.PluginInterfaces.V2;
+using VVVV.Utils.IO;
 using VVVV.Utils.VMath;
 using VMatrix = VVVV.Utils.VMath.Matrix4x4;
 using SMatrix = System.Numerics.Matrix4x4;
@@ -31,14 +35,25 @@ namespace Notuiv
 
         [Input("Element Prototypes")]
         public Pin<ElementPrototype> FElements;
-        //[Input("Single Source of Elements")]
-        //public ISpread<bool> FSingleSource;
-        [Input("Touch Coordinates")]
-        public IDiffSpread<Vector2D> FTouchCoords;
-        [Input("Touch ID")]
-        public IDiffSpread<int> FTouchId;
-        [Input("Touch Force")]
-        public IDiffSpread<float> FTouchForce;
+
+        [Input("Mouse")]
+        public Pin<Mouse> FMouse;
+        [Input("Bake Buttons Into ID")]
+        public ISpread<bool> FBakeButtons;
+        [Input("Mouse Always Present")]
+        public ISpread<bool> FAlwaysPresent;
+        [Input("Use Mouse Buttons", DefaultBoolean = true)]
+        public ISpread<bool> FUseButtons;
+        [Input("Mouse Force", DefaultValue = 1.0)]
+        public ISpread<float> FMouseForce;
+
+        [Input("DX11 Touches")]
+        public Pin<TouchData> FDx11Touches;
+        [Input("DX11 Touch Force", DefaultValue = 1.0)]
+        public ISpread<float> FDx11TouchForce;
+        [Input("Aux Touches ", DimensionNames = new []{"X", "Y", "F", "Id"})]
+        public IDiffSpread<Vector4D> FAuxTouches;
+
         [Input("Minimum Force for Interaction", DefaultValue = -1)]
         public IDiffSpread<float> FMinForce;
         [Input("Consider Touch New Before", DefaultValue = 1)]
@@ -66,31 +81,110 @@ namespace Notuiv
         public NotuiContext Context = new NotuiContext();
 
         private double _prevFrameTime = 0;
-        private bool _onConnectedFrame;
+        private IDisposable _mouseUnsubscriber;
+        private bool _initMo = true;
+        private Vector2D _mouseTouchPos;
 
         public bool IsTouchDefault()
         {
-            bool def = FTouchCoords.SliceCount == 1 && FTouchId.SliceCount == 1 && FTouchForce.SliceCount == 1;
-            def = def && FTouchCoords[0].Length < 0.00001;
-            def = def && FTouchId[0] == 0;
-            def = def && FTouchForce[0] < 0.00001;
+            bool def = FAuxTouches.SliceCount == 1;
+            def = def && FAuxTouches[0].xy.Length < 0.00001;
+            def = def && Math.Abs(FAuxTouches[0].w) < 0.00001;
+            def = def && Math.Abs(FAuxTouches[0].z) < 0.00001;
             return def;
         }
 
         public void OnImportsSatisfied()
         {
-            FElements.Connected += (sender, args) => _onConnectedFrame = true;
             FElements.Disconnected += (sender, args) =>
             {
                 Context.AddOrUpdateElements(true); // this is basically asking all elements to request their deletion
             };
         }
 
+        /* Button order in rawinput apparently:
+         * Right, Left, X1, X2, Middle
+         * 2, 0, 3, 4, 1
+         * 1, 4, 0, 2, 3
+         */
+
+        private static readonly int[] _buttonLookupToV = { 11, 9, 10, 8, 7 };
+
         public void Evaluate(int SpreadMax)
         {
+
             Context.ConsiderNewBefore = FConsiderNew[0];
             Context.ConsiderReleasedAfter = FConsiderReleased[0];
             Context.MinimumForce = FMinForce[0];
+
+            var touchcount = FAuxTouches.SliceCount;
+            var touches = Enumerable.Empty<(Vector2, int, float)>();
+            if (!IsTouchDefault())
+            {
+                touches = touches.Concat(Enumerable.Range(0, touchcount).Select(i =>
+                    (FAuxTouches[i].xy.AsSystemVector(), (int)FAuxTouches[i].w, (float)FAuxTouches[i].z)));
+            }
+
+            if (FMouse.IsConnected && FMouse.SliceCount > 0)
+            {
+                if (FMouse[0] != null)
+                {
+                    if (_initMo)
+                    {
+                        _mouseUnsubscriber = FMouse[0].MouseNotifications.Subscribe(mn =>
+                        {
+                            if (mn.Kind == MouseNotificationKind.MouseMove)
+                                _mouseTouchPos = mn.Position.FromMousePoint(mn.ClientArea);
+                        });
+                        _initMo = false;
+                    }
+                    var mouseTouchId = -1;
+                    var rawMouseButtons = BitUtils.Split((uint)FMouse[0].PressedButtons);
+                    var mouseButtons = new bool[5];
+                    for (int i = 0; i < 5; i++)
+                    {
+                        mouseButtons[i] = rawMouseButtons[_buttonLookupToV[i]] && FUseButtons[i];
+                    }
+                    if (FBakeButtons[0])
+                    {
+                        mouseTouchId = (int)BitUtils.Join(mouseButtons.Reverse().ToArray()) * -1 - 1;
+                    }
+
+                    var buttonpressed = mouseButtons.Any(b => b);
+                    var attachmouse = buttonpressed || FAlwaysPresent[0];
+
+                    if (attachmouse)
+                    {
+                        touches = touches.Concat(
+                            new[] { (_mouseTouchPos.AsSystemVector(), mouseTouchId, buttonpressed ? FMouseForce[0] : 0.0f) });
+                    }
+                }
+                else
+                {
+                    if (!_initMo)
+                    {
+                        _mouseUnsubscriber.Dispose();
+                        _initMo = true;
+                    }
+                }
+            }
+            else
+            {
+                if (!_initMo)
+                {
+                    _mouseUnsubscriber.Dispose();
+                    _initMo = true;
+                }
+            }
+
+            touches = touches.Concat(Enumerable.Range(0, FDx11Touches.SliceCount).Where(i => FDx11Touches[i] != null).Select(i =>
+            {
+                var touch = FDx11Touches[i];
+                var pos = new Vector2(touch.Pos.X, touch.Pos.Y);
+                return (pos, touch.Id, FDx11TouchForce[i]);
+            }));
+
+            Context.SubmitTouches(touches);
 
             var dt = Host.FrameTime - _prevFrameTime;
             if (_prevFrameTime <= 0.00001) dt = 0;
@@ -107,13 +201,6 @@ namespace Notuiv
             if (FElements.IsChanged && FElements.IsConnected)
                 Context.AddOrUpdateElements(true, FElements.ToArray());
 
-            var touchcount = Math.Min(FTouchId.SliceCount, FTouchCoords.SliceCount);
-            if (!IsTouchDefault())
-            {
-                var touches = Enumerable.Range(0, touchcount).Select(i =>
-                    (FTouchCoords[i].AsSystemVector(), FTouchId[i], FTouchForce[i]));
-                Context.SubmitTouches(touches);
-            }
             Context.Mainloop((float)dt);
 
             FContext[0] = Context;

@@ -52,12 +52,16 @@
     <Reference Include="SimMetrics.Net, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\SimMetrics.Net.1.0.4\lib\net45\SimMetrics.Net.dll</HintPath>
     </Reference>
+    <Reference Include="SlimDX">
+      <HintPath>dlls\SlimDX.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition.CodePlex">
       <HintPath>dlls\System.ComponentModel.Composition.CodePlex.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Interactive, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>packages\System.Interactive.3.1.1\lib\net45\System.Interactive.dll</HintPath>
     </Reference>
@@ -84,6 +88,7 @@
       <HintPath>dlls\System.Reflection.Context.CodePlex.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -93,6 +98,10 @@
     <Reference Include="VVVV.Core">
       <HintPath>dlls\VVVV.Core.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="VVVV.DX11.Nodes">
+      <HintPath>dlls\VVVV.DX11.Nodes.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="VVVV.Hosting">
       <HintPath>dlls\VVVV.Hosting.dll</HintPath>
