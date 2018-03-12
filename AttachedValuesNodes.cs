@@ -108,6 +108,7 @@ namespace Notuiv
                         else element.Value.Auxiliary.Add(FAuxKeys[i][j], FAuxVals[i][j]);
                     }
                 }
+                FElementOut[i] = element;
             }
         }
     }

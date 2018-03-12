@@ -96,10 +96,10 @@ namespace Notuiv
         public ElementEventFlattener FlattenedEvents;
 
         public string TypeCSharpName { get; }
-        public Spread<TouchContainer> Touches { get; } = new Spread<TouchContainer>();
+        public Spread<Touch> Touches { get; } = new Spread<Touch>();
         public Spread<bool> TouchesHitting { get; } = new Spread<bool>();
         public Spread<IntersectionPoint> TouchingIntersections { get; } = new Spread<IntersectionPoint>();
-        public Spread<TouchContainer> HittingTouches { get; } = new Spread<TouchContainer>();
+        public Spread<Touch> HittingTouches { get; } = new Spread<Touch>();
         public Spread<IntersectionPoint> HittingIntersections { get; } = new Spread<IntersectionPoint>();
         public Spread<NotuiElement> Children { get; } = new Spread<NotuiElement>();
         public Spread<InteractionBehavior> Behaviors { get; } = new Spread<InteractionBehavior>();

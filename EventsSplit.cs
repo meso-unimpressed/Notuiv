@@ -58,7 +58,7 @@ namespace Notuiv
                             FOnHitEnd[i] = venvdat.FlattenedEvents.OnHitEnd;
                             FOnInteracting[i] = venvdat.FlattenedEvents.OnInteracting;
                             FOnChildrenUpdated[i] = venvdat.FlattenedEvents.OnChildrenUpdated;
-                            FOnDeleting[i] = venvdat.FlattenedEvents.OnDeleting;
+                            FOnDeleting[i] = venvdat.FlattenedEvents.OnDeleting /* && element.Age.Elapsed.TotalSeconds > element.Context.DeltaTime * 2 */;
                             FOnDeletionStarted[i] = venvdat.FlattenedEvents.OnDeletionStarted;
                             FOnFadedIn[i] = venvdat.FlattenedEvents.OnFadedIn;
                             break;

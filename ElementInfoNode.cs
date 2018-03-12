@@ -106,10 +106,10 @@ namespace Notuiv
         [Output("Dethklok")] public ISpread<double> FDethklok;
         [Output("Dying")] public ISpread<bool> FDying;
 
-        [Output("Interacting Touches")] public ISpread<ISpread<TouchContainer>> FTouches;
+        [Output("Interacting Touches")] public ISpread<ISpread<Touch>> FTouches;
         [Output("Are Interacting Touches Hitting")] public ISpread<ISpread<bool>> FTouchesHitting;
         [Output("Touching Intersections")] public ISpread<ISpread<IntersectionPoint>> FTouchingIntersections;
-        [Output("Hitting Touches")] public ISpread<ISpread<TouchContainer>> FHittingTouches;
+        [Output("Hitting Touches")] public ISpread<ISpread<Touch>> FHittingTouches;
         [Output("Hitting Intersections")] public ISpread<ISpread<IntersectionPoint>> FHittingIntersections;
         [Output("Children Out")] public ISpread<ISpread<NotuiElement>> FChildrenOut;
         [Output("Behaviors Out")] public ISpread<ISpread<InteractionBehavior>> FBehavsOut;
@@ -170,6 +170,7 @@ namespace Notuiv
             }
             else
             {
+                _prevSliceCount = 0;
                 this.SetSliceCountForAllOutput(0);
             }
         }

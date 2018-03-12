@@ -61,7 +61,7 @@ namespace Notuiv
         public ISpread<NotuiElement> FFlatElements;
         
         [Output("Touches")]
-        public ISpread<TouchContainer> FTouches;
+        public ISpread<Touch> FTouches;
 
         public NotuiContext Context = new NotuiContext();
 
@@ -104,23 +104,15 @@ namespace Notuiv
             if (FAspTr.IsConnected && FAspTr.SliceCount > 0)
                 Context.AspectRatio = FAspTr[0].AsSystemMatrix4X4();
 
-            if (FElements.IsChanged)
+            if (FElements.IsChanged && FElements.IsConnected)
                 Context.AddOrUpdateElements(true, FElements.ToArray());
 
-            if(Context.InputTouches == null) Context.InputTouches = new List<TouchPrototype>(40);
             var touchcount = Math.Min(FTouchId.SliceCount, FTouchCoords.SliceCount);
             if (!IsTouchDefault())
             {
-                Context.InputTouches.Clear();
-                for (int i = 0; i < touchcount; i++)
-                {
-                    Context.InputTouches.Add(new TouchPrototype
-                    {
-                        Point = FTouchCoords[i].AsSystemVector(),
-                        Id = FTouchId[i],
-                        Force = FTouchForce[i]
-                    });
-                }
+                var touches = Enumerable.Range(0, touchcount).Select(i =>
+                    (FTouchCoords[i].AsSystemVector(), FTouchId[i], FTouchForce[i]));
+                Context.SubmitTouches(touches);
             }
             Context.Mainloop((float)dt);
 
@@ -164,6 +156,25 @@ namespace Notuiv
         Author = "microdee"
     )]
     public class ContextSplitNode : ObjectSplitNode<NotuiContext>
+    {
+        public override Type TransformType(Type original, MemberInfo member)
+        {
+            return MiscExtensions.MapSystemNumericsTypeToVVVV(original);
+        }
+
+        public override object TransformOutput(object obj, MemberInfo member, int i)
+        {
+            return MiscExtensions.MapSystemNumericsValueToVVVV(obj);
+        }
+    }
+
+    [PluginInfo(
+        Name = "Touch",
+        Category = "Notui",
+        Version = "Split",
+        Author = "microdee"
+    )]
+    public class TouchSplitNode : ObjectSplitNode<Touch>
     {
         public override Type TransformType(Type original, MemberInfo member)
         {
