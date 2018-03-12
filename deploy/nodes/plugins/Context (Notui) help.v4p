@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Context (Notui) help.v4p" scrollx="0" scrolly="-360" locked="0">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Context (Notui) help.v4p" scrollx="0" scrolly="0" locked="0">
    <BOUNDS type="Window" left="1575" top="360" width="24510" height="28875">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -2217,9 +2217,9 @@
    <LINK srcnodeid="365" srcpinname="Y Output Value" dstnodeid="339" dstpinname="RotationMinMaxXY">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="366">
-   <BOUNDS type="Box" left="12525" top="8550" width="795" height="240">
+   <BOUNDS type="Box" left="12390" top="5445" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="12525" top="8550" width="0" height="0">
+   <BOUNDS type="Node" left="12390" top="5445" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
@@ -2399,5 +2399,55 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="383" srcpinname="Layer" dstnodeid="253" dstpinname="Layer 4">
+   </LINK>
+   <NODE systemname="Sift (Notui.Context Opaq)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context Opaq)" componentmode="Hidden" id="384" debug="0">
+   <BOUNDS type="Node" left="14970" top="11745" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="14970" top="11745" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Use Name" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Separator" visible="1">
+   </PIN>
+   <PIN pinname="Query" visible="1" slicecount="1" values="`.*`/`.*`">
+   </PIN>
+   <PIN pinname="Context" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="385">
+   <BOUNDS type="Box" left="15345" top="11385" width="285" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="15345" top="11385" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="/">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="385" srcpinname="Output String" dstnodeid="384" dstpinname="Separator">
+   </LINK>
+   <LINK srcnodeid="369" srcpinname="Input Value" dstnodeid="384" dstpinname="Context">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="392">
+   <BOUNDS type="Box" left="15150" top="10830" width="810" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="15150" top="10830" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="`.*`/`.*`">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="392" srcpinname="Output String" dstnodeid="384" dstpinname="Query">
    </LINK>
    </PATCH>

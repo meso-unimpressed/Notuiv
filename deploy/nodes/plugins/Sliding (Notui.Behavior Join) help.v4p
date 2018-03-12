@@ -1,0 +1,693 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Sliding (Notui.Behavior Join) help.v4p" scrollx="0" scrolly="4320">
+   <BOUNDS type="Window" left="10545" top="5955" width="16380" height="13800">
+   </BOUNDS>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
+   <BOUNDS type="Node" left="225" top="225" width="5100" height="450">
+   </BOUNDS>
+   <BOUNDS type="Box" left="225" top="225" width="5100" height="450">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="0" values="|Sliding (Notui.Behavior Join)|">
+   </PIN>
+   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" visible="1" values="14">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="2">
+   <BOUNDS type="Node" left="225" top="600" width="5100" height="600">
+   </BOUNDS>
+   <BOUNDS type="Box" left="225" top="600" width="5100" height="600">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="0" values="|Or in its more popular name Multitouch Imagestack behavior. See the help patch of the Context node for demonstration|">
+   </PIN>
+   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
+   </PIN>
+   </NODE>
+   <NODE nodename="Sliding (Notui.Behavior Join)" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="1440" top="18870" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1440" top="18870" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="FlickTime" visible="1">
+   </PIN>
+   <PIN pinname="BoundingBoxMaxXYZ" visible="1">
+   </PIN>
+   <PIN pinname="BoundingBoxMinXYZ" visible="1">
+   </PIN>
+   <PIN pinname="ScaleMinMaxXY" visible="1">
+   </PIN>
+   <PIN pinname="RotationMinMaxXY" visible="1">
+   </PIN>
+   <PIN pinname="LimitTranslation" visible="1">
+   </PIN>
+   <PIN pinname="LimitRotation" visible="1">
+   </PIN>
+   <PIN pinname="MinimumTouches" visible="1">
+   </PIN>
+   <PIN pinname="SlideOnlyWithSpecificChildren" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="SlideOnChildrenInteracting" visible="1">
+   </PIN>
+   <PIN pinname="SlideInSelectedPlane" visible="1">
+   </PIN>
+   <PIN pinname="RotationCoeffitient" visible="1">
+   </PIN>
+   <PIN pinname="Pivotable" visible="1">
+   </PIN>
+   <PIN pinname="ScalingCoeffitient" visible="1">
+   </PIN>
+   <PIN pinname="Scalable" visible="1">
+   </PIN>
+   <PIN pinname="DraggingCoeffitientXY" visible="1">
+   </PIN>
+   <PIN pinname="Draggable" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Context (Notui)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui)" componentmode="Hidden" id="4">
+   <BOUNDS type="Node" left="2430" top="1245" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2430" top="1245" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="5">
+   <BOUNDS type="Box" left="3930" top="17835" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3930" top="17835" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="FlickTime">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="5" srcpinname="Y Output Value" dstnodeid="0" dstpinname="FlickTime">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="6">
+   <BOUNDS type="Node" left="4200" top="18135" width="3975" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4200" top="18135" width="4365" height="795">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Amount of seconds the Flicking animation should last.&cr;&lf;Known bug: rotation, scale might not work because I haven&apos;t implemented reference delta delaying yet. It is coming.|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="7">
+   <BOUNDS type="Box" left="3765" top="16725" width="795" height="720">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3765" top="16725" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="3" visible="1" values="1,1,1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="BoundingBoxMaxXYZ">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="7" srcpinname="Y Output Value" dstnodeid="0" dstpinname="BoundingBoxMaxXYZ">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="8">
+   <BOUNDS type="Node" left="5580" top="16485" width="4185" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5580" top="16485" width="4185" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Bounding box for the Dragging if its limits are turned on|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="9">
+   <BOUNDS type="Box" left="3600" top="15660" width="795" height="720">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3600" top="15660" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="3" visible="1" values="-1,-1,-1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="BoundingBoxMinXYZ">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="9" srcpinname="Y Output Value" dstnodeid="0" dstpinname="BoundingBoxMinXYZ">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="10">
+   <BOUNDS type="Box" left="3480" top="14850" width="795" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3480" top="14850" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="0.1,2">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="ScaleMinMaxXY">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="10" srcpinname="Y Output Value" dstnodeid="0" dstpinname="ScaleMinMaxXY">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="11">
+   <BOUNDS type="Node" left="4305" top="14880" width="6765" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4305" top="14880" width="3600" height="495">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Minimum and maximum scale. The overall scale of the display transform is used for reference|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <PACK Name="KeyboardUI" Version="1.1.1">
+   </PACK>
+   <PACK Name="vvvv-Message" Version="2.9.10">
+   </PACK>
+   <PACK Name="addonpack" Version="36.0.0">
+   </PACK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="12">
+   <BOUNDS type="Box" left="3315" top="13965" width="795" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3315" top="13965" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="-1,1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="RotationMinMaxXY">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="12" srcpinname="Y Output Value" dstnodeid="0" dstpinname="RotationMinMaxXY">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="13">
+   <BOUNDS type="Node" left="4140" top="14040" width="4905" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4140" top="14040" width="4470" height="495">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|If rotation limitting is turned on the minimum and maximum angle in vvvv style cycles|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="14">
+   <BOUNDS type="Box" left="3150" top="13140" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3150" top="13140" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="LimitTranslation">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="14" srcpinname="Y Output Value" dstnodeid="0" dstpinname="LimitTranslation">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="15">
+   <BOUNDS type="Box" left="3015" top="12360" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3015" top="12360" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="LimitRotation">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="15" srcpinname="Y Output Value" dstnodeid="0" dstpinname="LimitRotation">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="16">
+   <BOUNDS type="Box" left="2850" top="11415" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2850" top="11415" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="MinimumTouches">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="16" srcpinname="Y Output Value" dstnodeid="0" dstpinname="MinimumTouches">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="17">
+   <BOUNDS type="Node" left="2925" top="11730" width="5580" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2925" top="11730" width="5715" height="315">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Minimum number of touches required to interact with the element to slide it|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="18">
+   <BOUNDS type="Box" left="2670" top="9780" width="6150" height="300">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2670" top="9780" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="SlideOnlyWithSpecificChildren">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="18" srcpinname="Output Node" dstnodeid="0" dstpinname="SlideOnlyWithSpecificChildren">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="19">
+   <BOUNDS type="Node" left="2820" top="10110" width="7995" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2820" top="10110" width="5145" height="1020">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|In C# you can optionally select specific elements (mostly children but not necessarily) to react only on their touches. In vvvv though you cannot do that with plugins. I had a bug with my abstract behavior join node whith converting this into Opaq path strings but it&apos;ll come.|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="20">
+   <BOUNDS type="Box" left="2550" top="8880" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2550" top="8880" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="SlideOnChildrenInteracting">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="20" srcpinname="Y Output Value" dstnodeid="0" dstpinname="SlideOnChildrenInteracting">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="21">
+   <BOUNDS type="Node" left="3090" top="8910" width="5550" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3090" top="8910" width="3855" height="510">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Slide also when children elements are touched (when off children element touches won&apos;t count)|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="22">
+   <BOUNDS type="Box" left="2370" top="7605" width="1590" height="270">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2370" top="7605" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="ViewAligned">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="ViewAligned">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="SlideInSelectedPlane">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="22" srcpinname="Output Enum" dstnodeid="0" dstpinname="SlideInSelectedPlane">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="23">
+   <BOUNDS type="Node" left="2475" top="7905" width="14625" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2475" top="7905" width="5175" height="720">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Which plane should be used for sliding. If Parent is selected but a parent is not present, it&apos;s fallen back to View Aligned. View Aligned is the plane parallel to the camera&apos;s plane at the distance to the element.|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="24">
+   <BOUNDS type="Box" left="2235" top="6720" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2235" top="6720" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="RotationCoeffitient">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="24" srcpinname="Y Output Value" dstnodeid="0" dstpinname="RotationCoeffitient">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="25">
+   <BOUNDS type="Box" left="2070" top="5865" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2070" top="5865" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Pivotable">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="25" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Pivotable">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="26">
+   <BOUNDS type="Node" left="2310" top="6990" width="1365" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2310" top="6990" width="1365" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Speed of rotation|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="27">
+   <BOUNDS type="Node" left="2565" top="5910" width="9195" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2565" top="5910" width="4830" height="525">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Element can be rotated with 2 or more touches or if Draggable turned off, with one touch and around the center of the element.|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="28">
+   <BOUNDS type="Box" left="1905" top="5070" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1905" top="5070" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="ScalingCoeffitient">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="28" srcpinname="Y Output Value" dstnodeid="0" dstpinname="ScalingCoeffitient">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="29">
+   <BOUNDS type="Node" left="2025" top="5355" width="1575" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2025" top="5355" width="1575" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|The speed of scaling|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="30">
+   <BOUNDS type="Box" left="1755" top="4245" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1755" top="4245" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Scalable">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="30" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Scalable">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="31">
+   <BOUNDS type="Node" left="2295" top="4275" width="9195" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2295" top="4275" width="4830" height="525">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Element can be scaled with 2 or more touches or if Draggable turned off, with one touch and from the center of the element.|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="32">
+   <BOUNDS type="Box" left="1590" top="3105" width="795" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1590" top="3105" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="0,0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="DraggingCoeffitientXY">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="32" srcpinname="Y Output Value" dstnodeid="0" dstpinname="DraggingCoeffitientXY">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="33">
+   <BOUNDS type="Node" left="2400" top="3120" width="10230" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2400" top="3120" width="3810" height="780">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Speed of dragging the element in its selected plane. 0 means that axis is locked, below 0 is reversed (though I can&apos;t imagine a use case for that)|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="34">
+   <BOUNDS type="Box" left="1425" top="2280" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1425" top="2280" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Draggable">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="34" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Draggable">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="35">
+   <BOUNDS type="Node" left="1995" top="2370" width="2385" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1995" top="2370" width="2385" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Element can be dragged around|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="38">
+   <BOUNDS type="Node" left="4980" top="19560" width="5070" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4980" top="19560" width="2580" height="525">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Get the state of the element from an element instance with this node:|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="SlidingInfo (Notui.Behavior Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SlidingInfo (Notui.Behavior Split)" componentmode="Hidden" id="39">
+   <BOUNDS type="Node" left="4935" top="20715" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4935" top="20715" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Behavior" visible="1">
+   </PIN>
+   <PIN pinname="Element Instance" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="BehaviorState" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Output" dstnodeid="39" dstpinname="Behavior" hiddenwhenlocked="0">
+   </LINK>
+   <NODE systemname="Context (Notui)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui)" componentmode="Hidden" id="41">
+   <BOUNDS type="Node" left="495" top="20535" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="495" top="20535" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Element Prototypes" visible="1">
+   </PIN>
+   <PIN pinname="Flat Elements" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Rectangle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Rectangle (Notui.ElementPrototype Join)" componentmode="Hidden" id="42">
+   <BOUNDS type="Node" left="480" top="19755" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="480" top="19755" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Behaviors" visible="1">
+   </PIN>
+   <PIN pinname="Element Prototype" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Output" dstnodeid="42" dstpinname="Behaviors">
+   </LINK>
+   <LINK srcnodeid="42" srcpinname="Element Prototype" dstnodeid="41" dstpinname="Element Prototypes">
+   </LINK>
+   <LINK srcnodeid="41" srcpinname="Flat Elements" dstnodeid="39" dstpinname="Element Instance">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="44">
+   <BOUNDS type="Node" left="2730" top="21210" width="2160" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2730" top="21210" width="2160" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Expand it with mp.essentials|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="Expand (Node)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Expand (Node)" componentmode="Hidden" id="45">
+   <BOUNDS type="Node" left="4935" top="21210" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4935" top="21210" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Reference Type" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Learn Type" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Type" slicecount="1" values="|Notui.Behaviors.SlidingBehavior+BehaviorState, Notui, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="39" srcpinname="BehaviorState" dstnodeid="45" dstpinname="Input">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="46">
+   <BOUNDS type="Node" left="4905" top="21585" width="7560" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4905" top="21585" width="7560" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="vpms://raw.githubusercontent.com/vvvvpm/vpdb/master/microdee/mp.essentials/github.master.vpack">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="Url">
+   </PIN>
+   </NODE>
+   </PATCH>
