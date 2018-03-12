@@ -73,6 +73,48 @@ namespace Notuiv.Filters
     [PluginInfo(
         Name = "Sift",
         Category = "Notui.Context",
+        Version = "String",
+        Author = "microdee"
+    )]
+    public class StringElementFilterNode : ContextElementFilterNode, IPartImportsSatisfiedNotification
+    {
+        [Input("Query Flattened", Order = 100)]
+        public IDiffSpread<bool> FQueryFlattened;
+        [Input("Contains", Order = 101)]
+        public IDiffSpread<bool> FContains;
+        [Input("Use Name", Order = 102, DefaultBoolean = true)]
+        public IDiffSpread<bool> FUseName;
+
+        public void OnImportsSatisfied()
+        {
+            FQueryFlattened.Changed += spread => HandleElementChange(this, EventArgs.Empty);
+            FContains.Changed += spread => HandleElementChange(this, EventArgs.Empty);
+            FUseName.Changed += spread => HandleElementChange(this, EventArgs.Empty);
+        }
+
+        protected override void Filter(int i)
+        {
+            bool CompareType(NotuiElement el)
+            {
+                if (FUseName[i])
+                    return FContains[i] ? el.Name.Contains(FQuery[i]) : el.Name == FQuery[i];
+                return FContains[i] ? el.Id.Contains(FQuery[i]) : el.Id == FQuery[i];
+            }
+
+            if (string.IsNullOrWhiteSpace(FQuery[i]) || FQueryFlattened.SliceCount == 0 || FContains.SliceCount == 0 || FUseName.SliceCount == 0)
+                FOut[i].SliceCount = 0;
+            else
+            {
+                FOut[i].AssignFrom(FQueryFlattened[i]
+                    ? FContext[0].FlatElements.Where(CompareType)
+                    : FContext[0].RootElements.Values.Where(CompareType));
+            }
+        }
+    }
+
+    [PluginInfo(
+        Name = "Sift",
+        Category = "Notui.Context",
         Version = "Type",
         Author = "microdee"
     )]
