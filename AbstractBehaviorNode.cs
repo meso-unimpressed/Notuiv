@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using Notui;
 using mp.pddn;
@@ -64,6 +65,7 @@ namespace Notuiv
         [Import] protected IIOFactory FIOFactory;
 
         protected bool ExposePrivate = false;
+        protected T Default = new T();
 
         public virtual void OnImportsSatisfiedBegin() { }
         public virtual void OnImportsSatisfiedEnd() { }
@@ -104,6 +106,51 @@ namespace Notuiv
         }
 
         /// <summary>
+        /// Transform the default value of the property to a different value
+        /// </summary>
+        /// <param name="obj">Original value of the property</param>
+        /// <param name="member">Property info</param>
+        /// <param name="i">Current slice</param>
+        /// <returns>The resulting transformed object</returns>
+        public virtual object TransformDefaultValue(object obj, PropertyInfo member)
+        {
+            return MiscExtensions.MapSystemNumericsValueToVVVV(obj);
+        }
+        
+        protected virtual double[] TransformDefaultToValues(object obj)
+        {
+            switch (obj)
+            {
+                case float v: return new[] { (double)v };
+                case double v: return new[] { v };
+                case short v: return new[] { (double)v };
+                case int v: return new[] { (double)v };
+                case long v: return new[] { (double)v };
+                case ushort v: return new[] { (double)v };
+                case uint v: return new[] { (double)v };
+                case ulong v: return new[] { (double)v };
+                case decimal v: return new[] { (double)v };
+                case Vector2 v:
+                {
+                    return new double[] {v.X, v.Y};
+                }
+                case Vector3 v:
+                {
+                    return new double[] { v.X, v.Y, v.Z };
+                }
+                case Vector4 v:
+                {
+                    return new double[] { v.X, v.Y, v.Z, v.W };
+                }
+                case Quaternion v:
+                {
+                    return new double[] { v.X, v.Y, v.Z, v.W };
+                }
+                default: return new [] { 0.0 };
+            }
+        }
+
+        /// <summary>
         /// Transform the type a property to a different one
         /// </summary>
         /// <param name="original">Original type of the property</param>
@@ -120,6 +167,24 @@ namespace Notuiv
         protected Type CType;
         protected PinDictionary Pd;
 
+        private void SetDefaultValue(PropertyInfo member, object defaultValue)
+        {
+            var defVals = TransformDefaultToValues(defaultValue);
+            var attr = new InputAttribute(member.Name)
+            {
+                DefaultValue = defVals[0],
+                DefaultValues = defVals,
+                DefaultString = defaultValue?.ToString() ?? "",
+                DefaultNodeValue = defaultValue
+            };
+            if (defaultValue is bool b) attr.DefaultBoolean = b;
+
+            Pd.AddInput(TransformType(member.PropertyType, member), attr);
+            var spread = Pd.InputPins[member.Name].Spread;
+            spread.SliceCount = 1;
+            spread[0] = TransformDefaultValue(defaultValue, member);
+        }
+
         private void AddMemberPin(PropertyInfo member)
         {
             Type memberType = typeof(object);
@@ -131,6 +196,7 @@ namespace Notuiv
 
             var enumerable = false;
             var dictionary = false;
+            var defaultValue = typeof(T).GetProperty(member.Name)?.GetValue(Default);
             if (memberType.GetInterface("IDictionary") != null)
             {
                 try
@@ -152,8 +218,8 @@ namespace Notuiv
                             }
                         })
                         .First().GenericTypeArguments;
-                    Pd.AddInputBinSized(TransformType(stype[0], member), new InputAttribute(member.Name + " Keys"));
-                    Pd.AddInputBinSized(TransformType(stype[1], member), new InputAttribute(member.Name + " Values"));
+                    Pd.AddInput(TransformType(stype[0], member), new InputAttribute(member.Name + " Keys"), binSized: true);
+                    Pd.AddInput(TransformType(stype[1], member), new InputAttribute(member.Name + " Values"), binSized: true);
                     dictionary = true;
                 }
                 catch (Exception)
@@ -162,7 +228,7 @@ namespace Notuiv
                     dictionary = false;
                 }
             }
-            else if ((memberType.GetInterface("IEnumerable") != null) && (memberType != typeof(string)))
+            else if (memberType.GetInterface("IEnumerable") != null && memberType != typeof(string))
             {
                 try
                 {
@@ -183,18 +249,19 @@ namespace Notuiv
                             }
                         })
                         .First().GenericTypeArguments[0];
-                    Pd.AddInputBinSized(TransformType(stype, member), new InputAttribute(member.Name));
+                    Pd.AddInput(TransformType(stype, member), new InputAttribute(member.Name), binSized: true);
                     enumerable = true;
                 }
                 catch (Exception)
                 {
                     Pd.AddInput(TransformType(memberType, member), new InputAttribute(member.Name));
+                    SetDefaultValue(member, defaultValue);
                     enumerable = false;
                 }
             }
             else
             {
-                Pd.AddInput(TransformType(memberType, member), new InputAttribute(member.Name));
+                SetDefaultValue(member, defaultValue);
                 enumerable = false;
             }
             IsMemberEnumerable.Add(member, enumerable);
