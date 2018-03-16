@@ -119,6 +119,14 @@ namespace Notuiv
 
             var touchcount = FAuxTouches.SliceCount;
             var touches = Enumerable.Empty<(Vector2, int, float)>();
+
+            touches = touches.Concat(Enumerable.Range(0, FDx11Touches.SliceCount).Where(i => FDx11Touches[i] != null).Select(i =>
+            {
+                var touch = FDx11Touches[i];
+                var pos = new Vector2(touch.Pos.X, touch.Pos.Y);
+                return (pos, touch.Id, FDx11TouchForce[i]);
+            }));
+
             if (!IsTouchDefault())
             {
                 touches = touches.Concat(Enumerable.Range(0, touchcount).Select(i =>
@@ -138,25 +146,29 @@ namespace Notuiv
                         });
                         _initMo = false;
                     }
-                    var mouseTouchId = -1;
-                    var rawMouseButtons = BitUtils.Split((uint)FMouse[0].PressedButtons);
-                    var mouseButtons = new bool[5];
-                    for (int i = 0; i < 5; i++)
-                    {
-                        mouseButtons[i] = rawMouseButtons[_buttonLookupToV[i]] && FUseButtons[i];
-                    }
-                    if (FBakeButtons[0])
-                    {
-                        mouseTouchId = (int)BitUtils.Join(mouseButtons.Reverse().ToArray()) * -1 - 1;
-                    }
 
-                    var buttonpressed = mouseButtons.Any(b => b);
-                    var attachmouse = buttonpressed || FAlwaysPresent[0];
-
-                    if (attachmouse)
+                    if (touches.IsEmpty())
                     {
-                        touches = touches.Concat(
-                            new[] { (_mouseTouchPos.AsSystemVector(), mouseTouchId, buttonpressed ? FMouseForce[0] : 0.0f) });
+                        var mouseTouchId = -1;
+                        var rawMouseButtons = BitUtils.Split((uint)FMouse[0].PressedButtons);
+                        var mouseButtons = new bool[5];
+                        for (int i = 0; i < 5; i++)
+                        {
+                            mouseButtons[i] = rawMouseButtons[_buttonLookupToV[i]] && FUseButtons[i];
+                        }
+                        if (FBakeButtons[0])
+                        {
+                            mouseTouchId = (int)BitUtils.Join(mouseButtons.Reverse().ToArray()) * -1 - 1;
+                        }
+
+                        var buttonpressed = mouseButtons.Any(b => b);
+                        var attachmouse = buttonpressed || FAlwaysPresent[0];
+
+                        if (attachmouse)
+                        {
+                            touches = touches.Concat(
+                                new[] { (_mouseTouchPos.AsSystemVector(), mouseTouchId, buttonpressed ? FMouseForce[0] : 0.0f) });
+                        }
                     }
                 }
                 else
@@ -176,13 +188,6 @@ namespace Notuiv
                     _initMo = true;
                 }
             }
-
-            touches = touches.Concat(Enumerable.Range(0, FDx11Touches.SliceCount).Where(i => FDx11Touches[i] != null).Select(i =>
-            {
-                var touch = FDx11Touches[i];
-                var pos = new Vector2(touch.Pos.X, touch.Pos.Y);
-                return (pos, touch.Id, FDx11TouchForce[i]);
-            }));
 
             Context.SubmitTouches(touches);
 
