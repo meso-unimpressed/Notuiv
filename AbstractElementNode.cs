@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Composition;
+﻿using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using Notui;
 using md.stdl.Mathematics;
@@ -20,6 +21,8 @@ namespace Notuiv
         public ISpread<ISpread<ElementPrototype>> FChildren;
         [Input("Name", DefaultString = "callmenames")]
         public IDiffSpread<string> FName;
+        [Input("Manual Id")]
+        public IDiffSpread<bool> FManId;
         [Input("Id", DefaultString = "")]
         public IDiffSpread<string> FId;
         [Input("Fade In Time")]
@@ -35,10 +38,6 @@ namespace Notuiv
 
         [Input("Display Transform")]
         public IDiffSpread<VMatrix> FDispTr;
-        [Input("Interaction Transform")]
-        public IDiffSpread<VMatrix> FInterTr;
-        [Input("Separate Interaction from Display")]
-        public IDiffSpread<bool> FSeparateInter;
         [Input("Transformation Update Mode", DefaultEnumEntry = "All")]
         public ISpread<ISpread<ApplyTransformMode>> FTrUpdateMode;
 
@@ -50,7 +49,7 @@ namespace Notuiv
 
         protected virtual void FillElementAuxData(TPrototype el, int i) { }
 
-        protected TPrototype FillElement(TPrototype el, int i)
+        protected TPrototype FillElement(TPrototype el, int i, bool isnew)
         {
             FDispTr[i].Decompose(out var scale, out Vector4D rotation, out var pos);
             el.Name = FName[i];
@@ -65,26 +64,19 @@ namespace Notuiv
             el.DisplayTransformation.Position = pos.AsSystemVector();
             el.DisplayTransformation.Rotation = rotation.AsSystemQuaternion();
             el.DisplayTransformation.Scale = scale.AsSystemVector();
-            if (FSeparateInter[i])
-            {
-                FInterTr[i].Decompose(out var iscale, out Vector4D irotation, out var ipos);
-                el.InteractionTransformation.Position = ipos.AsSystemVector();
-                el.InteractionTransformation.Rotation = irotation.AsSystemQuaternion();
-                el.InteractionTransformation.Scale = iscale.AsSystemVector();
-            }
-            else
-            {
-                el.InteractionTransformation.UpdateFrom(el.DisplayTransformation);
-            }
+            el.InteractionTransformation.UpdateFrom(el.DisplayTransformation);
 
-            var trupdmode = FTrUpdateMode[i].Aggregate(ApplyTransformMode.None, (current, mode) => current | mode);
+            var trupdmode = isnew ?
+                ApplyTransformMode.All :
+                FTrUpdateMode[i].Aggregate(ApplyTransformMode.None, (current, mode) => current | mode);
+
             el.TransformApplication = trupdmode;
             if(FChildren[i].All(chel => chel != null))
             {
                 el.Children.Clear();
                 foreach (var child in FChildren[i])
                 {
-                    var cc = child.Parent = el;
+                    child.Parent = el;
                     el.Children.Add(child.Id, child);
                 }
             }
@@ -96,50 +88,57 @@ namespace Notuiv
         }
 
         private int init = 0;
+        private Dictionary<string, TPrototype> _manualIdElements = new Dictionary<string, TPrototype>();
 
         public void Evaluate(int SpreadMax)
         {
             bool changewochildren = FName.IsChanged || FFadeIn.IsChanged || FFadeOut.IsChanged ||
-                                    FBehaviors.IsChanged || FDispTr.IsChanged || FInterTr.IsChanged || FSeparateInter.IsChanged ||
+                                    FBehaviors.IsChanged || FDispTr.IsChanged || FManId.IsChanged ||
                                     FTransparent.IsChanged || FActive.IsChanged || FId.IsChanged;
             bool changed = FChildren.IsChanged || changewochildren;
 
-            int sprmax = SpreadUtils.SpreadMax(FChildren, FName, FBehaviors, FDispTr, FInterTr);
+            int sprmax = SpreadUtils.SpreadMax(FChildren, FName, FBehaviors, FDispTr);
 
             FElementProt.Stream.IsChanged = false;
 
             if (changed || init < 2)
             {
-                var filternilchange = true;
-                if (init < 1) FElementProt.SliceCount = 0;
+                if (FManId[0])
+                {
+                    for (int i = 0; i < FId.SliceCount; i++)
+                    {
+                        if(string.IsNullOrWhiteSpace(FId[i])) continue;
+                        if (_manualIdElements.ContainsKey(FId[i]))
+                        {
+                            FillElement(_manualIdElements[FId[i]], i, false);
+                        }
+                        else
+                        {
+                            var prot = FillElement(ConstructPrototype(i, FId[i]), i, true);
+                            _manualIdElements.Add(prot.Id, prot);
+                        }
+                    }
+
+                    foreach (var k in _manualIdElements.Keys.ToArray())
+                    {
+                        if(FId.Contains(k)) continue;
+                        _manualIdElements.Remove(k);
+                    }
+
+                    FElementProt.AssignFrom(_manualIdElements.Values);
+                    FElementId.AssignFrom(_manualIdElements.Keys);
+                }
                 else
                 {
-                    FElementId.SliceCount = FElementProt.SliceCount;
+                    FElementProt.ResizeAndDismiss(sprmax, i => FillElement(ConstructPrototype(i, null), i, true));
+                    FElementId.SliceCount = sprmax;
                     for (int i = 0; i < FElementProt.SliceCount; i++)
                     {
-                        if (!string.IsNullOrWhiteSpace(FId[i]))
-                        {
-                            FElementProt[i].Id = FId[i];
-                        }
-
-                        var filternilchangeslice = FChildren.SliceCount > 0 ||
-                                              FChildren.SliceCount == 0 && FElementProt[i].Children.Count > 0 ||
-                                              changewochildren;
-
-                        filternilchange = filternilchange && filternilchangeslice;
-                        if (filternilchangeslice)
-                            FillElement(FElementProt[i], i);
+                        FillElement(FElementProt[i], i, false);
+                        FElementId[i] = FElementProt[i].Id;
                     }
                 }
-
-                var prevsc = FElementProt.SliceCount;
-                FElementProt.ResizeAndDismiss(sprmax, i =>
-                {
-                    var res = ConstructPrototype(i, FId[i]);
-                    return FillElement(res, i);
-                });
-                if(filternilchange || FElementProt.SliceCount != prevsc)
-                    FElementProt.Stream.IsChanged = true;
+                FElementProt.Stream.IsChanged = true;
             }
             init++;
         }
