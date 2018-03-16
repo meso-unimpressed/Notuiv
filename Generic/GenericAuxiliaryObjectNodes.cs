@@ -1,161 +1,142 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Notui;
 using VVVV.Nodes.Generic;
 using VVVV.PluginInterfaces.V2;
 using VVVV.Utils.Streams;
 
-namespace Notuiv
+namespace Notuiv.Generic
 {
-    #region SingleValue
-
-    [PluginInfo(Name = "Cast",
-                Category = "Notui.Element",
-                Help = "Casts any type to a type of this category, so be sure the input is of the required type",
-                Tags = "convert, as, generic"
-                )]
-    public class NotuiElementCastNode : Cons<NotuiElement> { }
-
-    #endregion SingleValue
-
-    #region SpreadOps
-
     [PluginInfo(Name = "Cons",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Help = "Concatenates all Input spreads.",
                 Tags = "generic, spreadop"
                 )]
-    public class NotuiElementConsNode : Cons<NotuiElement> { }
+    public class AuxiliaryObjectConsNode : Cons<AuxiliaryObject> { }
 
     [PluginInfo(Name = "CAR",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Version = "Bin",
                 Help = "Splits a given spread into first slice and remainder.",
                 Tags = "split, generic, spreadop",
                 Author = "woei"
                )]
-    public class NotuiElementCARBinNode : CARBin<NotuiElement> { }
+    public class AuxiliaryObjectCARBinNode : CARBin<AuxiliaryObject> { }
 
     [PluginInfo(Name = "CDR",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Version = "Bin",
                 Help = "Splits a given spread into remainder and last slice.",
                 Tags = "split, generic, spreadop",
                 Author = "woei"
                )]
-    public class NotuiElementCDRBinNode : CDRBin<NotuiElement> { }
+    public class AuxiliaryObjectCDRBinNode : CDRBin<AuxiliaryObject> { }
 
     [PluginInfo(Name = "Reverse",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Version = "Bin",
                 Help = "Reverses the order of the slices in the Spread.",
                 Tags = "invert, generic, spreadop",
                 Author = "woei"
                )]
-    public class NotuiElementReverseBinNode : ReverseBin<NotuiElement> { }
+    public class AuxiliaryObjectReverseBinNode : ReverseBin<AuxiliaryObject> { }
 
     [PluginInfo(Name = "Shift",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Version = "Bin",
                 Help = "Shifts the slices in the Spread by the given Phase.",
                 Tags = "generic, spreadop",
                 Author = "woei"
                )]
-    public class NotuiElementShiftBinNode : ShiftBin<NotuiElement> { }
+    public class AuxiliaryObjectShiftBinNode : ShiftBin<AuxiliaryObject> { }
 
     [PluginInfo(Name = "SetSlice",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Version = "Bin",
                 Help = "Replaces individual slices of a spread with the given input",
                 Tags = "generic, spreadop",
                 Author = "woei"
                )]
-    public class NotuiElementSetSliceNode : SetSlice<NotuiElement> { }
+    public class AuxiliaryObjectSetSliceNode : SetSlice<AuxiliaryObject> { }
 
     [PluginInfo(Name = "DeleteSlice",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Help = "Removes slices from the Spread at the positions addressed by the Index pin.",
                 Tags = "remove, generic, spreadop",
                 Author = "woei"
                )]
-    public class NotuiElementDeleteSliceNode : DeleteSlice<NotuiElement> { }
+    public class AuxiliaryObjectDeleteSliceNode : DeleteSlice<AuxiliaryObject> { }
 
     [PluginInfo(Name = "Select",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Help = "Returns each slice of the Input spread as often as specified by the corresponding Select slice. 0 meaning the slice will be omitted. ",
                 Tags = "repeat, resample, duplicate, spreadop"
                )]
-    public class NotuiElementSelectNode : Select<NotuiElement> { }
+    public class AuxiliaryObjectSelectNode : Select<AuxiliaryObject> { }
 
     [PluginInfo(Name = "Select",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Version = "Bin",
                 Help = "Returns each slice of the Input spread as often as specified by the corresponding Select slice. 0 meaning the slice will be omitted. ",
                 Tags = "repeat, resample, duplicate, spreadop",
                 Author = "woei"
             )]
-    public class NotuiElementSelectBinNode : SelectBin<NotuiElement> { }
+    public class AuxiliaryObjectSelectBinNode : SelectBin<AuxiliaryObject> { }
 
     [PluginInfo(Name = "Unzip",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Help = "The inverse of Zip. Interprets the Input spread as being interleaved and untangles it.",
                 Tags = "split, generic, spreadop"
                )]
-    public class NotuiElementUnzipNode : Unzip<NotuiElement> { }
+    public class AuxiliaryObjectUnzipNode : Unzip<AuxiliaryObject> { }
 
     [PluginInfo(Name = "Unzip",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Version = "Bin",
                 Help = "The inverse of Zip. Interprets the Input spread as being interleaved and untangles it. With Bin Size.",
                 Tags = "split, generic, spreadop"
                )]
-    public class NotuiElementUnzipBinNode : Unzip<IInStream<NotuiElement>> { }
+    public class AuxiliaryObjectUnzipBinNode : Unzip<IInStream<AuxiliaryObject>> { }
 
     [PluginInfo(Name = "Zip",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Help = "Interleaves all Input spreads.",
                 Tags = "interleave, join, generic, spreadop"
                )]
-    public class NotuiElementZipNode : Zip<NotuiElement> { }
+    public class AuxiliaryObjectZipNode : Zip<AuxiliaryObject> { }
 
     [PluginInfo(Name = "Zip",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Version = "Bin",
                 Help = "Interleaves all Input spreads.",
                 Tags = "interleave, join, generic, spreadop"
                )]
-    public class NotuiElementZipBinNode : Zip<IInStream<NotuiElement>> { }
+    public class AuxiliaryObjectZipBinNode : Zip<IInStream<AuxiliaryObject>> { }
 
     [PluginInfo(Name = "GetSpread",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Version = "Bin",
                 Help = "Returns sub-spreads from the input specified via offset and count",
                 Tags = "generic, spreadop",
                 Author = "woei")]
-    public class NotuiElementGetSpreadNode : GetSpreadAdvanced<NotuiElement> { }
+    public class AuxiliaryObjectGetSpreadNode : GetSpreadAdvanced<AuxiliaryObject> { }
 
     [PluginInfo(Name = "SetSpread",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Version = "Bin",
                 Help = "Allows to set sub-spreads into a given spread.",
                 Tags = "generic, spreadop",
                 Author = "woei"
                )]
-    public class NotuiElementSetSpreadNode : SetSpread<NotuiElement> { }
-
-    [PluginInfo(Name = "Pairwise",
-                Category = "Notui.Element",
-                Help = "Returns all combinations of pairs of successive slices. From an input ABCD returns AB, BC, CD.",
-                Tags = "generic, spreadop"
-                )]
-    public class NotuiElementPairwiseNode : Pairwise<NotuiElement> { }
+    public class AuxiliaryObjectSetSpreadNode : SetSpread<AuxiliaryObject> { }
 
     [PluginInfo(Name = "SplitAt",
-                Category = "Notui.Element",
+                Category = "Notui.Auxiliary",
                 Help = "Splits the Input spread in two at the specified Index.",
                 Tags = "generic, spreadop"
                 )]
-    public class NotuiElementSplitAtNode : SplitAtNode<NotuiElement> { }
-
-    #endregion SpreadOps
+    public class AuxiliaryObjectSplitAtNode : SplitAtNode<AuxiliaryObject> { }
 }
-

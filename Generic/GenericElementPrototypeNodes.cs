@@ -4,7 +4,7 @@ using VVVV.Nodes.Generic;
 using VVVV.PluginInterfaces.V2;
 using VVVV.Utils.Streams;
 
-namespace Notuiv
+namespace Notuiv.Generic
 {
     #region SingleValue
 
