@@ -52,12 +52,14 @@
     <Reference Include="SimMetrics.Net, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\SimMetrics.Net.1.0.4\lib\net45\SimMetrics.Net.dll</HintPath>
     </Reference>
-    <Reference Include="SlimDX">
-      <HintPath>dlls\SlimDX.dll</HintPath>
+    <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\vvvvlib\SlimDX.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition.CodePlex">
-      <HintPath>dlls\System.ComponentModel.Composition.CodePlex.dll</HintPath>
+      <HintPath>dlls\vvvvlib\System.ComponentModel.Composition.CodePlex.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Core" />
@@ -85,7 +87,7 @@
       <HintPath>packages\System.Reactive.PlatformServices.4.0.0-preview00001\lib\net46\System.Reactive.PlatformServices.dll</HintPath>
     </Reference>
     <Reference Include="System.Reflection.Context.CodePlex">
-      <HintPath>dlls\System.Reflection.Context.CodePlex.dll</HintPath>
+      <HintPath>dlls\vvvvlib\System.Reflection.Context.CodePlex.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Windows.Forms" />
@@ -96,35 +98,35 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="VVVV.Core">
-      <HintPath>dlls\VVVV.Core.dll</HintPath>
+      <HintPath>dlls\vvvvlib\VVVV.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="VVVV.DX11.Nodes">
+    <Reference Include="VVVV.DX11.Nodes, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>dlls\VVVV.DX11.Nodes.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="VVVV.Hosting">
-      <HintPath>dlls\VVVV.Hosting.dll</HintPath>
+      <HintPath>dlls\vvvvlib\VVVV.Hosting.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.Nodes.Generic">
-      <HintPath>dlls\VVVV.Nodes.Generic.dll</HintPath>
+      <HintPath>dlls\vvvvlib\VVVV.Nodes.Generic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.PluginInterfaces">
-      <HintPath>dlls\VVVV.PluginInterfaces.dll</HintPath>
+      <HintPath>dlls\vvvvlib\VVVV.PluginInterfaces.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.Utils">
-      <HintPath>dlls\VVVV.Utils.dll</HintPath>
+      <HintPath>dlls\vvvvlib\VVVV.Utils.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.Utils3rdParty">
-      <HintPath>dlls\VVVV.Utils3rdParty.dll</HintPath>
+      <HintPath>dlls\vvvvlib\VVVV.Utils3rdParty.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.UtilsIL">
-      <HintPath>dlls\VVVV.UtilsIL.dll</HintPath>
+      <HintPath>dlls\vvvvlib\VVVV.UtilsIL.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
