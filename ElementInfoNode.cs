@@ -19,24 +19,6 @@ namespace Notuiv
     public class AttachedValuesSplitNodes : ObjectSplitNode<AttachedValues> { }
 
     [PluginInfo(
-        Name = "ElementTransformation",
-        Category = "Notui",
-        Version = "Split",
-        Author = "microdee"
-    )]
-    public class ElementTransformationSplitNodes : ObjectSplitNode<ElementTransformation>
-    {
-        public override Type TransformType(Type original, MemberInfo member)
-        {
-            return MiscExtensions.MapSystemNumericsTypeToVVVV(original);
-        }
-        public override object TransformOutput(object obj, MemberInfo member, int i)
-        {
-            return MiscExtensions.MapSystemNumericsValueToVVVV(obj);
-        }
-    }
-
-    [PluginInfo(
         Name = "IntersectionPoint",
         Category = "Notui",
         Version = "Split",
