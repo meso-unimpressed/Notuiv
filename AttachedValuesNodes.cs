@@ -46,7 +46,8 @@ namespace Notuiv
         Name = "SetAttachedValues",
         Category = "Notui.Element",
         Version = "Join",
-        Author = "microdee"
+        Author = "microdee",
+        AutoEvaluate = true
     )]
     public class SetAttachedValuesNode : IPluginEvaluate
     {
@@ -57,11 +58,6 @@ namespace Notuiv
         [Input("Set Values", IsBang = true)] public ISpread<bool> FSetVals;
         [Input("Texts")] public ISpread<ISpread<string>> FTexts;
         [Input("Set Texts", IsBang = true)] public ISpread<bool> FSetTexts;
-        [Input("Auxiliary Keys")] public ISpread<ISpread<string>> FAuxKeys;
-        [Input("Auxiliary Values")] public ISpread<ISpread<AuxiliaryObject>> FAuxVals;
-        [Input("Set Auxiliary", IsBang = true)] public ISpread<bool> FSetAux;
-        [Input("Remove Auxiliary", IsBang = true)] public ISpread<bool> FRemoveAux;
-        [Input("Toggle Auxiliary", IsBang = true)] public ISpread<bool> FTogAux;
 
         [Output("Element Out")] public ISpread<NotuiElement> FElementOut;
 
@@ -82,6 +78,43 @@ namespace Notuiv
                     element.Value.Values = FVals[i].ToArray();
                 if (FSetTexts[i])
                     element.Value.Texts = FTexts[i].ToArray();
+                FElementOut[i] = element;
+            }
+        }
+    }
+
+    [PluginInfo(
+        Name = "SetAuxiliary",
+        Category = "Notui.Element",
+        Version = "Join",
+        Author = "microdee",
+        AutoEvaluate = true
+    )]
+    public class SetAuxiliaryNode : IPluginEvaluate
+    {
+
+        [Input("Element")] public Pin<NotuiElement> FElement;
+        
+        [Input("Keys")] public ISpread<ISpread<string>> FAuxKeys;
+        [Input("Values")] public ISpread<ISpread<AuxiliaryObject>> FAuxVals;
+        [Input("Set", IsBang = true)] public ISpread<bool> FSetAux;
+        [Input("Remove", IsBang = true)] public ISpread<bool> FRemoveAux;
+        [Input("Toggle", IsBang = true)] public ISpread<bool> FTogAux;
+
+        [Output("Element Out")] public ISpread<NotuiElement> FElementOut;
+
+        public void Evaluate(int SpreadMax)
+        {
+            if (!FElement.IsConnected) return;
+            FElementOut.SliceCount = FElement.SliceCount;
+
+            for (int i = 0; i < FElement.SliceCount; i++)
+            {
+                var element = FElement[i];
+                if (element.Value == null)
+                {
+                    element.Value = new AttachedValues();
+                }
                 if (FSetAux[i])
                 {
                     for (int j = 0; j < FAuxKeys[i].SliceCount; j++)
@@ -109,6 +142,70 @@ namespace Notuiv
                     }
                 }
                 FElementOut[i] = element;
+            }
+        }
+    }
+
+    [PluginInfo(
+        Name = "GetAuxiliary",
+        Category = "Notui.Element",
+        Author = "microdee"
+    )]
+    public class GetAuxiliaryNode : IPluginEvaluate
+    {
+
+        [Input("Element")] public Pin<NotuiElement> FElement;
+        [Input("Keys")] public ISpread<ISpread<string>> FAuxKeys;
+
+        [Output("Keys Out")] public ISpread<ISpread<string>> FAuxKeysOut;
+        [Output("Values")] public ISpread<ISpread<AuxiliaryObject>> FAuxVals;
+        [Output("Found")] public ISpread<ISpread<bool>> FFound;
+
+        private bool _prevconn = false;
+
+        public void Evaluate(int SpreadMax)
+        {
+            var connframe = _prevconn != FElement.IsConnected;
+            _prevconn = FElement.IsConnected;
+            if (!FElement.IsConnected) return;
+
+            FAuxKeysOut.SliceCount = FAuxVals.SliceCount = FFound.SliceCount = FElement.SliceCount;
+            
+            for (int i = 0; i < FElement.SliceCount; i++)
+            {
+                if(FElement[i].Value != null)
+                {
+                    if(FElement[i].Value.Auxiliary.Count > 0)
+                    {
+                        var auxdir = FElement[i].Value.Auxiliary;
+                        FAuxKeysOut[i].SliceCount = FFound[i].SliceCount = FAuxVals[i].SliceCount = FAuxKeys[i].SliceCount;
+                        int jj = 0;
+                        for (int j = 0; j < FAuxKeys[i].SliceCount; j++)
+                        {
+                            var contains = auxdir.ContainsKey(FAuxKeys[i][j]);
+                            FFound[i][j] = contains;
+                            if (contains)
+                            {
+                                FAuxKeysOut[i][jj] = FAuxKeys[i][j];
+                                FAuxVals[i][jj] = auxdir[FAuxKeys[i][j]];
+                            }
+                            else
+                            {
+                                FAuxKeysOut[i].SliceCount = FAuxVals[i].SliceCount = FAuxVals[i].SliceCount - 1;
+                                jj--;
+                            }
+                            jj++;
+                        }
+                    }
+                    else
+                    {
+                        FAuxKeysOut[i].SliceCount = FFound[i].SliceCount = FAuxVals[i].SliceCount = 0;
+                    }
+                }
+                else
+                {
+                    FAuxKeysOut[i].SliceCount = FFound[i].SliceCount = FAuxVals[i].SliceCount = 0;
+                }
             }
         }
     }
