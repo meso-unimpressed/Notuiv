@@ -47,11 +47,12 @@ namespace Notuiv
         [Input("Scale", DefaultValues = new [] {1.0, 1.0, 1.0})]
         public IDiffSpread<Vector3D> FScale;
 
-        [Output("Element Transform")]
+        [Output("Element Transform", AutoFlush = false)]
         public ISpread<ElementTransformation> FTransform;
 
         public void Evaluate(int SpreadMax)
         {
+            FTransform.Stream.IsChanged = false;
             if (FTrans.IsChanged || FRot.IsChanged || FScale.IsChanged)
             {
                 FTransform.SliceCount = SpreadMax;
@@ -63,6 +64,8 @@ namespace Notuiv
                     FTransform[i].Rotation = FRot[i].AsSystemQuaternion();
                     FTransform[i].Scale = FScale[i].AsSystemVector();
                 }
+                FTransform.Flush(true);
+                FTransform.Stream.IsChanged = true;
             }
         }
     }

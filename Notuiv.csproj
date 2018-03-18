@@ -34,8 +34,8 @@
     <Reference Include="md.stdl, Version=0.1.45.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\md-stdl.0.1.45-beta\lib\net47\md.stdl.dll</HintPath>
     </Reference>
-    <Reference Include="mp.pddn, Version=1.1.24.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\mp.pddn.1.1.24\lib\net47\mp.pddn.dll</HintPath>
+    <Reference Include="mp.pddn, Version=1.1.25.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\mp.pddn.1.1.25\lib\net47\mp.pddn.dll</HintPath>
     </Reference>
     <Reference Include="Notui, Version=0.1.10.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Notui.0.1.10-beta\lib\net47\Notui.dll</HintPath>

@@ -82,13 +82,11 @@ namespace Notuiv
             }
             FillElementAuxData(el, i);
 
-            FElementId[i] = el.Id;
-
             return el;
         }
 
         private int init = 0;
-        private Dictionary<string, TPrototype> _manualIdElements = new Dictionary<string, TPrototype>();
+        private readonly Dictionary<string, TPrototype> _manualIdElements = new Dictionary<string, TPrototype>();
 
         public void Evaluate(int SpreadMax)
         {
@@ -125,8 +123,14 @@ namespace Notuiv
                         _manualIdElements.Remove(k);
                     }
 
-                    FElementProt.AssignFrom(_manualIdElements.Values);
-                    FElementId.AssignFrom(_manualIdElements.Keys);
+                    FElementProt.SliceCount = FElementId.SliceCount = _manualIdElements.Count;
+                    int ii = 0;
+                    foreach (var id in FId.Where(id => !string.IsNullOrWhiteSpace(id)))
+                    {
+                        FElementProt[ii] = _manualIdElements[id];
+                        FElementId[ii] = FElementProt[ii].Id;
+                        ii++;
+                    }
                 }
                 else
                 {
@@ -134,7 +138,13 @@ namespace Notuiv
                     FElementId.SliceCount = sprmax;
                     for (int i = 0; i < FElementProt.SliceCount; i++)
                     {
-                        FillElement(FElementProt[i], i, false);
+                        var isnew = false;
+                        if (FElementProt[i] == null)
+                        {
+                            FElementProt[i] = ConstructPrototype(i, null);
+                            isnew = true;
+                        }
+                        FillElement(FElementProt[i], i, isnew);
                         FElementId[i] = FElementProt[i].Id;
                     }
                 }
