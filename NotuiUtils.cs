@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using md.stdl.Interaction;
+using md.stdl.Interfaces;
 using Notui;
 using md.stdl.Mathematics;
 using VVVV.PluginInterfaces.V2;
@@ -10,31 +11,51 @@ using VVVV.Utils.VMath;
 
 namespace Notuiv
 {
+    public class EventBangs : IUpdateable<EventBangs>
+    {
+        public bool OnInteractionBegin { get; set; }
+        public bool OnInteractionEnd { get; set; }
+        public bool OnTouchBegin { get; set; }
+        public bool OnTouchEnd { get; set; }
+        public bool OnHitBegin { get; set; }
+        public bool OnHitEnd { get; set; }
+        public bool OnInteracting { get; set; }
+        public bool OnChildrenUpdated { get; set; }
+        public bool OnDeletionStarted { get; set; }
+        public bool OnDeleting { get; set; }
+        public bool OnFadedIn { get; set; }
+
+        public void UpdateFrom(EventBangs other)
+        {
+            OnInteractionBegin = other.OnInteractionBegin;
+            OnInteractionEnd = other.OnInteractionEnd;
+            OnTouchBegin = other.OnTouchBegin;
+            OnTouchEnd = other.OnTouchEnd;
+            OnHitBegin = other.OnHitBegin;
+            OnHitEnd = other.OnHitEnd;
+            OnInteracting = other.OnInteracting;
+            OnChildrenUpdated = other.OnChildrenUpdated;
+            OnDeletionStarted = other.OnDeletionStarted;
+            OnDeleting = other.OnDeleting;
+            OnFadedIn = other.OnFadedIn;
+        }
+    }
     public class ElementEventFlattener
     {
-        public bool OnInteractionBegin { get; private set; }
-        public bool OnInteractionEnd { get; private set; }
-        public bool OnTouchBegin { get; private set; }
-        public bool OnTouchEnd { get; private set; }
-        public bool OnHitBegin { get; private set; }
-        public bool OnHitEnd { get; private set; }
-        public bool OnInteracting { get; private set; }
-        public bool OnChildrenUpdated { get; private set; }
-        public bool OnDeletionStarted { get; private set; }
-        public bool OnDeleting { get; private set; }
-        public bool OnFadedIn { get; private set; }
+        public EventBangs CurrentFrame { get; } = new EventBangs();
+        public EventBangs PreviousFrame { get; } = new EventBangs();
 
-        private void _OnInteractionBeginHandler(object sender, TouchInteractionEventArgs args) => OnInteractionBegin = true;
-        private void _OnInteractionEndHandler(object sender, TouchInteractionEventArgs args) => OnInteractionEnd = true;
-        private void _OnTouchBeginHandler(object sender, TouchInteractionEventArgs args) => OnTouchBegin = true;
-        private void _OnTouchEndHandler(object sender, TouchInteractionEventArgs args) => OnTouchEnd = true;
-        private void _OnHitBeginHandler(object sender, TouchInteractionEventArgs args) => OnHitBegin = true;
-        private void _OnHitEndHandler(object sender, TouchInteractionEventArgs args) => OnHitEnd = true;
-        private void _OnInteractingHandler(object sender, EventArgs args) => OnInteracting = true;
-        private void _OnChildrenUpdatedHandler(object sender, ChildrenUpdatedEventArgs args) => OnChildrenUpdated = true;
-        private void _OnDeletionStartedHandler(object sender, EventArgs args) => OnDeletionStarted = true;
-        private void _OnDeletingHandler(object sender, EventArgs args) => OnDeleting = true;
-        private void _OnFadedInHandler(object sender, EventArgs args) => OnFadedIn = true;
+        private void _OnInteractionBeginHandler(object sender, TouchInteractionEventArgs args) => CurrentFrame.OnInteractionBegin = true;
+        private void _OnInteractionEndHandler(object sender, TouchInteractionEventArgs args) => CurrentFrame.OnInteractionEnd = true;
+        private void _OnTouchBeginHandler(object sender, TouchInteractionEventArgs args) => CurrentFrame.OnTouchBegin = true;
+        private void _OnTouchEndHandler(object sender, TouchInteractionEventArgs args) => CurrentFrame.OnTouchEnd = true;
+        private void _OnHitBeginHandler(object sender, TouchInteractionEventArgs args) => CurrentFrame.OnHitBegin = true;
+        private void _OnHitEndHandler(object sender, TouchInteractionEventArgs args) => CurrentFrame.OnHitEnd = true;
+        private void _OnInteractingHandler(object sender, EventArgs args) => CurrentFrame.OnInteracting = true;
+        private void _OnChildrenUpdatedHandler(object sender, ChildrenUpdatedEventArgs args) => CurrentFrame.OnChildrenUpdated = true;
+        private void _OnDeletionStartedHandler(object sender, EventArgs args) => CurrentFrame.OnDeletionStarted = true;
+        private void _OnDeletingHandler(object sender, EventArgs args) => CurrentFrame.OnDeleting = true;
+        private void _OnFadedInHandler(object sender, EventArgs args) => CurrentFrame.OnFadedIn = true;
 
         public void Subscribe(NotuiElement element)
         {
@@ -68,17 +89,19 @@ namespace Notuiv
 
         public void Reset()
         {
-            OnInteractionBegin = false;
-            OnInteractionEnd = false;
-            OnTouchBegin = false;
-            OnTouchEnd = false;
-            OnHitBegin = false;
-            OnHitEnd = false;
-            OnInteracting = false;
-            OnChildrenUpdated = false;
-            OnDeletionStarted = false;
-            OnDeleting = false;
-            OnFadedIn = false;
+            PreviousFrame.UpdateFrom(CurrentFrame);
+
+            CurrentFrame.OnInteractionBegin = false;
+            CurrentFrame.OnInteractionEnd = false;
+            CurrentFrame.OnTouchBegin = false;
+            CurrentFrame.OnTouchEnd = false;
+            CurrentFrame.OnHitBegin = false;
+            CurrentFrame.OnHitEnd = false;
+            CurrentFrame.OnInteracting = false;
+            CurrentFrame.OnChildrenUpdated = false;
+            CurrentFrame.OnDeletionStarted = false;
+            CurrentFrame.OnDeleting = false;
+            CurrentFrame.OnFadedIn = false;
         }
 
         private IHDEHost _hdeHost;
@@ -86,7 +109,7 @@ namespace Notuiv
         public ElementEventFlattener(IHDEHost host)
         {
             _hdeHost = host;
-            _hdeHost.MainLoop.OnResetCache += (sender, args) => Reset();
+            _hdeHost.MainLoop.OnPrepareGraph += (sender, args) => Reset();
         }
     }
 
