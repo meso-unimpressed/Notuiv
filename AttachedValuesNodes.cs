@@ -168,6 +168,11 @@ namespace Notuiv
             var connframe = _prevconn != FElement.IsConnected;
             _prevconn = FElement.IsConnected;
             if (!FElement.IsConnected) return;
+            if (FElement.SliceCount == 0 || FAuxKeys.SliceCount == 0)
+            {
+                FAuxKeysOut.SliceCount = FAuxVals.SliceCount = FFound.SliceCount = 0;
+                return;
+            }
 
             FAuxKeysOut.SliceCount = FAuxVals.SliceCount = FFound.SliceCount = FElement.SliceCount;
             

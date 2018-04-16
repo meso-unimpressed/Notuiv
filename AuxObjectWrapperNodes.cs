@@ -69,9 +69,10 @@ namespace Notuiv
             {
                 if (!_input.Spread.IsChanged && !_typeChanged) return;
 
-                FOut.ResizeAndDismiss(_input.Spread.SliceCount, i => new VAuxObject { Object = _input[i] });
+                FOut.ResizeAndDismiss(_input.Spread.SliceCount, i => null);
                 for (int i = 0; i < _input.Spread.SliceCount; i++)
                 {
+                    if (FOut[i] == null) FOut[i] = new VAuxObject {Object = _input[i]};
                     var vaux = (VAuxObject) FOut[i];
                     vaux.Object = _input[i];
                 }
