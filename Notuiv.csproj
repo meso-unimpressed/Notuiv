@@ -31,14 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="md.stdl, Version=0.1.45.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\md-stdl.0.1.45-beta\lib\net47\md.stdl.dll</HintPath>
+    <Reference Include="md.stdl, Version=0.1.47.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\md-stdl.0.1.47-beta\lib\net47\md.stdl.dll</HintPath>
     </Reference>
     <Reference Include="mp.pddn, Version=1.1.25.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\mp.pddn.1.1.25\lib\net47\mp.pddn.dll</HintPath>
     </Reference>
-    <Reference Include="Notui, Version=0.1.10.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Notui.0.1.10-beta\lib\net47\Notui.dll</HintPath>
+    <Reference Include="Notui, Version=0.1.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Notui.0.1.11-beta\lib\net47\Notui.dll</HintPath>
     </Reference>
     <Reference Include="SevenZip, Version=9.20.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\LZMA-SDK.9.20\lib\net20\SevenZip.dll</HintPath>
@@ -131,6 +131,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.cs" />
     <Compile Include="AbstractBehaviorNode.cs" />
     <Compile Include="AbstractElementNode.cs" />
     <Compile Include="AttachedValuesNodes.cs" />
