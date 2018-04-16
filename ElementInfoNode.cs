@@ -6,6 +6,7 @@ using md.stdl.Interaction;
 using Notui;
 using mp.pddn;
 using VVVV.PluginInterfaces.V2;
+using VVVV.Utils.IO;
 using VVVV.Utils.VMath;
 
 namespace Notuiv
@@ -63,6 +64,32 @@ namespace Notuiv
     }
 
     [PluginInfo(
+        Name = "MouseSplit",
+        Category = "Mouse",
+        Version = "Accumulated",
+        Author = "microdee"
+    )]
+    public class AccumulatedMouseSplitNodes : ObjectSplitNode<AccumulatingMouseObserver>
+    {
+        public override Type TransformType(Type original, MemberInfo member)
+        {
+            if (original.Is(typeof(Stopwatch)))
+            {
+                return typeof(double);
+            }
+            return MiscExtensions.MapSystemNumericsTypeToVVVV(original);
+        }
+        public override object TransformOutput(object obj, MemberInfo member, int i)
+        {
+            if (obj is Stopwatch s)
+            {
+                return s.Elapsed.TotalSeconds;
+            }
+            return MiscExtensions.MapSystemNumericsValueToVVVV(obj);
+        }
+    }
+
+    [PluginInfo(
         Name = "InstanceInfo",
         Category = "Notui.Element",
         Version = "Split",
@@ -93,6 +120,7 @@ namespace Notuiv
         [Output("Touching Intersections")] public ISpread<ISpread<IntersectionPoint>> FTouchingIntersections;
         [Output("Hitting Touches")] public ISpread<ISpread<Touch>> FHittingTouches;
         [Output("Hitting Intersections")] public ISpread<ISpread<IntersectionPoint>> FHittingIntersections;
+        [Output("Mice")] public ISpread<ISpread<Mouse>> FAccMice;
         [Output("Children Out")] public ISpread<ISpread<NotuiElement>> FChildrenOut;
         [Output("Behaviors Out")] public ISpread<ISpread<InteractionBehavior>> FBehavsOut;
         [Output("Parent")] public ISpread<ISpread<NotuiElement>> FParent;
@@ -100,7 +128,9 @@ namespace Notuiv
         
         [Output("Interaction Transformation Out")] public ISpread<Matrix4x4> FInterTrOut;
         [Output("Display Transformation Out")] public ISpread<Matrix4x4> FDisplayTrOut;
-        
+        [Output("Local Display Transformation")] public ISpread<ElementTransformation> FLocDisplay;
+        [Output("Local Interaction Transformation")] public ISpread<ElementTransformation> FLocInter;
+
         protected void AssignElementOutputs(NotuiElement element, int i)
         {
             if (element.EnvironmentObject is VEnvironmentData venvdat)
@@ -110,6 +140,7 @@ namespace Notuiv
                 FTouchingIntersections[i] = venvdat.TouchingIntersections;
                 FHittingTouches[i] = venvdat.HittingTouches;
                 FHittingIntersections[i] = venvdat.HittingIntersections;
+                FAccMice[i] = venvdat.Mice;
                 FChildrenOut[i] = venvdat.Children;
                 FBehavsOut[i] = venvdat.Behaviors;
                 FParent[i] = venvdat.Parent;
@@ -131,6 +162,8 @@ namespace Notuiv
             FAge[i] = element.Age.Elapsed.TotalSeconds;
             FDying[i] = element.Dying;
             FDethklok[i] = element.Dethklok.Elapsed.TotalSeconds;
+            FLocDisplay[i] = element.DisplayTransformation;
+            FLocInter[i] = element.InteractionTransformation;
         }
 
         protected int _prevSliceCount;

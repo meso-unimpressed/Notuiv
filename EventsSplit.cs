@@ -1,4 +1,5 @@
-﻿using Notui;
+﻿using System.Windows.Forms;
+using Notui;
 using VVVV.PluginInterfaces.V2;
 
 namespace Notuiv
@@ -57,34 +58,22 @@ namespace Notuiv
                             continue;
                         case VEnvironmentData venvdat:
                             if(venvdat.FlattenedEvents == null) continue;
-                            if (FPrevFrame[0])
-                            {
-                                FOnInteractionBegin[i] = venvdat.FlattenedEvents.PreviousFrame.OnInteractionBegin;
-                                FOnInteractionEnd[i] = venvdat.FlattenedEvents.PreviousFrame.OnInteractionEnd;
-                                FOnTouchBegin[i] = venvdat.FlattenedEvents.PreviousFrame.OnTouchBegin;
-                                FOnTouchEnd[i] = venvdat.FlattenedEvents.PreviousFrame.OnTouchEnd;
-                                FOnHitBegin[i] = venvdat.FlattenedEvents.PreviousFrame.OnHitBegin;
-                                FOnHitEnd[i] = venvdat.FlattenedEvents.PreviousFrame.OnHitEnd;
-                                FOnInteracting[i] = venvdat.FlattenedEvents.PreviousFrame.OnInteracting;
-                                FOnChildrenUpdated[i] = venvdat.FlattenedEvents.PreviousFrame.OnChildrenUpdated;
-                                FOnDeleting[i] = venvdat.FlattenedEvents.PreviousFrame.OnDeleting;
-                                FOnDeletionStarted[i] = venvdat.FlattenedEvents.PreviousFrame.OnDeletionStarted;
-                                FOnFadedIn[i] = venvdat.FlattenedEvents.PreviousFrame.OnFadedIn;
-                            }
-                            else
-                            {
-                                FOnInteractionBegin[i] = venvdat.FlattenedEvents.CurrentFrame.OnInteractionBegin;
-                                FOnInteractionEnd[i] = venvdat.FlattenedEvents.CurrentFrame.OnInteractionEnd;
-                                FOnTouchBegin[i] = venvdat.FlattenedEvents.CurrentFrame.OnTouchBegin;
-                                FOnTouchEnd[i] = venvdat.FlattenedEvents.CurrentFrame.OnTouchEnd;
-                                FOnHitBegin[i] = venvdat.FlattenedEvents.CurrentFrame.OnHitBegin;
-                                FOnHitEnd[i] = venvdat.FlattenedEvents.CurrentFrame.OnHitEnd;
-                                FOnInteracting[i] = venvdat.FlattenedEvents.CurrentFrame.OnInteracting;
-                                FOnChildrenUpdated[i] = venvdat.FlattenedEvents.CurrentFrame.OnChildrenUpdated;
-                                FOnDeleting[i] = venvdat.FlattenedEvents.CurrentFrame.OnDeleting;
-                                FOnDeletionStarted[i] = venvdat.FlattenedEvents.CurrentFrame.OnDeletionStarted;
-                                FOnFadedIn[i] = venvdat.FlattenedEvents.CurrentFrame.OnFadedIn;
-                            }
+
+                            var events = FPrevFrame[0]
+                                ? venvdat.FlattenedEvents.PreviousFrame
+                                : venvdat.FlattenedEvents.CurrentFrame;
+
+                            FOnInteractionBegin[i] = events.OnInteractionBegin;
+                            FOnInteractionEnd[i] = events.OnInteractionEnd;
+                            FOnTouchBegin[i] = events.OnTouchBegin;
+                            FOnTouchEnd[i] = events.OnTouchEnd;
+                            FOnHitBegin[i] = events.OnHitBegin;
+                            FOnHitEnd[i] = events.OnHitEnd;
+                            FOnInteracting[i] = events.OnInteracting;
+                            FOnChildrenUpdated[i] = events.OnChildrenUpdated;
+                            FOnDeleting[i] = events.OnDeleting;
+                            FOnDeletionStarted[i] = events.OnDeletionStarted;
+                            FOnFadedIn[i] = events.OnFadedIn;
                             break;
                     }
                 }
@@ -104,6 +93,80 @@ namespace Notuiv
                 FTouched.SliceCount =
                 FHit.SliceCount =
                 FOnFadedIn.SliceCount = 0;
+            }
+        }
+    }
+
+    [PluginInfo(
+        Name = "MouseEvents",
+        Category = "Notui.Element",
+        Author = "microdee"
+    )]
+    public class GuiElementMouseEventsSplitNodePart : IPluginEvaluate
+    {
+        [Input("Element")] public Pin<NotuiElement> FElement;
+        [Input("Previous Frame")] public ISpread<bool> FPrevFrame;
+
+        [Output("Left Button")] public ISpread<bool> FLmb;
+        [Output("Middle Button")] public ISpread<bool> FMmb;
+        [Output("Right Button")] public ISpread<bool> FRmb;
+        [Output("X1 Button")] public ISpread<bool> FX1mb;
+        [Output("X2 Button")] public ISpread<bool> FX2mb;
+        [Output("Buttons")] public ISpread<uint> FButtons;
+
+        [Output("Vertical Wheel")] public ISpread<int> FVScroll;
+        [Output("Horizontal Wheel")] public ISpread<int> FHScroll;
+
+        public void Evaluate(int SpreadMax)
+        {
+            if (FElement.IsConnected)
+            {
+
+                FLmb.SliceCount =
+                FMmb.SliceCount =
+                FRmb.SliceCount =
+                FX2mb.SliceCount =
+                FButtons.SliceCount =
+                FVScroll.SliceCount =
+                FHScroll.SliceCount =
+                FX1mb.SliceCount = FElement.SliceCount;
+
+                for (int i = 0; i < FElement.SliceCount; i++)
+                {
+                    var element = FElement[i];
+                    switch (element.EnvironmentObject)
+                    {
+                        case null:
+                            continue;
+                        case VEnvironmentData venvdat:
+
+                            if (venvdat.FlattenedEvents == null) continue;
+                            var events = FPrevFrame[0]
+                                ? venvdat.FlattenedEvents.PreviousFrame
+                                : venvdat.FlattenedEvents.CurrentFrame;
+
+                            FLmb[i] = (events.MouseButtonsPressed & (uint) MouseButtons.Left) > 0;
+                            FMmb[i] = (events.MouseButtonsPressed & (uint)MouseButtons.Middle) > 0;
+                            FRmb[i] = (events.MouseButtonsPressed & (uint)MouseButtons.Right) > 0;
+                            FX1mb[i] = (events.MouseButtonsPressed & (uint)MouseButtons.XButton1) > 0;
+                            FX2mb[i] = (events.MouseButtonsPressed & (uint)MouseButtons.XButton2) > 0;
+                            FButtons[i] = events.MouseButtonsPressed;
+                            FVScroll[i] = events.VerticalWheel;
+                            FHScroll[i] = events.HorizontalWheel;
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                FLmb.SliceCount =
+                FMmb.SliceCount =
+                FRmb.SliceCount =
+                FX2mb.SliceCount =
+                FButtons.SliceCount =
+                FVScroll.SliceCount =
+                FHScroll.SliceCount =
+                FX1mb.SliceCount = 0;
             }
         }
     }

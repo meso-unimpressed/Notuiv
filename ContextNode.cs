@@ -38,13 +38,11 @@ namespace Notuiv
 
         [Input("Mouse")]
         public Pin<Mouse> FMouse;
-        [Input("Bake Buttons Into ID")]
-        public ISpread<bool> FBakeButtons;
+        [Input("Mouse Touch ID", DefaultValue = -1)]
+        public ISpread<int> FMouseId;
         [Input("Mouse Always Present")]
         public ISpread<bool> FAlwaysPresent;
-        [Input("Use Mouse Buttons", DefaultBoolean = true)]
-        public ISpread<bool> FUseButtons;
-        [Input("Mouse Force", DefaultValue = 1.0)]
+        [Input("Mouse Pressed Force", DefaultValue = 1.0)]
         public ISpread<float> FMouseForce;
 
         [Input("DX11 Touches")]
@@ -54,7 +52,7 @@ namespace Notuiv
         [Input("Aux Touches ", DimensionNames = new []{"X", "Y", "F", "Id"})]
         public IDiffSpread<Vector4D> FAuxTouches;
 
-        [Input("Minimum Force for Interaction", DefaultValue = -1)]
+        [Input("Minimum Force for Interaction", DefaultValue = 0.5)]
         public IDiffSpread<float> FMinForce;
         [Input("Consider Touch New Before", DefaultValue = 1)]
         public ISpread<int> FConsiderNew;
@@ -81,9 +79,7 @@ namespace Notuiv
         public NotuiContext Context = new NotuiContext();
 
         private double _prevFrameTime = 0;
-        private IDisposable _mouseUnsubscriber;
         private bool _initMo = true;
-        private Vector2D _mouseTouchPos;
 
         public bool IsTouchDefault()
         {
@@ -108,8 +104,6 @@ namespace Notuiv
          * 1, 4, 0, 2, 3
          */
 
-        private static readonly int[] _buttonLookupToV = { 11, 9, 10, 8, 7 };
-
         public void Evaluate(int SpreadMax)
         {
 
@@ -133,49 +127,25 @@ namespace Notuiv
                     (FAuxTouches[i].xy.AsSystemVector(), (int)FAuxTouches[i].w, (float)FAuxTouches[i].z)));
             }
 
+            Context.MouseAlwaysPresent = FAlwaysPresent[0];
+            Context.MouseTouchForce = FMouseForce[0];
+            Context.MouseTouchId = FMouseId[0];
+
             if (FMouse.IsConnected && FMouse.SliceCount > 0)
             {
                 if (FMouse[0] != null)
                 {
                     if (_initMo)
                     {
-                        _mouseUnsubscriber = FMouse[0].MouseNotifications.Subscribe(mn =>
-                        {
-                            if (mn.Kind == MouseNotificationKind.MouseMove)
-                                _mouseTouchPos = mn.Position.FromMousePoint(mn.ClientArea);
-                        });
+                        Context.SubmitMouse(FMouse[0]);
                         _initMo = false;
-                    }
-
-                    if (touches.IsEmpty())
-                    {
-                        var mouseTouchId = -1;
-                        var rawMouseButtons = BitUtils.Split((uint)FMouse[0].PressedButtons);
-                        var mouseButtons = new bool[5];
-                        for (int i = 0; i < 5; i++)
-                        {
-                            mouseButtons[i] = rawMouseButtons[_buttonLookupToV[i]] && FUseButtons[i];
-                        }
-                        if (FBakeButtons[0])
-                        {
-                            mouseTouchId = (int)BitUtils.Join(mouseButtons.Reverse().ToArray()) * -1 - 1;
-                        }
-
-                        var buttonpressed = mouseButtons.Any(b => b);
-                        var attachmouse = buttonpressed || FAlwaysPresent[0];
-
-                        if (attachmouse)
-                        {
-                            touches = touches.Concat(
-                                new[] { (_mouseTouchPos.AsSystemVector(), mouseTouchId, buttonpressed ? FMouseForce[0] : 0.0f) });
-                        }
                     }
                 }
                 else
                 {
                     if (!_initMo)
                     {
-                        _mouseUnsubscriber.Dispose();
+                        Context.DetachMouse();
                         _initMo = true;
                     }
                 }
@@ -184,7 +154,7 @@ namespace Notuiv
             {
                 if (!_initMo)
                 {
-                    _mouseUnsubscriber.Dispose();
+                    Context.DetachMouse();
                     _initMo = true;
                 }
             }

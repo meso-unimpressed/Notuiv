@@ -22,27 +22,7 @@ namespace Notuiv
         Version = "Join",
         Author = "microdee"
     )]
-    public class SlidingBehaviorNode : AbstractBehaviorNode<SlidingBehavior>
-    {
-        /*
-        public override Type TransformType(Type original, PropertyInfo member)
-        {
-            return original == typeof(Func<NotuiElement, IEnumerable<NotuiElement>>) ?
-                typeof(string) :
-                MiscExtensions.MapVVVVTypeToSystemNumerics(original);
-        }
-
-        public override object TransformInput(object obj, PropertyInfo member, int i)
-        {
-            if (member.Name == "SlideOnlyWithSpecificChildren")
-            {
-                if (string.IsNullOrWhiteSpace(obj?.ToString())) return null;
-                return new Func<NotuiElement, IEnumerable<NotuiElement>>(element => element.Opaq(obj.ToString()));
-            }
-            return MiscExtensions.MapVVVVValueToSystemNumerics(obj);
-        }
-        */
-    }
+    public class SlidingBehaviorNode : AbstractBehaviorNode<SlidingBehavior> { }
 
     [PluginInfo(
         Name = "SlidingInfo",
@@ -51,4 +31,20 @@ namespace Notuiv
         Author = "microdee"
     )]
     public class SlidingBehaviorInfoNode : BehaviorInstanceInfoNode<SlidingBehavior, SlidingBehavior.BehaviorState> { }
+
+    [PluginInfo(
+        Name = "MouseWheelScroll",
+        Category = "Notui.Behavior",
+        Version = "Join",
+        Author = "microdee"
+    )]
+    public class MouseWheelScrollBehaviorNode : AbstractBehaviorNode<MouseWheelScroll> { }
+
+    [PluginInfo(
+        Name = "MouseWheelScrollInfo",
+        Category = "Notui.Behavior",
+        Version = "Split",
+        Author = "microdee"
+    )]
+    public class MouseWheelScrollBehaviorInfoNode : BehaviorInstanceInfoNode<MouseWheelScroll, MouseWheelScroll.BehaviorState> { }
 }

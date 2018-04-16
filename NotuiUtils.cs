@@ -6,6 +6,7 @@ using md.stdl.Interfaces;
 using Notui;
 using md.stdl.Mathematics;
 using VVVV.PluginInterfaces.V2;
+using VVVV.Utils.IO;
 using VVVV.Utils.Reflection;
 using VVVV.Utils.VMath;
 
@@ -24,6 +25,9 @@ namespace Notuiv
         public bool OnDeletionStarted { get; set; }
         public bool OnDeleting { get; set; }
         public bool OnFadedIn { get; set; }
+        public uint MouseButtonsPressed { get; set; }
+        public int HorizontalWheel { get; set; }
+        public int VerticalWheel { get; set; }
 
         public void UpdateFrom(EventBangs other)
         {
@@ -38,6 +42,10 @@ namespace Notuiv
             OnDeletionStarted = other.OnDeletionStarted;
             OnDeleting = other.OnDeleting;
             OnFadedIn = other.OnFadedIn;
+
+            MouseButtonsPressed = other.MouseButtonsPressed;
+            HorizontalWheel = other.HorizontalWheel;
+            VerticalWheel = other.VerticalWheel;
         }
     }
     public class ElementEventFlattener
@@ -45,17 +53,34 @@ namespace Notuiv
         public EventBangs CurrentFrame { get; } = new EventBangs();
         public EventBangs PreviousFrame { get; } = new EventBangs();
 
-        private void _OnInteractionBeginHandler(object sender, TouchInteractionEventArgs args) => CurrentFrame.OnInteractionBegin = true;
-        private void _OnInteractionEndHandler(object sender, TouchInteractionEventArgs args) => CurrentFrame.OnInteractionEnd = true;
-        private void _OnTouchBeginHandler(object sender, TouchInteractionEventArgs args) => CurrentFrame.OnTouchBegin = true;
-        private void _OnTouchEndHandler(object sender, TouchInteractionEventArgs args) => CurrentFrame.OnTouchEnd = true;
-        private void _OnHitBeginHandler(object sender, TouchInteractionEventArgs args) => CurrentFrame.OnHitBegin = true;
-        private void _OnHitEndHandler(object sender, TouchInteractionEventArgs args) => CurrentFrame.OnHitEnd = true;
-        private void _OnInteractingHandler(object sender, EventArgs args) => CurrentFrame.OnInteracting = true;
-        private void _OnChildrenUpdatedHandler(object sender, ChildrenUpdatedEventArgs args) => CurrentFrame.OnChildrenUpdated = true;
-        private void _OnDeletionStartedHandler(object sender, EventArgs args) => CurrentFrame.OnDeletionStarted = true;
-        private void _OnDeletingHandler(object sender, EventArgs args) => CurrentFrame.OnDeleting = true;
-        private void _OnFadedInHandler(object sender, EventArgs args) => CurrentFrame.OnFadedIn = true;
+        private void _OnInteractionBeginHandler(object sender, TouchInteractionEventArgs e) => CurrentFrame.OnInteractionBegin = true;
+        private void _OnInteractionEndHandler(object sender, TouchInteractionEventArgs e) => CurrentFrame.OnInteractionEnd = true;
+        private void _OnTouchBeginHandler(object sender, TouchInteractionEventArgs e) => CurrentFrame.OnTouchBegin = true;
+        private void _OnTouchEndHandler(object sender, TouchInteractionEventArgs e) => CurrentFrame.OnTouchEnd = true;
+        private void _OnHitBeginHandler(object sender, TouchInteractionEventArgs e) => CurrentFrame.OnHitBegin = true;
+        private void _OnHitEndHandler(object sender, TouchInteractionEventArgs e) => CurrentFrame.OnHitEnd = true;
+        private void _OnInteractingHandler(object sender, EventArgs e) => CurrentFrame.OnInteracting = true;
+        private void _OnChildrenUpdatedHandler(object sender, ChildrenUpdatedEventArgs e) => CurrentFrame.OnChildrenUpdated = true;
+        private void _OnDeletionStartedHandler(object sender, EventArgs e) => CurrentFrame.OnDeletionStarted = true;
+        private void _OnDeletingHandler(object sender, EventArgs e) => CurrentFrame.OnDeleting = true;
+        private void _OnFadedInHandler(object sender, EventArgs e) => CurrentFrame.OnFadedIn = true;
+
+        private void _OnMouseButtonPressed(object sender, MouseInteractionEventArgs e)
+        {
+            CurrentFrame.MouseButtonsPressed = CurrentFrame.MouseButtonsPressed | (uint)e.Buttons;
+        }
+        private void _OnMouseButtonReleased(object sender, MouseInteractionEventArgs e)
+        {
+            CurrentFrame.MouseButtonsPressed = CurrentFrame.MouseButtonsPressed & ~(uint)e.Buttons;
+        }
+        private void _OnHorizontalMouseWheelChange(object sender, MouseInteractionEventArgs e)
+        {
+            CurrentFrame.HorizontalWheel = e.Touch.MouseDelta.AccumulatedHorizontalWheelDelta;
+        }
+        private void _OnVerticalMouseWheelChange(object sender, MouseInteractionEventArgs e)
+        {
+            CurrentFrame.VerticalWheel = e.Touch.MouseDelta.AccumulatedWheelDelta;
+        }
 
         public void Subscribe(NotuiElement element)
         {
@@ -72,7 +97,13 @@ namespace Notuiv
                 element.OnDeletionStarted -= _OnDeletionStartedHandler;
                 element.OnDeleting -= _OnDeletingHandler;
                 element.OnFadedIn -= _OnFadedInHandler;
-            } catch { }
+
+                element.OnMouseButtonPressed -= _OnMouseButtonPressed;
+                element.OnMouseButtonReleased -= _OnMouseButtonReleased;
+                element.OnHorizontalMouseWheelChange -= _OnHorizontalMouseWheelChange;
+                element.OnVerticalMouseWheelChange -= _OnVerticalMouseWheelChange;
+            }
+            catch { }
 
             element.OnInteractionBegin += _OnInteractionBeginHandler;
             element.OnInteractionEnd += _OnInteractionEndHandler;
@@ -85,6 +116,11 @@ namespace Notuiv
             element.OnDeletionStarted += _OnDeletionStartedHandler;
             element.OnDeleting += _OnDeletingHandler;
             element.OnFadedIn += _OnFadedInHandler;
+
+            element.OnMouseButtonPressed += _OnMouseButtonPressed;
+            element.OnMouseButtonReleased += _OnMouseButtonReleased;
+            element.OnHorizontalMouseWheelChange += _OnHorizontalMouseWheelChange;
+            element.OnVerticalMouseWheelChange += _OnVerticalMouseWheelChange;
         }
 
         public void Reset()
@@ -102,6 +138,9 @@ namespace Notuiv
             CurrentFrame.OnDeletionStarted = false;
             CurrentFrame.OnDeleting = false;
             CurrentFrame.OnFadedIn = false;
+
+            CurrentFrame.HorizontalWheel = 0;
+            CurrentFrame.VerticalWheel = 0;
         }
 
         private IHDEHost _hdeHost;
@@ -124,6 +163,7 @@ namespace Notuiv
         public Spread<IntersectionPoint> TouchingIntersections { get; } = new Spread<IntersectionPoint>();
         public Spread<Touch> HittingTouches { get; } = new Spread<Touch>();
         public Spread<IntersectionPoint> HittingIntersections { get; } = new Spread<IntersectionPoint>();
+        public Spread<Mouse> Mice { get; } = new Spread<Mouse>();
         public Spread<NotuiElement> Children { get; } = new Spread<NotuiElement>();
         public Spread<InteractionBehavior> Behaviors { get; } = new Spread<InteractionBehavior>();
         public Spread<NotuiElement> Parent { get; } = new Spread<NotuiElement>();
@@ -143,6 +183,7 @@ namespace Notuiv
                 TouchingIntersections.AssignFrom(_element.Touching.Values.Where(t => t != null));
                 HittingTouches.AssignFrom(_element.Hitting.Keys);
                 HittingIntersections.AssignFrom(_element.Hitting.Values);
+                Mice.AssignFrom(_element.Mice.Select(t => t.AttachadMouse));
                 Children.AssignFrom(_element.Children.Values);
                 Behaviors.AssignFrom(_element.Behaviors);
 
