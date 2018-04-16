@@ -1,11 +1,11 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\GetAttachedValues (Notui.Element Split) help.v4p">
-   <BOUNDS type="Window" left="13710" top="4860" width="8835" height="12945">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\GetAttachedValues (Notui.Element Split) help.v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="13710" top="4860" width="12225" height="12945">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
    <BOUNDS type="Node" left="225" top="225" width="5100" height="450">
    </BOUNDS>
-   <BOUNDS type="Box" left="225" top="225" width="5100" height="450">
+   <BOUNDS type="Box" left="225" top="225" width="5940" height="450">
    </BOUNDS>
    <PIN pinname="Input String" slicecount="1" visible="0" values="|GetAttachedValues (Notui.Element Split)|">
    </PIN>
@@ -49,9 +49,9 @@
    </PIN>
    </NODE>
    <NODE systemname="SetAttachedValues (Notui.Element Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SetAttachedValues (Notui.Element Join)" componentmode="Hidden" id="19">
-   <BOUNDS type="Node" left="5340" top="5790" width="100" height="100">
+   <BOUNDS type="Node" left="5925" top="6030" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="5340" top="5790" width="3000" height="3000">
+   <BOUNDS type="Box" left="5925" top="6030" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Element" visible="1" slicecount="1" values="||">
    </PIN>
@@ -67,9 +67,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="17">
-   <BOUNDS type="Box" left="6330" top="3765" width="285" height="240">
+   <BOUNDS type="Box" left="6930" top="3930" width="285" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="6330" top="3765" width="0" height="0">
+   <BOUNDS type="Node" left="6930" top="3930" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -93,7 +93,7 @@
    <LINK srcnodeid="20" srcpinname="Output String" dstnodeid="16" dstpinname="Name">
    </LINK>
    <NODE systemname="LFO (Animation)" nodename="LFO (Animation)" componentmode="Hidden" id="15">
-   <BOUNDS type="Node" left="5475" top="4380" width="100" height="100">
+   <BOUNDS type="Node" left="6075" top="4545" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Cycles" visible="1">
    </PIN>
@@ -105,9 +105,9 @@
    <LINK srcnodeid="15" srcpinname="Output" dstnodeid="19" dstpinname="Values">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="14">
-   <BOUNDS type="Box" left="5805" top="5145" width="510" height="420">
+   <BOUNDS type="Box" left="6390" top="5385" width="510" height="420">
    </BOUNDS>
-   <BOUNDS type="Node" left="5805" top="5145" width="0" height="0">
+   <BOUNDS type="Node" left="6390" top="5385" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
@@ -125,9 +125,9 @@
    <LINK srcnodeid="14" srcpinname="Y Output Value" dstnodeid="19" dstpinname="Set Values">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="13">
-   <BOUNDS type="Box" left="5340" top="7005" width="795" height="240">
+   <BOUNDS type="Box" left="5940" top="7755" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="5340" top="7005" width="0" height="0">
+   <BOUNDS type="Node" left="5940" top="7755" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -135,9 +135,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="12">
-   <BOUNDS type="Box" left="5700" top="7395" width="1965" height="300">
+   <BOUNDS type="Box" left="6300" top="8145" width="1965" height="300">
    </BOUNDS>
-   <BOUNDS type="Node" left="5700" top="7395" width="0" height="0">
+   <BOUNDS type="Node" left="6300" top="8145" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -147,7 +147,7 @@
    </PIN>
    </NODE>
    <NODE systemname="LFO (Animation)" nodename="LFO (Animation)" componentmode="Hidden" id="11">
-   <BOUNDS type="Node" left="5415" top="8025" width="100" height="100">
+   <BOUNDS type="Node" left="3510" top="5490" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Cycles" visible="1">
    </PIN>
@@ -155,7 +155,7 @@
    </PIN>
    </NODE>
    <NODE systemname="SpellValue (String)" nodename="SpellValue (String)" componentmode="Hidden" id="10">
-   <BOUNDS type="Node" left="6105" top="8490" width="100" height="100">
+   <BOUNDS type="Node" left="4200" top="5955" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
@@ -165,9 +165,9 @@
    <LINK srcnodeid="11" srcpinname="Cycles" dstnodeid="10" dstpinname="Input">
    </LINK>
    <NODE systemname="GetAttachedValues (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="GetAttachedValues (Notui.Element Split)" componentmode="Hidden" id="9">
-   <BOUNDS type="Node" left="5340" top="6525" width="100" height="100">
+   <BOUNDS type="Node" left="5925" top="6765" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="5340" top="6525" width="3000" height="3000">
+   <BOUNDS type="Box" left="5925" top="6765" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <LINK srcnodeid="19" srcpinname="Element Out" dstnodeid="9" dstpinname="Element">
@@ -177,9 +177,9 @@
    <LINK srcnodeid="9" srcpinname="Texts" dstnodeid="12" dstpinname="Input String">
    </LINK>
    <NODE systemname="SetAttachedValues (Notui.Element Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SetAttachedValues (Notui.Element Join)" componentmode="Hidden" id="8">
-   <BOUNDS type="Node" left="4800" top="9120" width="100" height="100">
+   <BOUNDS type="Node" left="2895" top="6585" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="4800" top="9120" width="3000" height="3000">
+   <BOUNDS type="Box" left="2895" top="6585" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Element Out" visible="1">
    </PIN>
@@ -191,9 +191,9 @@
    <LINK srcnodeid="11" srcpinname="Change" dstnodeid="8" dstpinname="Set Texts">
    </LINK>
    <NODE systemname="GetAttachedValues (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="GetAttachedValues (Notui.Element Split)" componentmode="Hidden" id="7">
-   <BOUNDS type="Node" left="4800" top="10050" width="100" height="100">
+   <BOUNDS type="Node" left="2895" top="7515" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="4800" top="10050" width="3000" height="3000">
+   <BOUNDS type="Box" left="2895" top="7515" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Element" visible="1">
    </PIN>
@@ -205,9 +205,9 @@
    <LINK srcnodeid="8" srcpinname="Element Out" dstnodeid="7" dstpinname="Element">
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="6">
-   <BOUNDS type="Box" left="5160" top="10665" width="2190" height="330">
+   <BOUNDS type="Box" left="3255" top="8130" width="2190" height="330">
    </BOUNDS>
-   <BOUNDS type="Node" left="5160" top="10665" width="0" height="0">
+   <BOUNDS type="Node" left="3255" top="8130" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -219,9 +219,9 @@
    <LINK srcnodeid="7" srcpinname="Texts" dstnodeid="6" dstpinname="Input String">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="5">
-   <BOUNDS type="Box" left="4785" top="11250" width="795" height="240">
+   <BOUNDS type="Box" left="2880" top="8715" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="4785" top="11250" width="0" height="0">
+   <BOUNDS type="Node" left="2880" top="8715" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -251,9 +251,9 @@
    <PACK Name="addonpack" Version="36.0.0">
    </PACK>
    <NODE systemname="Sift (Notui.Context String)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context String)" componentmode="Hidden" id="18">
-   <BOUNDS type="Node" left="5340" top="3960" width="100" height="100">
+   <BOUNDS type="Node" left="5940" top="4125" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="5340" top="3960" width="3000" height="3000">
+   <BOUNDS type="Box" left="5940" top="4125" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Use Name" visible="1">
    </PIN>
@@ -272,4 +272,44 @@
    </LINK>
    <LINK srcnodeid="18" srcpinname="Output" dstnodeid="19" dstpinname="Element">
    </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="22">
+   <BOUNDS type="Node" left="6450" top="7125" width="3120" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6450" top="7125" width="3120" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|to see how to handle Auxiliary Objects see|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="Wrap (Notui.Auxiliary)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Wrap (Notui.Auxiliary)" componentmode="Hidden" id="23">
+   <BOUNDS type="Node" left="9600" top="7125" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9600" top="7125" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="24">
+   <BOUNDS type="Node" left="10095" top="7125" width="315" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10095" top="7125" width="285" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="or">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="Unwrap (Notui.Auxiliary)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Unwrap (Notui.Auxiliary)" componentmode="Hidden" id="25">
+   <BOUNDS type="Node" left="10410" top="7125" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10410" top="7125" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
    </PATCH>

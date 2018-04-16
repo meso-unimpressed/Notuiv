@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\IntersectionPoint (Notui Split) help.v4p" scrollx="0" scrolly="7560">
-   <BOUNDS type="Window" left="6255" top="11640" width="14775" height="13215">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\IntersectionPoint (Notui Split) help.v4p" scrollx="0" scrolly="4320">
+   <BOUNDS type="Window" left="630" top="10185" width="18660" height="15600">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
    <BOUNDS type="Node" left="225" top="225" width="5100" height="450">
@@ -24,22 +24,12 @@
    <PIN pinname="Output String" slicecount="1" visible="0" values="||">
    </PIN>
    </NODE>
-   <NODE nodename="IntersectionPoint (Notui Split)" componentmode="Hidden" id="0">
-   <BOUNDS type="Node" left="7740" top="4770" width="0" height="0">
-   </BOUNDS>
-   <BOUNDS type="Box" left="7740" top="4770" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1">
-   </PIN>
-   <PIN pinname="ElementSpaceXYZ" visible="1">
-   </PIN>
-   </NODE>
    <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="4">
    <BOUNDS type="Node" left="4965" top="10725" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="4965" top="10725" width="6000" height="4500">
    </BOUNDS>
-   <BOUNDS type="Window" left="330" top="1020" width="13650" height="9105">
+   <BOUNDS type="Window" left="585" top="660" width="13650" height="9105">
    </BOUNDS>
    <PIN pinname="Layers" visible="1">
    </PIN>
@@ -62,14 +52,8 @@
    <PIN pinname="Depth Buffer Format" slicecount="1" values="D32_Float">
    </PIN>
    </NODE>
-   <NODE systemname="AxisAndGrid (DX11)" filename="%VVVV%\packs\dx11\nodes\modules\AxisAndGrid\AxisAndGrid (DX11).v4p" nodename="AxisAndGrid (DX11)" componentmode="Hidden" id="5">
-   <BOUNDS type="Node" left="3480" top="9915" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Layer" visible="1">
-   </PIN>
-   </NODE>
    <NODE systemname="Translate (Transform)" nodename="Translate (Transform)" componentmode="Hidden" id="7">
-   <BOUNDS type="Node" left="7395" top="12705" width="100" height="100">
+   <BOUNDS type="Node" left="7695" top="12600" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
@@ -79,7 +63,7 @@
    </PIN>
    </NODE>
    <NODE systemname="AspectRatio (Transform)" nodename="AspectRatio (Transform)" componentmode="Hidden" id="8" filename="">
-   <BOUNDS type="Node" left="8370" top="12615" width="100" height="100">
+   <BOUNDS type="Node" left="8670" top="12510" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Aspect Width" visible="1">
    </PIN>
@@ -89,7 +73,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Vector (2d Split)" nodename="Vector (2d Split)" componentmode="Hidden" id="9">
-   <BOUNDS type="Node" left="8475" top="12180" width="100" height="100">
+   <BOUNDS type="Node" left="8775" top="12075" width="100" height="100">
    </BOUNDS>
    <PIN pinname="XY" visible="1">
    </PIN>
@@ -105,57 +89,17 @@
    <LINK srcnodeid="9" srcpinname="Y" dstnodeid="8" dstpinname="Aspect Height">
    </LINK>
    <NODE systemname="S (Node)" nodename="S (Node)" componentmode="Hidden" id="12">
-   <BOUNDS type="Node" left="4845" top="14910" width="100" height="100">
+   <BOUNDS type="Node" left="4290" top="15900" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Send String" slicecount="1" values="Context">
    </PIN>
    <PIN pinname="Input Value" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <NODE systemname="MergeMouseAndTouch (Interaction)" filename="%VVVV%\packs\mp.essentials\nodes\modules\interaction\MergeMouseAndTouch (Interaction).v4p" nodename="MergeMouseAndTouch (Interaction)" componentmode="Hidden" id="13">
-   <BOUNDS type="Node" left="4980" top="12885" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Mouse" visible="1">
-   </PIN>
-   <PIN pinname="Touch Data" visible="1">
-   </PIN>
-   <PIN pinname="Cursor Always Present" visible="1">
-   </PIN>
-   <PIN pinname="Point" visible="1">
-   </PIN>
-   <PIN pinname="Id" visible="1">
-   </PIN>
-   <PIN pinname="Force" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="4" srcpinname="Mouse State" dstnodeid="13" dstpinname="Mouse">
-   </LINK>
-   <LINK srcnodeid="4" srcpinname="Touch Data" dstnodeid="13" dstpinname="Touch Data">
-   </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="14">
-   <BOUNDS type="Box" left="6300" top="12510" width="285" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="6300" top="12510" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Toggle">
-   </PIN>
-   <PIN pinname="X Input Value" slicecount="1" values="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="14" srcpinname="Y Output Value" dstnodeid="13" dstpinname="Cursor Always Present">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="15">
-   <BOUNDS type="Box" left="6405" top="13335" width="795" height="240">
+   <BOUNDS type="Box" left="6885" top="11745" width="765" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="6405" top="13335" width="0" height="0">
+   <BOUNDS type="Node" left="6885" top="11745" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.5">
    </PIN>
@@ -170,26 +114,6 @@
    <PIN pinname="Input Value" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="Context (Notui Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui Split)" componentmode="Hidden" id="17">
-   <BOUNDS type="Node" left="6075" top="10050" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="6075" top="10050" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="ProjectionWithAspectRatio" visible="1">
-   </PIN>
-   <PIN pinname="View" visible="1">
-   </PIN>
-   <PIN pinname="Projection" visible="1">
-   </PIN>
-   <PIN pinname="AspectRatio" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="16" srcpinname="Input Value" dstnodeid="17" dstpinname="Input">
-   </LINK>
-   <LINK srcnodeid="17" srcpinname="View" dstnodeid="4" dstpinname="View">
-   </LINK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="18">
    <BOUNDS type="Node" left="7995" top="10560" width="1650" height="270">
    </BOUNDS>
@@ -218,28 +142,6 @@
    <PIN pinname="Display Transform" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="Context (Notui)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui)" componentmode="Hidden" id="24">
-   <BOUNDS type="Node" left="4830" top="13725" width="3615" height="270">
-   </BOUNDS>
-   <BOUNDS type="Box" left="4830" top="13725" width="3000" height="3000">
-   </BOUNDS>
-   </NODE>
-   <LINK srcnodeid="24" srcpinname="Context" dstnodeid="12" dstpinname="Input Value">
-   </LINK>
-   <LINK srcnodeid="13" srcpinname="Point" dstnodeid="24" dstpinname="Touch CoordinatesXY">
-   </LINK>
-   <LINK srcnodeid="13" srcpinname="Id" dstnodeid="24" dstpinname="Touch ID">
-   </LINK>
-   <LINK srcnodeid="13" srcpinname="Force" dstnodeid="24" dstpinname="Touch Force">
-   </LINK>
-   <LINK srcnodeid="15" srcpinname="Y Output Value" dstnodeid="24" dstpinname="Minimum Force for Interaction">
-   </LINK>
-   <LINK srcnodeid="7" srcpinname="Transform Out" dstnodeid="24" dstpinname="View">
-   </LINK>
-   <LINK srcnodeid="8" srcpinname="Transform Out" dstnodeid="24" dstpinname="Aspect Ratio">
-   </LINK>
-   <LINK srcnodeid="23" srcpinname="Element Prototype" dstnodeid="24" dstpinname="Element Prototypes">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="25">
    <BOUNDS type="Box" left="6150" top="3255" width="285" height="240">
    </BOUNDS>
@@ -277,15 +179,13 @@
    </BOUNDS>
    <BOUNDS type="Box" left="5130" top="10125" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Layer 1" visible="1">
+   <PIN pinname="Layer 1" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Layer Out" visible="1">
    </PIN>
    <PIN pinname="Layer 2" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="5" srcpinname="Layer" dstnodeid="29" dstpinname="Layer 1">
-   </LINK>
    <LINK srcnodeid="29" srcpinname="Layer Out" dstnodeid="4" dstpinname="Layers">
    </LINK>
    <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="30">
@@ -309,7 +209,7 @@
    <LINK srcnodeid="30" srcpinname="Layer Out" dstnodeid="29" dstpinname="Layer 2">
    </LINK>
    <NODE systemname="Transform (Transform 3d)" nodename="Transform (Transform 3d)" componentmode="Hidden" id="31">
-   <BOUNDS type="Node" left="4815" top="1560" width="100" height="100">
+   <BOUNDS type="Node" left="4965" top="1590" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
@@ -326,28 +226,12 @@
    </NODE>
    <LINK srcnodeid="31" srcpinname="Transform Out" dstnodeid="23" dstpinname="Display Transform">
    </LINK>
-   <LINK srcnodeid="26" srcpinname="Touching Intersections" dstnodeid="0" dstpinname="Input">
-   </LINK>
-   <NODE systemname="Translate (Transform Vector)" nodename="Translate (Transform Vector)" componentmode="Hidden" id="34">
-   <BOUNDS type="Node" left="6300" top="5580" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="XYZ" visible="1">
-   </PIN>
-   <PIN pinname="Transform In" visible="1">
-   </PIN>
-   <PIN pinname="Transform Out" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="0" srcpinname="ElementSpaceXYZ" dstnodeid="34" dstpinname="XYZ">
-   </LINK>
-   <LINK srcnodeid="26" srcpinname="Interaction Transformation Out" dstnodeid="34" dstpinname="Transform In">
-   </LINK>
    <NODE systemname="SuppressDiagonals (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\SuppressDiagonals.fx" nodename="SuppressDiagonals (DX11.Effect)" componentmode="Hidden" id="35">
    <BOUNDS type="Node" left="5535" top="7350" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Geometry" visible="1">
    </PIN>
-   <PIN pinname="Transform In" visible="1">
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Layer" visible="1">
    </PIN>
@@ -364,48 +248,18 @@
    </NODE>
    <LINK srcnodeid="36" srcpinname="Geometry Out" dstnodeid="35" dstpinname="Geometry">
    </LINK>
-   <LINK srcnodeid="34" srcpinname="Transform Out" dstnodeid="35" dstpinname="Transform In">
-   </LINK>
    <LINK srcnodeid="35" srcpinname="Layer" dstnodeid="30" dstpinname="Layer 2">
    </LINK>
    <NODE systemname="Axis (DX11)" filename="%VVVV%\packs\dx11\nodes\modules\Axis (DX11).v4p" nodename="Axis (DX11)" componentmode="Hidden" id="37">
    <BOUNDS type="Node" left="7575" top="8100" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Transform In" visible="1">
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Layer Out" visible="1">
    </PIN>
    <PIN pinname="Size" slicecount="1" values="0.2">
    </PIN>
    </NODE>
-   <NODE nodename="IntersectionPoint (Notui Split)" componentmode="Hidden" id="39">
-   <BOUNDS type="Node" left="9165" top="4755" width="0" height="0">
-   </BOUNDS>
-   <BOUNDS type="Box" left="9165" top="4755" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1">
-   </PIN>
-   <PIN pinname="ElementSpaceXYZ" visible="1">
-   </PIN>
-   </NODE>
-   <NODE systemname="Translate (Transform Vector)" nodename="Translate (Transform Vector)" componentmode="Hidden" id="38">
-   <BOUNDS type="Node" left="7905" top="5520" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="XYZ" visible="1">
-   </PIN>
-   <PIN pinname="Transform In" visible="1">
-   </PIN>
-   <PIN pinname="Transform Out" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="39" srcpinname="ElementSpaceXYZ" dstnodeid="38" dstpinname="XYZ">
-   </LINK>
-   <LINK srcnodeid="26" srcpinname="Interaction Transformation Out" dstnodeid="38" dstpinname="Transform In">
-   </LINK>
-   <LINK srcnodeid="26" srcpinname="Hitting Intersections" dstnodeid="39" dstpinname="Input">
-   </LINK>
-   <LINK srcnodeid="38" srcpinname="Transform Out" dstnodeid="37" dstpinname="Transform In">
-   </LINK>
    <LINK srcnodeid="37" srcpinname="Layer Out" dstnodeid="30" dstpinname="Layer 3">
    </LINK>
    <PACK Name="KeyboardUI" Version="1.1.1">
@@ -467,8 +321,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="44" srcpinname="Transform Out" dstnodeid="45" dstpinname="Transform In">
-   </LINK>
-   <LINK srcnodeid="39" srcpinname="ElementSpaceXYZ" dstnodeid="45" dstpinname="XYZ">
    </LINK>
    <LINK srcnodeid="44" srcpinname="Transform Out" dstnodeid="43" dstpinname="Transform In">
    </LINK>
@@ -610,8 +462,6 @@
    <PIN pinname="Rows" slicecount="1" values="3">
    </PIN>
    </NODE>
-   <LINK srcnodeid="39" srcpinname="ElementSpaceXYZ" dstnodeid="53" dstpinname="Y Input Value">
-   </LINK>
    <NODE systemname="Translate (Transform)" nodename="Translate (Transform)" componentmode="Hidden" id="54">
    <BOUNDS type="Node" left="9390" top="7410" width="100" height="100">
    </BOUNDS>
@@ -622,20 +472,6 @@
    </NODE>
    <LINK srcnodeid="54" srcpinname="Transform Out" dstnodeid="42" dstpinname="Transform In">
    </LINK>
-   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="55">
-   <BOUNDS type="Node" left="6555" top="5940" width="6825" height="270">
-   </BOUNDS>
-   <BOUNDS type="Box" left="6555" top="5940" width="2595" height="720">
-   </BOUNDS>
-   <PIN pinname="Input String" visible="0" slicecount="1" values="|this is how you would get the intersection space, doing this inside the node is on the roadmap|">
-   </PIN>
-   <PIN pinname="Output String" visible="0">
-   </PIN>
-   <PIN pinname="Show Grid" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="String Type" slicecount="1" values="MultiLine">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="56">
    <BOUNDS type="Node" left="12750" top="6060" width="4125" height="270">
    </BOUNDS>
@@ -664,10 +500,8 @@
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
    </NODE>
-   <LINK srcnodeid="17" srcpinname="ProjectionWithAspectRatio" dstnodeid="4" dstpinname="Projection">
-   </LINK>
    <NODE systemname="PhongDirectional (DX11.Effect)" filename="%VVVV%\packs\dx11\nodes\dx11\PhongDirectional.fx" nodename="PhongDirectional (DX11.Effect)" componentmode="Hidden" id="59">
-   <BOUNDS type="Node" left="3165" top="6225" width="100" height="100">
+   <BOUNDS type="Node" left="4545" top="6000" width="100" height="100">
    </BOUNDS>
    </NODE>
    <LINK srcnodeid="26" srcpinname="Display Transformation Out" dstnodeid="59" dstpinname="Transform In">
@@ -675,9 +509,9 @@
    <LINK srcnodeid="59" srcpinname="Layer" dstnodeid="30" dstpinname="Layer 1">
    </LINK>
    <NODE systemname="Quad (DX11.Geometry)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Quad (DX11.Geometry)" componentmode="Hidden" id="28">
-   <BOUNDS type="Node" left="3480" top="5685" width="100" height="100">
+   <BOUNDS type="Node" left="4860" top="5460" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="3480" top="5685" width="3000" height="3000">
+   <BOUNDS type="Box" left="4860" top="5460" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Geometry Out" visible="1">
    </PIN>
@@ -689,15 +523,13 @@
    <LINK srcnodeid="28" srcpinname="Geometry Out" dstnodeid="59" dstpinname="Geometry">
    </LINK>
    <NODE systemname="Perspective (Transform)" nodename="Perspective (Transform)" componentmode="Hidden" id="6">
-   <BOUNDS type="Node" left="7980" top="13155" width="100" height="100">
+   <BOUNDS type="Node" left="8280" top="13050" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
    <PIN pinname="FOV" slicecount="1" values="0.17">
    </PIN>
    </NODE>
-   <LINK srcnodeid="6" srcpinname="Transform Out" dstnodeid="24" dstpinname="Projection">
-   </LINK>
    <NODE systemname="Sift (Notui.Context String)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context String)" componentmode="Hidden" id="22">
    <BOUNDS type="Node" left="5235" top="3450" width="100" height="100">
    </BOUNDS>
@@ -715,5 +547,95 @@
    <LINK srcnodeid="25" srcpinname="Y Output Value" dstnodeid="22" dstpinname="Use Name">
    </LINK>
    <LINK srcnodeid="22" srcpinname="Output" dstnodeid="26" dstpinname="Element">
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="62">
+   <BOUNDS type="Box" left="9075" top="14640" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9075" top="14640" width="0" height="0">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="63">
+   <BOUNDS type="Box" left="5625" top="11925" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5625" top="11925" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   </NODE>
+   <NODE nodename="IntersectionPoint (Notui Split)" componentmode="Hidden" id="64">
+   <BOUNDS type="Node" left="9165" top="4755" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9165" top="4755" width="0" height="0">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="26" srcpinname="Hitting Intersections" dstnodeid="64" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="64" srcpinname="ElementSpaceXYZ" dstnodeid="45" dstpinname="XYZ">
+   </LINK>
+   <LINK srcnodeid="64" srcpinname="ElementSpaceXYZ" dstnodeid="53" dstpinname="Y Input Value">
+   </LINK>
+   <LINK srcnodeid="64" srcpinname="Transformation" dstnodeid="37" dstpinname="Transform In">
+   </LINK>
+   <NODE nodename="IntersectionPoint (Notui Split)" componentmode="Hidden" id="65">
+   <BOUNDS type="Node" left="7740" top="4770" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7740" top="4770" width="0" height="0">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="26" srcpinname="Touching Intersections" dstnodeid="65" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="65" srcpinname="Transformation" dstnodeid="35" dstpinname="Transform In">
+   </LINK>
+   <NODE systemname="Context (Notui)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui)" componentmode="Hidden" id="66">
+   <BOUNDS type="Node" left="4830" top="13725" width="3615" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4830" top="13725" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="66" srcpinname="Context" dstnodeid="12" dstpinname="Input Value">
+   </LINK>
+   <LINK srcnodeid="15" srcpinname="Y Output Value" dstnodeid="66" dstpinname="Minimum Force for Interaction">
+   </LINK>
+   <LINK srcnodeid="7" srcpinname="Transform Out" dstnodeid="66" dstpinname="View">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Transform Out" dstnodeid="66" dstpinname="Aspect Ratio">
+   </LINK>
+   <LINK srcnodeid="23" srcpinname="Element Prototype" dstnodeid="66" dstpinname="Element Prototypes">
+   </LINK>
+   <LINK srcnodeid="6" srcpinname="Transform Out" dstnodeid="66" dstpinname="Projection">
+   </LINK>
+   <LINK srcnodeid="4" srcpinname="Mouse State" dstnodeid="66" dstpinname="Mouse">
+   </LINK>
+   <LINK srcnodeid="4" srcpinname="Touch Data" dstnodeid="66" dstpinname="DX11 Touches">
+   </LINK>
+   <LINK srcnodeid="66" srcpinname="Touches" dstnodeid="62" dstpinname="Input Node">
+   </LINK>
+   <LINK srcnodeid="63" srcpinname="Y Output Value" dstnodeid="66" dstpinname="Mouse Always Present">
+   </LINK>
+   <NODE systemname="Context (Notui Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui Split)" componentmode="Hidden" id="67">
+   <BOUNDS type="Node" left="6075" top="10050" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6075" top="10050" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="16" srcpinname="Input Value" dstnodeid="67" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="67" srcpinname="View" dstnodeid="4" dstpinname="View">
+   </LINK>
+   <LINK srcnodeid="67" srcpinname="ProjectionWithAspectRatio" dstnodeid="4" dstpinname="Projection">
+   </LINK>
+   <NODE systemname="AxisAndGrid (DX11)" filename="%VVVV%\packs\dx11\nodes\modules\AxisAndGrid\AxisAndGrid (DX11).v4p" nodename="AxisAndGrid (DX11)" componentmode="Hidden" id="68">
+   <BOUNDS type="Node" left="3480" top="9915" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="68" srcpinname="Layer" dstnodeid="29" dstpinname="Layer 1">
    </LINK>
    </PATCH>

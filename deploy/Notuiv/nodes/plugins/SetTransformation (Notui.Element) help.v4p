@@ -1,0 +1,617 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\SetTransformation (Notui.Element) help.v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="26565" top="4920" width="16125" height="21150">
+   </BOUNDS>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
+   <BOUNDS type="Node" left="225" top="225" width="5100" height="450">
+   </BOUNDS>
+   <BOUNDS type="Box" left="225" top="225" width="5100" height="450">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="0" values="|SetTransformation (Notui.Element)|">
+   </PIN>
+   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" visible="1" values="14">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="2">
+   <BOUNDS type="Node" left="225" top="600" width="5100" height="600">
+   </BOUNDS>
+   <BOUNDS type="Box" left="225" top="600" width="5100" height="600">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="0" values="|If you want to handle the transformation of an element instance statefully you can set their transform directly.|">
+   </PIN>
+   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="4">
+   <BOUNDS type="Node" left="225" top="1305" width="5100" height="450">
+   </BOUNDS>
+   <BOUNDS type="Box" left="225" top="1305" width="1635" height="450">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="0" values="CAUTION!">
+   </PIN>
+   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" visible="1" values="14">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="5">
+   <BOUNDS type="Node" left="225" top="1770" width="7230" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="225" top="1770" width="4050" height="780">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|This node modifies element instance state which might interfere with behaviors or updates from the prototype. Be careful!|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <PACK Name="KeyboardUI" Version="1.1.1">
+   </PACK>
+   <PACK Name="vvvv-Message" Version="2.9.10">
+   </PACK>
+   <PACK Name="addonpack" Version="36.0.0">
+   </PACK>
+   <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="50">
+   <BOUNDS type="Node" left="6090" top="16395" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6090" top="16395" width="6000" height="4500">
+   </BOUNDS>
+   <BOUNDS type="Window" left="765" top="420" width="13650" height="9105">
+   </BOUNDS>
+   <PIN pinname="Layers" visible="1">
+   </PIN>
+   <PIN pinname="Projection" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="View" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Actual BackBuffer SizeXY" visible="1">
+   </PIN>
+   <PIN pinname="Aspect Ratio" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Show Cursor" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Mouse State" visible="1">
+   </PIN>
+   <PIN pinname="Touch Data" visible="1">
+   </PIN>
+   <PIN pinname="Depth Buffer Mode" slicecount="1" values="Standard">
+   </PIN>
+   <PIN pinname="Depth Buffer Format" slicecount="1" values="D32_Float">
+   </PIN>
+   </NODE>
+   <NODE systemname="Translate (Transform)" nodename="Translate (Transform)" componentmode="Hidden" id="49">
+   <BOUNDS type="Node" left="8820" top="18270" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Z" slicecount="1" values="1.46">
+   </PIN>
+   <PIN pinname="Y" slicecount="1" values="-1.06">
+   </PIN>
+   </NODE>
+   <NODE systemname="AspectRatio (Transform)" nodename="AspectRatio (Transform)" componentmode="Hidden" id="48" filename="">
+   <BOUNDS type="Node" left="9795" top="18180" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Aspect Width" visible="1">
+   </PIN>
+   <PIN pinname="Aspect Height" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Vector (2d Split)" nodename="Vector (2d Split)" componentmode="Hidden" id="47">
+   <BOUNDS type="Node" left="9900" top="17745" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="XY" visible="1">
+   </PIN>
+   <PIN pinname="X" visible="1">
+   </PIN>
+   <PIN pinname="Y" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="50" srcpinname="Actual BackBuffer SizeXY" dstnodeid="47" dstpinname="XY" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="47" srcpinname="X" dstnodeid="48" dstpinname="Aspect Width">
+   </LINK>
+   <LINK srcnodeid="47" srcpinname="Y" dstnodeid="48" dstpinname="Aspect Height">
+   </LINK>
+   <NODE systemname="S (Node)" nodename="S (Node)" componentmode="Hidden" id="46">
+   <BOUNDS type="Node" left="6000" top="20115" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Send String" slicecount="1" values="Context">
+   </PIN>
+   <PIN pinname="Input Value" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="45">
+   <BOUNDS type="Box" left="8010" top="17415" width="765" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="8010" top="17415" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.5">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <NODE systemname="R (Node)" nodename="R (Node)" componentmode="Hidden" id="44">
+   <BOUNDS type="Node" left="7200" top="15240" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="43">
+   <BOUNDS type="Node" left="9120" top="16230" width="1650" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9120" top="16230" width="1650" height="285">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|you can do this too ;)|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="R (Node)" nodename="R (Node)" componentmode="Hidden" id="42">
+   <BOUNDS type="Node" left="7290" top="2910" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="40">
+   <BOUNDS type="Box" left="8220" top="3270" width="285" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="8220" top="3270" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   </NODE>
+   <NODE systemname="InstanceInfo (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="InstanceInfo (Notui.Element Split)" componentmode="Hidden" id="39">
+   <BOUNDS type="Node" left="7305" top="4350" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7305" top="4350" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Element" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Display Transformation Out" visible="1">
+   </PIN>
+   <PIN pinname="Touching Intersections" visible="1">
+   </PIN>
+   <PIN pinname="Interaction Transformation Out" visible="1">
+   </PIN>
+   <PIN pinname="Hitting Intersections" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="38">
+   <BOUNDS type="Node" left="6255" top="15795" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6255" top="15795" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Layer 1" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layer Out" visible="1">
+   </PIN>
+   <PIN pinname="Layer 2" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="38" srcpinname="Layer Out" dstnodeid="50" dstpinname="Layers">
+   </LINK>
+   <NODE systemname="Transform (Transform 3d)" nodename="Transform (Transform 3d)" componentmode="Hidden" id="36">
+   <BOUNDS type="Node" left="6885" top="1575" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Pitch" slicecount="1" values="0.12">
+   </PIN>
+   <PIN pinname="Yaw" slicecount="1" values="0.07">
+   </PIN>
+   <PIN pinname="TranslateY" slicecount="1" values="1.04">
+   </PIN>
+   <PIN pinname="ScaleX" visible="1" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Roll" slicecount="1" values="0.15">
+   </PIN>
+   </NODE>
+   <NODE systemname="PhongDirectional (DX11.Effect)" filename="%VVVV%\packs\dx11\nodes\dx11\PhongDirectional.fx" nodename="PhongDirectional (DX11.Effect)" componentmode="Hidden" id="16">
+   <BOUNDS type="Node" left="6615" top="14715" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Render State" visible="1">
+   </PIN>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Quad (DX11.Geometry)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Quad (DX11.Geometry)" componentmode="Hidden" id="15">
+   <BOUNDS type="Node" left="6930" top="14175" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6930" top="14175" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Geometry Out" visible="1">
+   </PIN>
+   <PIN pinname="Resolution X" visible="1" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Resolution Y" visible="1" slicecount="1" values="2">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="15" srcpinname="Geometry Out" dstnodeid="16" dstpinname="Geometry">
+   </LINK>
+   <NODE systemname="Perspective (Transform)" nodename="Perspective (Transform)" componentmode="Hidden" id="14">
+   <BOUNDS type="Node" left="9405" top="18720" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="FOV" slicecount="1" values="0.17">
+   </PIN>
+   </NODE>
+   <NODE systemname="Sift (Notui.Context String)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context String)" componentmode="Hidden" id="13">
+   <BOUNDS type="Node" left="7305" top="3465" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7305" top="3465" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Use Name" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="42" srcpinname="Input Value" dstnodeid="13" dstpinname="Context">
+   </LINK>
+   <LINK srcnodeid="40" srcpinname="Y Output Value" dstnodeid="13" dstpinname="Use Name">
+   </LINK>
+   <LINK srcnodeid="13" srcpinname="Output" dstnodeid="39" dstpinname="Element">
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="12">
+   <BOUNDS type="Box" left="10200" top="20310" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10200" top="20310" width="0" height="0">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="11">
+   <BOUNDS type="Box" left="6750" top="17595" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6750" top="17595" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   </NODE>
+   <NODE systemname="Context (Notui)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui)" componentmode="Hidden" id="8">
+   <BOUNDS type="Node" left="5955" top="19395" width="3615" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5955" top="19395" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="8" srcpinname="Context" dstnodeid="46" dstpinname="Input Value">
+   </LINK>
+   <LINK srcnodeid="45" srcpinname="Y Output Value" dstnodeid="8" dstpinname="Minimum Force for Interaction">
+   </LINK>
+   <LINK srcnodeid="49" srcpinname="Transform Out" dstnodeid="8" dstpinname="View">
+   </LINK>
+   <LINK srcnodeid="48" srcpinname="Transform Out" dstnodeid="8" dstpinname="Aspect Ratio">
+   </LINK>
+   <LINK srcnodeid="14" srcpinname="Transform Out" dstnodeid="8" dstpinname="Projection">
+   </LINK>
+   <LINK srcnodeid="50" srcpinname="Mouse State" dstnodeid="8" dstpinname="Mouse">
+   </LINK>
+   <LINK srcnodeid="50" srcpinname="Touch Data" dstnodeid="8" dstpinname="DX11 Touches">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Touches" dstnodeid="12" dstpinname="Input Node">
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Y Output Value" dstnodeid="8" dstpinname="Mouse Always Present">
+   </LINK>
+   <NODE systemname="Context (Notui Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui Split)" componentmode="Hidden" id="7">
+   <BOUNDS type="Node" left="7200" top="15720" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7200" top="15720" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="44" srcpinname="Input Value" dstnodeid="7" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="7" srcpinname="View" dstnodeid="50" dstpinname="View">
+   </LINK>
+   <LINK srcnodeid="7" srcpinname="ProjectionWithAspectRatio" dstnodeid="50" dstpinname="Projection">
+   </LINK>
+   <NODE systemname="AxisAndGrid (DX11)" filename="%VVVV%\packs\dx11\nodes\modules\AxisAndGrid\AxisAndGrid (DX11).v4p" nodename="AxisAndGrid (DX11)" componentmode="Hidden" id="6">
+   <BOUNDS type="Node" left="4605" top="15585" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="6" srcpinname="Layer" dstnodeid="38" dstpinname="Layer 1">
+   </LINK>
+   <NODE systemname="SetTransformation (Notui.Element)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SetTransformation (Notui.Element)" componentmode="Hidden" id="51">
+   <BOUNDS type="Node" left="7620" top="10890" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7620" top="10890" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Element" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Display" visible="1">
+   </PIN>
+   <PIN pinname="Interaction Follows Display" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Transformation Update Mode" visible="1">
+   </PIN>
+   <PIN pinname="Set Display" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Element Out" visible="1">
+   </PIN>
+   <PIN pinname="Interaction" visible="1">
+   </PIN>
+   <PIN pinname="Set Interaction" slicecount="1" visible="1" values="0">
+   </PIN>
+   </NODE>
+   <NODE systemname="ElementTransformation (Notui Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="ElementTransformation (Notui Join)" componentmode="Hidden" id="52">
+   <BOUNDS type="Node" left="7935" top="8280" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7935" top="8280" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Element Transform" visible="1">
+   </PIN>
+   <PIN pinname="QuaternionXYZW" visible="1" slicecount="4" values="-0.866013109683991,0,0,0.50002121925354">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="52" srcpinname="Element Transform" dstnodeid="51" dstpinname="Display">
+   </LINK>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="53">
+   <BOUNDS type="Box" left="8565" top="10425" width="900" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="8565" top="10425" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="Rotation">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="None">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="53" srcpinname="Output Enum" dstnodeid="51" dstpinname="Transformation Update Mode">
+   </LINK>
+   <NODE systemname="Events (Notui.Element)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Events (Notui.Element)" componentmode="Hidden" id="59">
+   <BOUNDS type="Node" left="9045" top="5070" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9045" top="5070" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Element" visible="1">
+   </PIN>
+   <PIN pinname="On Interaction Begin" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Decay (Animation)" nodename="Decay (Animation)" componentmode="Hidden" id="60">
+   <BOUNDS type="Node" left="9045" top="5595" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" slicecount="1" visible="1" values="0.2">
+   </PIN>
+   <PIN pinname="Decay" slicecount="1" values="0.2">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="59" srcpinname="On Interaction Begin" dstnodeid="60" dstpinname="Input">
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="62">
+   <BOUNDS type="Box" left="7635" top="11370" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7635" top="11370" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Element Out|">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Element Out" dstnodeid="62" dstpinname="Input Node">
+   </LINK>
+   <LINK srcnodeid="52" srcpinname="Element Transform" dstnodeid="51" dstpinname="Interaction">
+   </LINK>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="66">
+   <BOUNDS type="Box" left="7740" top="2040" width="1590" height="270">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7740" top="2040" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="None">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="None">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="76">
+   <BOUNDS type="Node" left="9045" top="6150" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" slicecount="1" visible="1" values="0.01">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="60" srcpinname="Output" dstnodeid="76" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="Rasterizer (DX11.RenderState)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Rasterizer (DX11.RenderState)" componentmode="Hidden" id="77">
+   <BOUNDS type="Node" left="6750" top="13785" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6750" top="13785" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Render State" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Mode" slicecount="1" values="NoCullSimple">
+   </PIN>
+   </NODE>
+   <NODE systemname="Decompose (Transform Vector)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Decompose (Transform Vector)" componentmode="Hidden" id="56">
+   <BOUNDS type="Node" left="7815" top="4995" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   <PIN pinname="RotateXYZW" visible="1">
+   </PIN>
+   <PIN pinname="RotateXYZ" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="39" srcpinname="Display Transformation Out" dstnodeid="56" dstpinname="Transform In">
+   </LINK>
+   <NODE systemname="Euler (Quaternion Set Vector)" nodename="Euler (Quaternion Set Vector)" componentmode="Hidden" id="79">
+   <BOUNDS type="Node" left="8745" top="7785" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Rotate XYZ" visible="1">
+   </PIN>
+   <PIN pinname="Quaternion XYZW" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Vector (3d Join)" nodename="Vector (3d Join)" componentmode="Hidden" id="80">
+   <BOUNDS type="Node" left="8700" top="6705" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Y" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="XYZ" visible="1">
+   </PIN>
+   <PIN pinname="Z" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Add (Value)" nodename="Add (Value)" componentmode="Hidden" id="81">
+   <BOUNDS type="Node" left="8415" top="7215" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="56" srcpinname="RotateXYZ" dstnodeid="81" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="80" srcpinname="XYZ" dstnodeid="81" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="81" srcpinname="Output" dstnodeid="79" dstpinname="Rotate XYZ">
+   </LINK>
+   <LINK srcnodeid="79" srcpinname="Quaternion XYZW" dstnodeid="52" dstpinname="QuaternionXYZW">
+   </LINK>
+   <NODE systemname="Rectangle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Rectangle (Notui.ElementPrototype Join)" componentmode="Hidden" id="88">
+   <BOUNDS type="Node" left="5310" top="2385" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5310" top="2385" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="36" srcpinname="Transform Out" dstnodeid="88" dstpinname="Display Transform">
+   </LINK>
+   <LINK srcnodeid="88" srcpinname="Element Id" dstnodeid="13" dstpinname="Query">
+   </LINK>
+   <LINK srcnodeid="88" srcpinname="Element Prototype" dstnodeid="8" dstpinname="Element Prototypes">
+   </LINK>
+   <LINK srcnodeid="66" srcpinname="Output Enum" dstnodeid="88" dstpinname="Transformation Update Mode">
+   </LINK>
+   <LINK srcnodeid="16" srcpinname="Layer" dstnodeid="38" dstpinname="Layer 2">
+   </LINK>
+   <LINK srcnodeid="77" srcpinname="Render State" dstnodeid="16" dstpinname="Render State">
+   </LINK>
+   <LINK srcnodeid="39" srcpinname="Element" dstnodeid="51" dstpinname="Element">
+   </LINK>
+   <LINK srcnodeid="39" srcpinname="Element" dstnodeid="59" dstpinname="Element">
+   </LINK>
+   <NODE systemname="OnOpen (VVVV)" nodename="OnOpen (VVVV)" componentmode="Hidden" id="89">
+   <BOUNDS type="Node" left="8265" top="8790" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Bang" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="NOT (Boolean)" nodename="NOT (Boolean)" componentmode="Hidden" id="90">
+   <BOUNDS type="Node" left="8265" top="9210" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="89" srcpinname="Bang" dstnodeid="90" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="90" srcpinname="Output" dstnodeid="51" dstpinname="Set Display">
+   </LINK>
+   <LINK srcnodeid="76" srcpinname="Output" dstnodeid="80" dstpinname="Z">
+   </LINK>
+   <NODE systemname="Stopwatch (Animation)" nodename="Stopwatch (Animation)" componentmode="Hidden" id="94">
+   <BOUNDS type="Node" left="10170" top="5610" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Run" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="FrameDifference (Animation)" nodename="FrameDifference (Animation)" componentmode="Hidden" id="95">
+   <BOUNDS type="Node" left="10170" top="6045" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="94" srcpinname="Output" dstnodeid="95" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="95" srcpinname="Output" dstnodeid="76" dstpinname="Input 2">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="96">
+   <BOUNDS type="Node" left="8835" top="9225" width="18300" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8835" top="9225" width="4755" height="1185">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Here is a good example of that being cautious: Because this is modifying element state, in vvvv you can&apos;t control* when the node evaluates. This phenomena can overwrite the initial state and can mess up your interaction unless you don&apos;t put some logic before the &quot;Set Display&quot; pin. Or just resort to VL or C# behaviors|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="97">
+   <BOUNDS type="Node" left="7635" top="11865" width="9210" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7635" top="11865" width="4845" height="510">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|The node is AutoEvaluating so you don&apos;t need to connect this pin anywhere unless you want to have control over node execution|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="InstanceInfo (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="InstanceInfo (Notui.Element Split)" componentmode="Hidden" id="98">
+   <BOUNDS type="Node" left="6930" top="12885" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6930" top="12885" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Element" visible="1">
+   </PIN>
+   <PIN pinname="Display Transformation Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="98" srcpinname="Display Transformation Out" dstnodeid="16" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Element Out" dstnodeid="98" dstpinname="Element">
+   </LINK>
+   </PATCH>

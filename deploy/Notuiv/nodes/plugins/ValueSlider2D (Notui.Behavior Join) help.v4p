@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\ValueSlider2D (Notui.Behavior Join) help.v4p" scrollx="0" scrolly="0">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\ValueSlider2D (Notui.Behavior Join) help.v4p" scrollx="0" scrolly="120">
    <BOUNDS type="Window" left="240" top="5940" width="21465" height="12120">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -76,42 +76,6 @@
    <PIN pinname="Input Value" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <NODE systemname="MergeMouseAndTouch (Interaction)" filename="%VVVV%\packs\mp.essentials\nodes\modules\interaction\MergeMouseAndTouch (Interaction).v4p" nodename="MergeMouseAndTouch (Interaction)" componentmode="Hidden" id="10">
-   <BOUNDS type="Node" left="5655" top="12900" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Mouse" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Touch Data" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Cursor Always Present" visible="1">
-   </PIN>
-   <PIN pinname="Point" visible="1">
-   </PIN>
-   <PIN pinname="Id" visible="1">
-   </PIN>
-   <PIN pinname="Force" visible="1">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="9">
-   <BOUNDS type="Box" left="6975" top="12525" width="285" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="6975" top="12525" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Toggle">
-   </PIN>
-   <PIN pinname="X Input Value" slicecount="1" values="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="9" srcpinname="Y Output Value" dstnodeid="10" dstpinname="Cursor Always Present">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="8">
    <BOUNDS type="Box" left="7080" top="13350" width="795" height="240">
    </BOUNDS>
@@ -133,20 +97,14 @@
    </PIN>
    <PIN pinname="Element Prototypes" visible="1" slicecount="1" values="||">
    </PIN>
+   <PIN pinname="Mouse" visible="1">
+   </PIN>
+   <PIN pinname="DX11 Touches" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="7" srcpinname="Context" dstnodeid="11" dstpinname="Input Value">
    </LINK>
-   <LINK srcnodeid="10" srcpinname="Point" dstnodeid="7" dstpinname="Touch CoordinatesXY">
-   </LINK>
-   <LINK srcnodeid="10" srcpinname="Id" dstnodeid="7" dstpinname="Touch ID">
-   </LINK>
-   <LINK srcnodeid="10" srcpinname="Force" dstnodeid="7" dstpinname="Touch Force">
-   </LINK>
    <LINK srcnodeid="8" srcpinname="Y Output Value" dstnodeid="7" dstpinname="Minimum Force for Interaction">
-   </LINK>
-   <LINK srcnodeid="4" srcpinname="Mouse State" dstnodeid="10" dstpinname="Mouse">
-   </LINK>
-   <LINK srcnodeid="4" srcpinname="Touch Data" dstnodeid="10" dstpinname="Touch Data">
    </LINK>
    <NODE systemname="S (Node)" nodename="S (Node)" componentmode="Hidden" id="13">
    <BOUNDS type="Node" left="7875" top="14925" width="100" height="100">
@@ -1055,5 +1013,9 @@
    <LINK srcnodeid="56" srcpinname="Output" dstnodeid="41" dstpinname="Element">
    </LINK>
    <LINK srcnodeid="39" srcpinname="Input Value" dstnodeid="56" dstpinname="Context">
+   </LINK>
+   <LINK srcnodeid="4" srcpinname="Mouse State" dstnodeid="7" dstpinname="Mouse">
+   </LINK>
+   <LINK srcnodeid="4" srcpinname="Touch Data" dstnodeid="7" dstpinname="DX11 Touches">
    </LINK>
    </PATCH>

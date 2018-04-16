@@ -196,20 +196,6 @@
    </LINK>
    <LINK srcnodeid="14" srcpinname="Output" dstnodeid="34" dstpinname="Element">
    </LINK>
-   <NODE systemname="Cons (Notui.Element)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Cons (Notui.Element)" componentmode="Hidden" id="35">
-   <BOUNDS type="Node" left="1380" top="3435" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="1380" top="3435" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Input 1" visible="1">
-   </PIN>
-   <PIN pinname="Input 2" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="30" srcpinname="Element Prototype" dstnodeid="35" dstpinname="Input 1">
-   </LINK>
    <NODE systemname="Circle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Circle (Notui.ElementPrototype Join)" componentmode="Hidden" id="36">
    <BOUNDS type="Node" left="1815" top="2865" width="100" height="100">
    </BOUNDS>
@@ -220,8 +206,6 @@
    <PIN pinname="Name" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="36" srcpinname="Element Prototype" dstnodeid="35" dstpinname="Input 2">
-   </LINK>
    <NODE systemname="Rectangle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Rectangle (Notui.ElementPrototype Join)" componentmode="Hidden" id="39">
    <BOUNDS type="Node" left="1380" top="4410" width="100" height="100">
    </BOUNDS>
@@ -229,25 +213,11 @@
    </BOUNDS>
    <PIN pinname="Element Prototype" visible="1">
    </PIN>
-   <PIN pinname="Children" visible="1">
+   <PIN pinname="Children" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Name" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="Cons (Notui.Element)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Cons (Notui.Element)" componentmode="Hidden" id="38">
-   <BOUNDS type="Node" left="1365" top="5400" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="1365" top="5400" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Input 1" visible="1">
-   </PIN>
-   <PIN pinname="Input 2" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="39" srcpinname="Element Prototype" dstnodeid="38" dstpinname="Input 1">
-   </LINK>
    <NODE systemname="Circle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Circle (Notui.ElementPrototype Join)" componentmode="Hidden" id="37">
    <BOUNDS type="Node" left="1800" top="4980" width="100" height="100">
    </BOUNDS>
@@ -255,19 +225,11 @@
    </BOUNDS>
    <PIN pinname="Element Prototype" visible="1">
    </PIN>
-   <PIN pinname="Children" visible="1">
+   <PIN pinname="Children" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Name" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="37" srcpinname="Element Prototype" dstnodeid="38" dstpinname="Input 2">
-   </LINK>
-   <LINK srcnodeid="35" srcpinname="Output" dstnodeid="39" dstpinname="Children">
-   </LINK>
-   <LINK srcnodeid="35" srcpinname="Output" dstnodeid="37" dstpinname="Children">
-   </LINK>
-   <LINK srcnodeid="38" srcpinname="Output" dstnodeid="21" dstpinname="Element Prototypes">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="41">
    <BOUNDS type="Box" left="1740" top="8145" width="480" height="480">
    </BOUNDS>
@@ -445,5 +407,43 @@
    <LINK srcnodeid="49" srcpinname="Output" dstnodeid="50" dstpinname="Y Input Value">
    </LINK>
    <LINK srcnodeid="49" srcpinname="Output" dstnodeid="7" dstpinname="Index">
+   </LINK>
+   <NODE systemname="Cons (Notui.ElementPrototype)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Cons (Notui.ElementPrototype)" componentmode="Hidden" id="35">
+   <BOUNDS type="Node" left="1380" top="3435" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1380" top="3435" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Input 2" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="30" srcpinname="Element Prototype" dstnodeid="35" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="36" srcpinname="Element Prototype" dstnodeid="35" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="35" srcpinname="Output" dstnodeid="39" dstpinname="Children">
+   </LINK>
+   <LINK srcnodeid="35" srcpinname="Output" dstnodeid="37" dstpinname="Children">
+   </LINK>
+   <NODE systemname="Cons (Notui.ElementPrototype)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Cons (Notui.ElementPrototype)" componentmode="Hidden" id="38">
+   <BOUNDS type="Node" left="1365" top="5400" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1365" top="5400" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Input 2" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="39" srcpinname="Element Prototype" dstnodeid="38" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="37" srcpinname="Element Prototype" dstnodeid="38" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="38" srcpinname="Output" dstnodeid="21" dstpinname="Element Prototypes">
    </LINK>
    </PATCH>

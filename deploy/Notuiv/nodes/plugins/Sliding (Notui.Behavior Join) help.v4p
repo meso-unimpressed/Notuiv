@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
    <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Sliding (Notui.Behavior Join) help.v4p" scrollx="0" scrolly="-360">
-   <BOUNDS type="Window" left="10545" top="5955" width="16380" height="13800">
+   <BOUNDS type="Window" left="10545" top="5955" width="16380" height="23115">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
    <BOUNDS type="Node" left="225" top="225" width="5100" height="450">
