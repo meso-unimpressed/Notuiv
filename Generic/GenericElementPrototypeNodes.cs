@@ -9,7 +9,7 @@ namespace Notuiv.Generic
     #region SingleValue
 
     [PluginInfo(Name = "Cast",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Help = "Casts any type to a type of this category, so be sure the input is of the required type",
                 Tags = "convert, as, generic"
                 )]
@@ -20,14 +20,14 @@ namespace Notuiv.Generic
     #region SpreadOps
 
     [PluginInfo(Name = "Cons",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Help = "Concatenates all Input spreads.",
                 Tags = "generic, spreadop"
                 )]
     public class ElementPrototypeConsNode : Cons<ElementPrototype> { }
 
     [PluginInfo(Name = "CAR",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Version = "Bin",
                 Help = "Splits a given spread into first slice and remainder.",
                 Tags = "split, generic, spreadop",
@@ -36,7 +36,7 @@ namespace Notuiv.Generic
     public class ElementPrototypeCARBinNode : CARBin<ElementPrototype> { }
 
     [PluginInfo(Name = "CDR",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Version = "Bin",
                 Help = "Splits a given spread into remainder and last slice.",
                 Tags = "split, generic, spreadop",
@@ -45,7 +45,7 @@ namespace Notuiv.Generic
     public class ElementPrototypeCDRBinNode : CDRBin<ElementPrototype> { }
 
     [PluginInfo(Name = "Reverse",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Version = "Bin",
                 Help = "Reverses the order of the slices in the Spread.",
                 Tags = "invert, generic, spreadop",
@@ -54,7 +54,7 @@ namespace Notuiv.Generic
     public class ElementPrototypeReverseBinNode : ReverseBin<ElementPrototype> { }
 
     [PluginInfo(Name = "Shift",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Version = "Bin",
                 Help = "Shifts the slices in the Spread by the given Phase.",
                 Tags = "generic, spreadop",
@@ -63,7 +63,7 @@ namespace Notuiv.Generic
     public class ElementPrototypeShiftBinNode : ShiftBin<ElementPrototype> { }
 
     [PluginInfo(Name = "SetSlice",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Version = "Bin",
                 Help = "Replaces individual slices of a spread with the given input",
                 Tags = "generic, spreadop",
@@ -72,7 +72,7 @@ namespace Notuiv.Generic
     public class ElementPrototypeSetSliceNode : SetSlice<ElementPrototype> { }
 
     [PluginInfo(Name = "DeleteSlice",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Help = "Removes slices from the Spread at the positions addressed by the Index pin.",
                 Tags = "remove, generic, spreadop",
                 Author = "woei"
@@ -80,14 +80,14 @@ namespace Notuiv.Generic
     public class ElementPrototypeDeleteSliceNode : DeleteSlice<ElementPrototype> { }
 
     [PluginInfo(Name = "Select",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Help = "Returns each slice of the Input spread as often as specified by the corresponding Select slice. 0 meaning the slice will be omitted. ",
                 Tags = "repeat, resample, duplicate, spreadop"
                )]
     public class ElementPrototypeSelectNode : Select<ElementPrototype> { }
 
     [PluginInfo(Name = "Select",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Version = "Bin",
                 Help = "Returns each slice of the Input spread as often as specified by the corresponding Select slice. 0 meaning the slice will be omitted. ",
                 Tags = "repeat, resample, duplicate, spreadop",
@@ -96,14 +96,14 @@ namespace Notuiv.Generic
     public class ElementPrototypeSelectBinNode : SelectBin<ElementPrototype> { }
 
     [PluginInfo(Name = "Unzip",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Help = "The inverse of Zip. Interprets the Input spread as being interleaved and untangles it.",
                 Tags = "split, generic, spreadop"
                )]
     public class ElementPrototypeUnzipNode : Unzip<ElementPrototype> { }
 
     [PluginInfo(Name = "Unzip",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Version = "Bin",
                 Help = "The inverse of Zip. Interprets the Input spread as being interleaved and untangles it. With Bin Size.",
                 Tags = "split, generic, spreadop"
@@ -111,14 +111,14 @@ namespace Notuiv.Generic
     public class ElementPrototypeUnzipBinNode : Unzip<IInStream<ElementPrototype>> { }
 
     [PluginInfo(Name = "Zip",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Help = "Interleaves all Input spreads.",
                 Tags = "interleave, join, generic, spreadop"
                )]
     public class ElementPrototypeZipNode : Zip<ElementPrototype> { }
 
     [PluginInfo(Name = "Zip",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Version = "Bin",
                 Help = "Interleaves all Input spreads.",
                 Tags = "interleave, join, generic, spreadop"
@@ -126,7 +126,7 @@ namespace Notuiv.Generic
     public class ElementPrototypeZipBinNode : Zip<IInStream<ElementPrototype>> { }
 
     [PluginInfo(Name = "GetSpread",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Version = "Bin",
                 Help = "Returns sub-spreads from the input specified via offset and count",
                 Tags = "generic, spreadop",
@@ -134,7 +134,7 @@ namespace Notuiv.Generic
     public class ElementPrototypeGetSpreadNode : GetSpreadAdvanced<ElementPrototype> { }
 
     [PluginInfo(Name = "SetSpread",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Version = "Bin",
                 Help = "Allows to set sub-spreads into a given spread.",
                 Tags = "generic, spreadop",
@@ -143,14 +143,14 @@ namespace Notuiv.Generic
     public class ElementPrototypeSetSpreadNode : SetSpread<ElementPrototype> { }
 
     [PluginInfo(Name = "Pairwise",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Help = "Returns all combinations of pairs of successive slices. From an input ABCD returns AB, BC, CD.",
                 Tags = "generic, spreadop"
                 )]
     public class ElementPrototypePairwiseNode : Pairwise<ElementPrototype> { }
 
     [PluginInfo(Name = "SplitAt",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Help = "Splits the Input spread in two at the specified Index.",
                 Tags = "generic, spreadop"
                 )]
@@ -173,7 +173,7 @@ namespace Notuiv.Generic
     }
 
     [PluginInfo(Name = "Buffer",
-        Category = "Notui.Element",
+        Category = "Notui.ElementPrototype",
         Help = "Inserts the input at the given index.",
         Tags = "generic, spreadop, collection",
         AutoEvaluate = true
@@ -184,7 +184,7 @@ namespace Notuiv.Generic
     }
 
     [PluginInfo(Name = "Queue",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Help = "Inserts the input at index 0 and drops the oldest slice in a FIFO (First In First Out) fashion.",
                 Tags = "generic, spreadop, collection",
                 AutoEvaluate = true
@@ -195,7 +195,7 @@ namespace Notuiv.Generic
     }
 
     [PluginInfo(Name = "RingBuffer",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Help = "Inserts the input at the ringbuffer position.",
                 Tags = "generic, spreadop, collection",
                 AutoEvaluate = true
@@ -206,7 +206,7 @@ namespace Notuiv.Generic
     }
 
     [PluginInfo(Name = "Store",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Help = "Stores a spread and sets/removes/inserts slices.",
                 Tags = "add, insert, remove, generic, spreadop, collection",
                 Author = "woei",
@@ -215,7 +215,7 @@ namespace Notuiv.Generic
     public class ElementPrototypeStoreNode : Store<ElementPrototype> { }
 
     [PluginInfo(Name = "Stack",
-                Category = "Notui.Element",
+                Category = "Notui.ElementPrototype",
                 Help = "Stack data structure implementation using the LIFO (Last In First Out) paradigm.",
                 Tags = "generic, spreadop, collection",
                 Author = "vux"
@@ -224,7 +224,7 @@ namespace Notuiv.Generic
 
     [PluginInfo(
            Name = "QueueStore",
-           Category = "Notui.Element",
+           Category = "Notui.ElementPrototype",
            Help = "Stores a series of queues",
            Tags = "append, remove, generic, spreadop, collection",
            Author = "motzi"
