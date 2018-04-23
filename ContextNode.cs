@@ -80,6 +80,7 @@ namespace Notuiv
 
         private double _prevFrameTime = 0;
         private bool _initMo = true;
+        private int _areElementsChanged = 0;
 
         public bool IsTouchDefault()
         {
@@ -174,7 +175,12 @@ namespace Notuiv
                 Context.AspectRatio = FAspTr[0].AsSystemMatrix4X4();
 
             if (FElements.IsChanged && FElements.IsConnected)
+                _areElementsChanged = 2;
+            if (_areElementsChanged > 0)
+            {
                 Context.AddOrUpdateElements(true, FElements.ToArray());
+                _areElementsChanged--;
+            }
 
             Context.Mainloop((float)dt);
 

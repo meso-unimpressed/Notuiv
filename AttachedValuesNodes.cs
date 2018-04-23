@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Notui;
 using VVVV.PluginInterfaces.V2;
 
@@ -35,7 +36,9 @@ namespace Notuiv
                 {
                     FVals[i].AssignFrom(element.Value.Values);
                     FTexts[i].AssignFrom(element.Value.Texts);
+                    if (FAuxKeys.SliceCount == 0) FAuxKeys.SliceCount = FElement.SliceCount;
                     FAuxKeys[i].AssignFrom(element.Value.Auxiliary.Keys);
+                    if (FAuxVals.SliceCount == 0) FAuxVals.SliceCount = FElement.SliceCount;
                     FAuxVals[i].AssignFrom(element.Value.Auxiliary.Values);
                 }
             }

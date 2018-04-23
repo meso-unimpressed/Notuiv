@@ -164,10 +164,8 @@ namespace Notuiv.Generic
     {
         public override ElementPrototype Copy(ElementPrototype value)
         {
-            var res = new ElementPrototype(value.InstanceType, parent: value.Parent);
-            var rid = res.Id;
-            res.UpdateCommon(value, ApplyTransformMode.All);
-            res.Id = rid;
+            var res = value.Copy();
+            res.Id = Guid.NewGuid().ToString();
             return res;
         }
     }

@@ -47,4 +47,12 @@ namespace Notuiv
         Author = "microdee"
     )]
     public class MouseWheelScrollBehaviorInfoNode : BehaviorInstanceInfoNode<MouseWheelScroll, MouseWheelScroll.BehaviorState> { }
+
+    [PluginInfo(
+        Name = "MoveToTopOnTouch",
+        Category = "Notui.Behavior",
+        Version = "Join",
+        Author = "microdee"
+    )]
+    public class MoveToTopOnTouchBehaviorNode : AbstractBehaviorNode<MoveToTopOnTouchBehavior> { }
 }

@@ -167,7 +167,6 @@ namespace Notuiv
         public Spread<NotuiElement> Children { get; } = new Spread<NotuiElement>();
         public Spread<InteractionBehavior> Behaviors { get; } = new Spread<InteractionBehavior>();
         public Spread<NotuiElement> Parent { get; } = new Spread<NotuiElement>();
-        public Matrix4x4 VInterTr { get; private set; }
         public Matrix4x4 VDispTr { get; private set; }
 
         private readonly NotuiElement _element;
@@ -194,8 +193,7 @@ namespace Notuiv
                     Parent.SliceCount = 1;
                     Parent[0] = element.Parent;
                 }
-
-                VInterTr = _element.InteractionMatrix.AsVMatrix4X4();
+                
                 VDispTr = _element.DisplayMatrix.AsVMatrix4X4();
             };
         }

@@ -30,7 +30,7 @@ namespace Notuiv
 
         public void Evaluate(int SpreadMax)
         {
-            if (FElement.IsConnected)
+            if (FElement.IsConnected && FElement.SliceCount > 0 && FElement[0] != null)
             {
 
                 FOnInteractionBegin.SliceCount =

@@ -101,7 +101,6 @@ namespace Notuiv
                         if(FDisp[i] != null)
                             FElement[i].DisplayTransformation.UpdateFrom(FDisp[i], trupdmode);
                     }
-                    FElement[i].InteractionTransformation.UpdateFrom(FElement[i].DisplayTransformation);
                 }
             }
             else
@@ -142,7 +141,6 @@ namespace Notuiv
                         tr.Scale = scale.AsSystemVector();
 
                     }
-                    FElement[i].InteractionTransformation.UpdateFrom(FElement[i].DisplayTransformation);
 
                     FElementOut[i] = FElement[i];
                 }

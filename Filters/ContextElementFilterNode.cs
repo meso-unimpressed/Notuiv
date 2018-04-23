@@ -28,6 +28,8 @@ namespace Notuiv.Filters
 
         protected abstract void Filter(int i);
 
+        private int _elementsChanged = 0;
+
         public void Evaluate(int SpreadMax)
         {
             FOut.Stream.IsChanged = false;
@@ -60,13 +62,19 @@ namespace Notuiv.Filters
                 }
                 _prevContext = null;
             }
+
+            if (_elementsChanged > 0)
+            {
+                for (int i = 0; i < FQuery.SliceCount; i++)
+                    Filter(i);
+                FOut.Stream.IsChanged = true;
+                _elementsChanged--;
+            }
         }
 
         protected void HandleElementChange(object sender, EventArgs args)
         {
-            for (int i = 0; i < FQuery.SliceCount; i++)
-                Filter(i);
-            FOut.Stream.IsChanged = true;
+            _elementsChanged = 2;
         }
     }
 
@@ -105,6 +113,7 @@ namespace Notuiv.Filters
                 FOut[i].SliceCount = 0;
             else
             {
+                if(FOut.SliceCount == 0) return;
                 FOut[i].AssignFrom(FQueryFlattened[i]
                     ? FContext[0].FlatElements.Where(CompareType)
                     : FContext[0].RootElements.Values.Where(CompareType));
@@ -144,6 +153,7 @@ namespace Notuiv.Filters
                 FOut[i].SliceCount = 0;
             else
             {
+                if (FOut.SliceCount == 0) return;
                 FOut[i].AssignFrom(FQueryFlattened[i]
                     ? FContext[0].FlatElements.Where(CompareType)
                     : FContext[0].RootElements.Values.Where(CompareType));
@@ -177,6 +187,7 @@ namespace Notuiv.Filters
                 FOut[i].SliceCount = 0;
             else
             {
+                if (FOut.SliceCount == 0) return;
                 FOut[i].AssignFrom(FContext[i].Opaq(FQuery[i], FSeparator[i], FUseName[i]));
             }
         }

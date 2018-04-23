@@ -31,14 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="md.stdl, Version=0.1.47.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\md-stdl.0.1.47-beta\lib\net47\md.stdl.dll</HintPath>
+    <Reference Include="md.stdl, Version=0.1.50.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\md-stdl.0.1.50-beta\lib\net47\md.stdl.dll</HintPath>
     </Reference>
-    <Reference Include="mp.pddn, Version=1.1.25.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\mp.pddn.1.1.25\lib\net47\mp.pddn.dll</HintPath>
+    <Reference Include="mp.pddn, Version=1.1.26.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\mp.pddn.1.1.26\lib\net47\mp.pddn.dll</HintPath>
     </Reference>
-    <Reference Include="Notui, Version=0.1.11.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Notui.0.1.11-beta\lib\net47\Notui.dll</HintPath>
+    <Reference Include="Notui, Version=0.1.20.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Notui.0.1.20-beta\lib\net47\Notui.dll</HintPath>
     </Reference>
     <Reference Include="SevenZip, Version=9.20.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\LZMA-SDK.9.20\lib\net20\SevenZip.dll</HintPath>
@@ -150,6 +150,7 @@
     <Compile Include="Generic\GenericElementTransformationNodes.cs" />
     <Compile Include="NotuiUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubContextNodes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

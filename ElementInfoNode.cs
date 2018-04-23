@@ -99,37 +99,67 @@ namespace Notuiv
     {
         [Input("Element")] public Pin<NotuiElement> FElement;
 
-        [Output("Element")] public ISpread<NotuiElement> FElementOut;
-        [Output("Type")] public ISpread<string> FType;
+        [Output("Element")]
+        public ISpread<NotuiElement> FElementOut;
+        [Output("Type", Visibility = PinVisibility.OnlyInspector)]
+        public ISpread<string> FType;
 
-        [Output("Name Out")] public ISpread<string> FNameOut;
-        [Output("ID")] public ISpread<string> FId;
-        [Output("Hit")] public ISpread<bool> FHit;
-        [Output("Touched")] public ISpread<bool> FTouched;
-        [Output("Active Out")] public ISpread<bool> FActiveOut;
-        [Output("Transparent Out")] public ISpread<bool> FTransparentOut;
-        [Output("Fade Out Duration")] public ISpread<float> FFadeOutDur;
-        [Output("Fade In Duration")] public ISpread<float> FFadeInDur;
-        [Output("Fade Progress")] public ISpread<float> FElementFade;
-        [Output("Age")] public ISpread<double> FAge;
-        [Output("Dethklok")] public ISpread<double> FDethklok;
-        [Output("Dying")] public ISpread<bool> FDying;
+        [Output("Name Out")]
+        public ISpread<string> FNameOut;
+        [Output("ID")]
+        public ISpread<string> FId;
+        [Output("Hit")]
+        public ISpread<bool> FHit;
+        [Output("Touched")]
+        public ISpread<bool> FTouched;
+        [Output("Active Out", Visibility = PinVisibility.Hidden)]
+        public ISpread<bool> FActiveOut;
+        [Output("Transparent Out", Visibility = PinVisibility.Hidden)]
+        public ISpread<bool> FTransparentOut;
+        [Output("Fade Out Duration", Visibility = PinVisibility.OnlyInspector)]
+        public ISpread<float> FFadeOutDur;
+        [Output("Fade In Duration", Visibility = PinVisibility.OnlyInspector)]
+        public ISpread<float> FFadeInDur;
+        [Output("Fade Progress")]
+        public ISpread<float> FElementFade;
+        [Output("Age")]
+        public ISpread<double> FAge;
+        [Output("Fade In Stopwatch", Visibility = PinVisibility.Hidden)]
+        public ISpread<double> FBirthKlok;
+        [Output("Fade In Delay Stopwatch", Visibility = PinVisibility.OnlyInspector)]
+        public ISpread<double> FFadeInDelayStopwatch;
+        [Output("Fade Out Delay Stopwatch", Visibility = PinVisibility.OnlyInspector)]
+        public ISpread<double> FFadeOutDelayStopwatch;
+        [Output("Dethklok", Visibility = PinVisibility.Hidden)]
+        public ISpread<double> FDethklok;
+        [Output("Dying")]
+        public ISpread<bool> FDying;
 
-        [Output("Interacting Touches")] public ISpread<ISpread<Touch>> FTouches;
-        [Output("Are Interacting Touches Hitting")] public ISpread<ISpread<bool>> FTouchesHitting;
-        [Output("Touching Intersections")] public ISpread<ISpread<IntersectionPoint>> FTouchingIntersections;
-        [Output("Hitting Touches")] public ISpread<ISpread<Touch>> FHittingTouches;
-        [Output("Hitting Intersections")] public ISpread<ISpread<IntersectionPoint>> FHittingIntersections;
-        [Output("Mice")] public ISpread<ISpread<Mouse>> FAccMice;
-        [Output("Children Out")] public ISpread<ISpread<NotuiElement>> FChildrenOut;
-        [Output("Behaviors Out")] public ISpread<ISpread<InteractionBehavior>> FBehavsOut;
-        [Output("Parent")] public ISpread<ISpread<NotuiElement>> FParent;
-        [Output("Context")] public ISpread<NotuiContext> FContext;
+        [Output("Interacting Touches")]
+        public ISpread<ISpread<Touch>> FTouches;
+        [Output("Are Interacting Touches Hitting", BinVisibility = PinVisibility.OnlyInspector)]
+        public ISpread<ISpread<bool>> FTouchesHitting;
+        [Output("Touching Intersections", BinVisibility = PinVisibility.OnlyInspector)]
+        public ISpread<ISpread<IntersectionPoint>> FTouchingIntersections;
+        [Output("Hitting Touches")]
+        public ISpread<ISpread<Touch>> FHittingTouches;
+        [Output("Hitting Intersections", BinVisibility = PinVisibility.OnlyInspector)]
+        public ISpread<ISpread<IntersectionPoint>> FHittingIntersections;
+        [Output("Mice", Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.OnlyInspector)]
+        public ISpread<ISpread<Mouse>> FAccMice;
+        [Output("Children Out")]
+        public ISpread<ISpread<NotuiElement>> FChildrenOut;
+        [Output("Behaviors Out", Visibility = PinVisibility.OnlyInspector)]
+        public ISpread<ISpread<InteractionBehavior>> FBehavsOut;
+        [Output("Parent", BinVisibility = PinVisibility.Hidden)]
+        public ISpread<ISpread<NotuiElement>> FParent;
+        [Output("Context", Visibility = PinVisibility.OnlyInspector)]
+        public ISpread<NotuiContext> FContext;
         
-        [Output("Interaction Transformation Out")] public ISpread<Matrix4x4> FInterTrOut;
-        [Output("Display Transformation Out")] public ISpread<Matrix4x4> FDisplayTrOut;
-        [Output("Local Display Transformation")] public ISpread<ElementTransformation> FLocDisplay;
-        [Output("Local Interaction Transformation")] public ISpread<ElementTransformation> FLocInter;
+        [Output("Display Transformation Out")]
+        public ISpread<Matrix4x4> FDisplayTrOut;
+        [Output("Local Display Transformation", Visibility = PinVisibility.OnlyInspector)]
+        public ISpread<ElementTransformation> FLocDisplay;
 
         protected void AssignElementOutputs(NotuiElement element, int i)
         {
@@ -144,7 +174,6 @@ namespace Notuiv
                 FChildrenOut[i] = venvdat.Children;
                 FBehavsOut[i] = venvdat.Behaviors;
                 FParent[i] = venvdat.Parent;
-                FInterTrOut[i] = venvdat.VInterTr;
                 FDisplayTrOut[i] = venvdat.VDispTr;
                 FType[i] = venvdat.TypeCSharpName;
             }
@@ -160,10 +189,12 @@ namespace Notuiv
             FFadeInDur[i] = element.FadeInTime;
             FElementFade[i] = element.ElementFade;
             FAge[i] = element.Age.Elapsed.TotalSeconds;
+            FBirthKlok[i] = element.FadeInStopwatch.Elapsed.TotalSeconds;
+            FFadeInDelayStopwatch[i] = element.FadeInDelayTimer.Elapsed.TotalSeconds;
+            FFadeOutDelayStopwatch[i] = element.FadeOutDelayTimer.Elapsed.TotalSeconds;
             FDying[i] = element.Dying;
             FDethklok[i] = element.Dethklok.Elapsed.TotalSeconds;
             FLocDisplay[i] = element.DisplayTransformation;
-            FLocInter[i] = element.InteractionTransformation;
         }
 
         protected int _prevSliceCount;
