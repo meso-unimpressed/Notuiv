@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Wrap (Notui.Auxiliary) help.v4p" scrollx="0" scrolly="-360" locked="0">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Wrap (Notui.Auxiliary) help.v4p" scrollx="0" scrolly="360" locked="0">
    <BOUNDS type="Window" left="4545" top="3270" width="18915" height="15195">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -71,9 +71,9 @@
    <LINK srcnodeid="4" srcpinname="Element Prototype" dstnodeid="5" dstpinname="Element Prototypes">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="7">
-   <BOUNDS type="Box" left="1155" top="11580" width="480" height="480">
+   <BOUNDS type="Box" left="1335" top="11580" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="1155" top="11580" width="0" height="0">
+   <BOUNDS type="Node" left="1335" top="11580" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -103,9 +103,9 @@
    <LINK srcnodeid="9" srcpinname="Output Node" dstnodeid="0" dstpinname="Learn Input Type Reference">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="10">
-   <BOUNDS type="Box" left="1320" top="12390" width="795" height="240">
+   <BOUNDS type="Box" left="960" top="12360" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="1320" top="12390" width="0" height="0">
+   <BOUNDS type="Node" left="960" top="12360" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -365,9 +365,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="48">
-   <BOUNDS type="Node" left="1710" top="11715" width="2325" height="270">
+   <BOUNDS type="Node" left="1890" top="11715" width="2325" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="1710" top="11715" width="2325" height="270">
+   <BOUNDS type="Box" left="1890" top="11715" width="2325" height="270">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|See the above section for these|">
    </PIN>
@@ -405,9 +405,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="51">
-   <BOUNDS type="Box" left="960" top="11055" width="1590" height="270">
+   <BOUNDS type="Box" left="1140" top="11055" width="1590" height="270">
    </BOUNDS>
-   <BOUNDS type="Node" left="960" top="11055" width="0" height="0">
+   <BOUNDS type="Node" left="1140" top="11055" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Enum" slicecount="1" visible="1" values="TopLevel">
    </PIN>
@@ -600,4 +600,6 @@
    </NODE>
    <LINK srcnodeid="32" srcpinname="Keys Out" dstnodeid="61" dstpinname="Input String">
    </LINK>
+   <PACK Name="dx11" Version="1.2">
+   </PACK>
    </PATCH>

@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
    <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\SetAuxiliary (Notui.Element Join) help.v4p" scrollx="0" scrolly="-360">
-   <BOUNDS type="Window" left="22035" top="10770" width="9000" height="6000">
+   <BOUNDS type="Window" left="22035" top="10770" width="17985" height="14610">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
    <BOUNDS type="Node" left="225" top="225" width="5100" height="450">
@@ -310,22 +310,10 @@
    <PIN pinname="Output String" slicecount="1" visible="0" values="||">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="22">
-   <BOUNDS type="Node" left="1350" top="1800" width="6600" height="1050">
-   </BOUNDS>
-   <BOUNDS type="Box" left="1350" top="1800" width="6600" height="1050">
-   </BOUNDS>
-   <PIN pinname="Size" slicecount="1" visible="1" values="12">
-   </PIN>
-   <PIN pinname="Input String" slicecount="1" visible="0" values="|This helpatch is still missing. See https://vvvv.org/documentation/conventions.helppatch for how to make a good one!|">
-   </PIN>
-   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
-   </PIN>
-   </NODE>
    <NODE nodename="SetAuxiliary (Notui.Element Join)" componentmode="Hidden" id="21">
-   <BOUNDS type="Node" left="2550" top="3600" width="0" height="0">
+   <BOUNDS type="Node" left="5820" top="3765" width="0" height="0">
    </BOUNDS>
-   <BOUNDS type="Box" left="2550" top="3600" width="0" height="0">
+   <BOUNDS type="Box" left="5820" top="3765" width="0" height="0">
    </BOUNDS>
    </NODE>
    <PACK Name="KeyboardUI" Version="1.1.1">
@@ -333,5 +321,7 @@
    <PACK Name="vvvv-Message" Version="2.9.10">
    </PACK>
    <PACK Name="addonpack" Version="36.0.0">
+   </PACK>
+   <PACK Name="dx11" Version="1.2">
    </PACK>
    </PATCH>

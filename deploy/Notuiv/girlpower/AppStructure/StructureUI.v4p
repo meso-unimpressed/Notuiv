@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\girlpower\AppStructure\StructureUI.v4p" systemname="StructureUI" filename="D:\local\vvvv-gp\packs\Notuiv\girlpower\AppStructure\StructureUI.v4p" scrollx="0" scrolly="-360">
-   <BOUNDS type="Window" left="22710" top="13800" width="29280" height="17640">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\girlpower\AppStructure\StructureUI.v4p" systemname="StructureUI" filename="D:\local\vvvv-gp\packs\Notuiv\girlpower\AppStructure\StructureUI.v4p" scrollx="9930" scrolly="3420">
+   <BOUNDS type="Window" left="4305" top="5370" width="14010" height="11325">
    </BOUNDS>
    <PACK Name="dx11" Version="1.2">
    </PACK>
@@ -134,20 +134,6 @@
    <PIN pinname="Y Output Value" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="GridSplit (Transform)" filename="%VVVV%\packs\mp.essentials\nodes\modules\transform\GridSplit (Transform).v4p" nodename="GridSplit (Transform)" componentmode="Hidden" id="9">
-   <BOUNDS type="Node" left="9015" top="2100" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Rows" slicecount="1" visible="1" values="4">
-   </PIN>
-   <PIN pinname="Columns" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="Transform Out" visible="1">
-   </PIN>
-   <PIN pinname="Scale" slicecount="1" visible="1" values="0.93">
-   </PIN>
-   <BOUNDS type="Window" left="19425" top="9345" width="9000" height="9660">
-   </BOUNDS>
-   </NODE>
    <NODE systemname="Buttons" filename="%VVVV%\packs\Notuiv\girlpower\AppStructure\Buttons.v4p" componentmode="InABox" id="10" nodename="%VVVV%\packs\Notuiv\girlpower\AppStructure\Buttons.v4p">
    <BOUNDS type="Node" left="10830" top="450" width="100" height="100">
    </BOUNDS>
@@ -181,8 +167,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="11" srcpinname="Y Output Value" dstnodeid="12" dstpinname="Z">
-   </LINK>
-   <LINK srcnodeid="9" srcpinname="Transform Out" dstnodeid="12" dstpinname="Transform In">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="13" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="4785" top="18585" width="795" height="240">
@@ -257,9 +241,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="19">
-   <BOUNDS type="Box" left="9510" top="1395" width="795" height="240">
+   <BOUNDS type="Box" left="9825" top="660" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="9510" top="1395" width="0" height="0">
+   <BOUNDS type="Node" left="9825" top="660" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="5">
    </PIN>
@@ -269,9 +253,9 @@
    </PIN>
    <PIN pinname="Value Type" slicecount="1" values="Integer">
    </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="19" srcpinname="Y Output Value" dstnodeid="9" dstpinname="Rows">
-   </LINK>
    <NODE systemname="Rectangle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Rectangle (Notui.ElementPrototype Join)" componentmode="Hidden" id="22">
    <BOUNDS type="Node" left="4800" top="3675" width="100" height="100">
    </BOUNDS>
@@ -495,5 +479,71 @@
    <LINK srcnodeid="42" srcpinname="Y Output Value" dstnodeid="44" dstpinname="Input 1">
    </LINK>
    <LINK srcnodeid="44" srcpinname="Output" dstnodeid="27" dstpinname="TranslateY">
+   </LINK>
+   <NODE systemname="GridSplit (2d)" nodename="GridSplit (2d)" componentmode="Hidden" id="45">
+   <BOUNDS type="Node" left="9150" top="1290" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Rows" visible="1">
+   </PIN>
+   <PIN pinname="Index" visible="1">
+   </PIN>
+   <PIN pinname="X" visible="1">
+   </PIN>
+   <PIN pinname="Y" visible="1">
+   </PIN>
+   <PIN pinname="Width" visible="1">
+   </PIN>
+   <PIN pinname="Height" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="19" srcpinname="Y Output Value" dstnodeid="45" dstpinname="Rows">
+   </LINK>
+   <NODE systemname="I (Spreads)" nodename="I (Spreads)" componentmode="Hidden" id="46">
+   <BOUNDS type="Node" left="9150" top="840" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname=".. To [" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="19" srcpinname="Y Output Value" dstnodeid="46" dstpinname=".. To [">
+   </LINK>
+   <LINK srcnodeid="46" srcpinname="Output" dstnodeid="45" dstpinname="Index">
+   </LINK>
+   <NODE systemname="Transform (Transform 2d)" nodename="Transform (Transform 2d)" componentmode="Hidden" id="47">
+   <BOUNDS type="Node" left="8985" top="1740" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="TranslateX" visible="1">
+   </PIN>
+   <PIN pinname="TranslateY" visible="1">
+   </PIN>
+   <PIN pinname="ScaleX" visible="1">
+   </PIN>
+   <PIN pinname="ScaleY" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="45" srcpinname="X" dstnodeid="47" dstpinname="TranslateX">
+   </LINK>
+   <LINK srcnodeid="45" srcpinname="Y" dstnodeid="47" dstpinname="TranslateY">
+   </LINK>
+   <LINK srcnodeid="45" srcpinname="Width" dstnodeid="47" dstpinname="ScaleX">
+   </LINK>
+   <LINK srcnodeid="45" srcpinname="Height" dstnodeid="47" dstpinname="ScaleY">
+   </LINK>
+   <NODE systemname="UniformScale (Transform)" nodename="UniformScale (Transform)" componentmode="Hidden" id="48">
+   <BOUNDS type="Node" left="8970" top="2175" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="XYZ" slicecount="1" values="0.93">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="47" srcpinname="Transform Out" dstnodeid="48" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="48" srcpinname="Transform Out" dstnodeid="12" dstpinname="Transform In">
    </LINK>
    </PATCH>

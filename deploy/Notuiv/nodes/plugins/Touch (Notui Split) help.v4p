@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Touch (Notui Split) help.v4p" scrollx="0" scrolly="495">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Touch (Notui Split) help.v4p" scrollx="0" scrolly="135">
    <BOUNDS type="Window" left="930" top="5775" width="11520" height="14985">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -722,4 +722,6 @@
    </LINK>
    <LINK srcnodeid="48" srcpinname="Y Output Value" dstnodeid="54" dstpinname="Mouse Touch ID">
    </LINK>
+   <PACK Name="dx11" Version="1.2">
+   </PACK>
    </PATCH>

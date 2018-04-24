@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Box (Notui.ElementPrototype Join) help.v4p" scrollx="2100" scrolly="2850">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Box (Notui.ElementPrototype Join) help.v4p" scrollx="0" scrolly="6060">
    <BOUNDS type="Window" left="1155" top="2025" width="12840" height="13905">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">

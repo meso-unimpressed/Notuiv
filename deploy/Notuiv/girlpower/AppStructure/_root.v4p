@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
    <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\girlpower\AppStructure\_root.v4p" systemname="AppStructure" filename="D:\local\vvvv-gp\packs\Notuiv\girlpower\AppStructure.v4p" scrollx="0" scrolly="-360">
-   <BOUNDS type="Window" left="7620" top="2865" width="8640" height="8925">
+   <BOUNDS type="Window" left="2880" top="2085" width="8640" height="8925">
    </BOUNDS>
    <PACK Name="dx11" Version="1.2">
    </PACK>
@@ -35,9 +35,9 @@
    <LINK srcnodeid="1" srcpinname="Element Prototype" dstnodeid="0" dstpinname="Element Prototypes">
    </LINK>
    <NODE systemname="RenderUI" filename="%VVVV%\packs\Notuiv\girlpower\AppStructure\RenderUI.v4p" componentmode="Hidden" id="2" nodename="%VVVV%\packs\Notuiv\girlpower\AppStructure\RenderUI.v4p">
-   <BOUNDS type="Node" left="1605" top="5070" width="100" height="100">
+   <BOUNDS type="Node" left="1980" top="5160" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="1605" top="5070" width="4800" height="3600">
+   <BOUNDS type="Box" left="1980" top="5160" width="4800" height="3600">
    </BOUNDS>
    <BOUNDS type="Window" left="6120" top="5565" width="15465" height="23160">
    </BOUNDS>
@@ -95,9 +95,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="7">
-   <BOUNDS type="Node" left="1755" top="5760" width="5745" height="270">
+   <BOUNDS type="Node" left="2265" top="5640" width="5745" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="1755" top="5760" width="4680" height="750">
+   <BOUNDS type="Box" left="2265" top="5640" width="4680" height="750">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|And finally this output patch contains the Notui Context node and the renderer. Notui relies on Depth while hittesting so it makes sense to turn on the Depth buffer on the DX11 Renderers|">
    </PIN>
@@ -118,24 +118,4 @@
    <PIN pinname="Maximum Background FPS" visible="1">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="8">
-   <BOUNDS type="Box" left="5715" top="7035" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="5715" top="7035" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1000">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Integer">
-   </PIN>
-   <PIN pinname="Y Output Value" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="8" srcpinname="Y Output Value" dstnodeid="-6" dstpinname="Maximum Foreground FPS">
-   </LINK>
-   <LINK srcnodeid="8" srcpinname="Y Output Value" dstnodeid="-6" dstpinname="Maximum Background FPS">
-   </LINK>
    </PATCH>

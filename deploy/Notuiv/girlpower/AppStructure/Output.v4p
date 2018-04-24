@@ -10,12 +10,12 @@
    </PACK>
    <PACK Name="addonpack" Version="36.0.0">
    </PACK>
-   <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="0" border="0">
+   <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="0" border="1">
    <BOUNDS type="Node" left="2370" top="2670" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="2370" top="2670" width="6000" height="4500">
    </BOUNDS>
-   <BOUNDS type="Window" left="28800" top="0" width="28800" height="16200">
+   <BOUNDS type="Window" left="27990" top="6300" width="16920" height="9705">
    </BOUNDS>
    <PIN pinname="Mouse State" visible="1">
    </PIN>
@@ -192,14 +192,6 @@
    </NODE>
    <LINK srcnodeid="15" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Show Cursor">
    </LINK>
-   <NODE systemname="PerfMeter2 (DX11.Debug)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\PerfMeter2 (DX11.Debug).v4p" nodename="PerfMeter2 (DX11.Debug)" componentmode="Hidden" id="16">
-   <BOUNDS type="Node" left="2700" top="1665" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Layer In" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Layer Out" visible="1">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="17">
    <BOUNDS type="Box" left="2715" top="795" width="795" height="240">
    </BOUNDS>
@@ -209,91 +201,9 @@
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Layer In|">
    </PIN>
-   </NODE>
-   <LINK srcnodeid="17" srcpinname="Output Node" dstnodeid="16" dstpinname="Layer In">
-   </LINK>
-   <LINK srcnodeid="16" srcpinname="Layer Out" dstnodeid="0" dstpinname="Layers">
-   </LINK>
-   <NODE systemname="FakeFullscreen (VVVV)" filename="%VVVV%\packs\mp.essentials\nodes\modules\vvvv\FakeFullscreen (VVVV).v4p" nodename="FakeFullscreen (VVVV)" componentmode="Hidden" id="18">
-   <BOUNDS type="Node" left="8715" top="2910" width="1500" height="270">
-   </BOUNDS>
-   <PIN pinname="id" visible="1">
-   </PIN>
-   <PIN pinname="Patch" visible="1">
-   </PIN>
-   <PIN pinname="Merged Layout" slicecount="2" visible="1" values="2,2">
-   </PIN>
-   <PIN pinname="Merged Position" slicecount="2" visible="1" values="1,1">
-   </PIN>
-   <PIN pinname="Selected Monitor" visible="1">
+   <PIN pinname="Output Node" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="0" srcpinname="ID" dstnodeid="18" dstpinname="id">
-   </LINK>
-   <NODE systemname="PatchAlias (VVVV)" nodename="PatchAlias (VVVV)" componentmode="Hidden" id="19">
-   <BOUNDS type="Node" left="8700" top="2415" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Patch" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="19" srcpinname="Patch" dstnodeid="18" dstpinname="Patch">
-   </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="20">
-   <BOUNDS type="Box" left="9375" top="1440" width="795" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="9375" top="1440" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="1,0">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Integer">
-   </PIN>
-   <PIN pinname="Vector Size" slicecount="1" values="2">
-   </PIN>
-   <PIN pinname="Rows" slicecount="1" values="2">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="20" srcpinname="Y Output Value" dstnodeid="18" dstpinname="Merged Position">
-   </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="21">
-   <BOUNDS type="Box" left="9210" top="870" width="795" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="9210" top="870" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="2,2">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Integer">
-   </PIN>
-   <PIN pinname="Vector Size" slicecount="1" values="2">
-   </PIN>
-   <PIN pinname="Rows" slicecount="1" values="2">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="21" srcpinname="Y Output Value" dstnodeid="18" dstpinname="Merged Layout">
-   </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="22">
-   <BOUNDS type="Box" left="9030" top="450" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="9030" top="450" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Integer">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="22" srcpinname="Y Output Value" dstnodeid="18" dstpinname="Selected Monitor">
-   </LINK>
    <NODE systemname="R (Node)" nodename="R (Node)" componentmode="Hidden" id="23">
    <BOUNDS type="Node" left="4050" top="1350" width="100" height="100">
    </BOUNDS>
@@ -347,5 +257,7 @@
    <LINK srcnodeid="27" srcpinname="Hierarchical Elements" dstnodeid="12" dstpinname="Input Value">
    </LINK>
    <LINK srcnodeid="14" srcpinname="Transform Out" dstnodeid="27" dstpinname="Aspect Ratio">
+   </LINK>
+   <LINK srcnodeid="17" srcpinname="Output Node" dstnodeid="0" dstpinname="Layers">
    </LINK>
    </PATCH>

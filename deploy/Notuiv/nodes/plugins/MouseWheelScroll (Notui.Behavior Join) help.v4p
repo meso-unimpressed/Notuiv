@@ -344,46 +344,10 @@
    </NODE>
    <LINK srcnodeid="63" srcpinname="Transform Out" dstnodeid="58" dstpinname="Display Transform">
    </LINK>
-   <NODE systemname="GridSplit (Transform)" filename="%VVVV%\packs\mp.essentials\nodes\modules\transform\GridSplit (Transform).v4p" nodename="GridSplit (Transform)" componentmode="Hidden" id="64">
-   <BOUNDS type="Node" left="3300" top="6840" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Width" visible="1">
-   </PIN>
-   <PIN pinname="Height" visible="1">
-   </PIN>
-   <PIN pinname="Rows" visible="1">
-   </PIN>
-   <PIN pinname="Columns" visible="1">
-   </PIN>
-   <PIN pinname="Transform Out" visible="1">
-   </PIN>
-   <PIN pinname="Scale" slicecount="1" values="0.9">
-   </PIN>
-   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="65">
-   <BOUNDS type="Box" left="4125" top="6135" width="630" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="4125" top="6135" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Y Output Value" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="65" srcpinname="Y Output Value" dstnodeid="64" dstpinname="Width">
-   </LINK>
-   <LINK srcnodeid="65" srcpinname="Y Output Value" dstnodeid="64" dstpinname="Height">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="66">
-   <BOUNDS type="Box" left="3000" top="4770" width="540" height="240">
+   <BOUNDS type="Box" left="1845" top="4875" width="540" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="3000" top="4770" width="0" height="0">
+   <BOUNDS type="Node" left="1845" top="4875" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="20">
    </PIN>
@@ -396,12 +360,6 @@
    <PIN pinname="Y Output Value" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="66" srcpinname="Y Output Value" dstnodeid="64" dstpinname="Rows">
-   </LINK>
-   <LINK srcnodeid="66" srcpinname="Y Output Value" dstnodeid="64" dstpinname="Columns">
-   </LINK>
-   <LINK srcnodeid="64" srcpinname="Transform Out" dstnodeid="63" dstpinname="Transform In">
-   </LINK>
    <NODE systemname="S (Node)" nodename="S (Node)" componentmode="Hidden" id="67">
    <BOUNDS type="Node" left="7755" top="22455" width="100" height="100">
    </BOUNDS>
@@ -715,15 +673,13 @@
    <LINK srcnodeid="84" srcpinname="Output" dstnodeid="93" dstpinname="Behaviors">
    </LINK>
    <NODE systemname="Transform (Transform 2d Vector)" nodename="Transform (Transform 2d Vector)" componentmode="Hidden" id="94">
-   <BOUNDS type="Node" left="3300" top="5625" width="100" height="100">
+   <BOUNDS type="Node" left="2355" top="6045" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
    <PIN pinname="ScaleXY" slicecount="2" visible="1" values="10,10">
    </PIN>
    </NODE>
-   <LINK srcnodeid="94" srcpinname="Transform Out" dstnodeid="64" dstpinname="Transform In">
-   </LINK>
    <LINK srcnodeid="55" srcpinname="Y Output Value" dstnodeid="94" dstpinname="ScaleXY">
    </LINK>
    <NODE systemname="S (Node)" nodename="S (Node)" componentmode="Hidden" id="102">
@@ -925,5 +881,145 @@
    <LINK srcnodeid="117" srcpinname="Output" dstnodeid="116" dstpinname="Scalar">
    </LINK>
    <LINK srcnodeid="116" srcpinname="Output" dstnodeid="14" dstpinname="Color">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="123">
+   <BOUNDS type="Box" left="3585" top="4515" width="300" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3585" top="4515" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="5">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="GridSplit (2d)" nodename="GridSplit (2d)" componentmode="Hidden" id="122">
+   <BOUNDS type="Node" left="3570" top="5865" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Rows" visible="1">
+   </PIN>
+   <PIN pinname="Index" visible="1">
+   </PIN>
+   <PIN pinname="X" visible="1">
+   </PIN>
+   <PIN pinname="Y" visible="1">
+   </PIN>
+   <PIN pinname="Width" visible="1">
+   </PIN>
+   <PIN pinname="Height" visible="1">
+   </PIN>
+   <PIN pinname="Columns" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="123" srcpinname="Y Output Value" dstnodeid="122" dstpinname="Rows">
+   </LINK>
+   <NODE systemname="I (Spreads)" nodename="I (Spreads)" componentmode="Hidden" id="121">
+   <BOUNDS type="Node" left="3570" top="5415" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname=".. To [" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="121" srcpinname="Output" dstnodeid="122" dstpinname="Index">
+   </LINK>
+   <NODE systemname="Transform (Transform 2d)" nodename="Transform (Transform 2d)" componentmode="Hidden" id="120">
+   <BOUNDS type="Node" left="3405" top="6315" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="TranslateX" visible="1">
+   </PIN>
+   <PIN pinname="TranslateY" visible="1">
+   </PIN>
+   <PIN pinname="ScaleX" visible="1">
+   </PIN>
+   <PIN pinname="ScaleY" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="122" srcpinname="X" dstnodeid="120" dstpinname="TranslateX">
+   </LINK>
+   <LINK srcnodeid="122" srcpinname="Y" dstnodeid="120" dstpinname="TranslateY">
+   </LINK>
+   <LINK srcnodeid="122" srcpinname="Width" dstnodeid="120" dstpinname="ScaleX">
+   </LINK>
+   <LINK srcnodeid="122" srcpinname="Height" dstnodeid="120" dstpinname="ScaleY">
+   </LINK>
+   <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="119">
+   <BOUNDS type="Node" left="3750" top="5025" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="123" srcpinname="Y Output Value" dstnodeid="119" dstpinname="Input 1">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="118">
+   <BOUNDS type="Box" left="4080" top="4515" width="285" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4080" top="4515" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="118" srcpinname="Y Output Value" dstnodeid="122" dstpinname="Columns">
+   </LINK>
+   <LINK srcnodeid="118" srcpinname="Y Output Value" dstnodeid="119" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="119" srcpinname="Output" dstnodeid="121" dstpinname=".. To [">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="124">
+   <BOUNDS type="Box" left="3840" top="4050" width="390" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3840" top="4050" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="20">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="124" srcpinname="Y Output Value" dstnodeid="123" dstpinname="Y Input Value">
+   </LINK>
+   <LINK srcnodeid="124" srcpinname="Y Output Value" dstnodeid="118" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="UniformScale (Transform)" nodename="UniformScale (Transform)" componentmode="Hidden" id="125">
+   <BOUNDS type="Node" left="3420" top="6765" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="XYZ" slicecount="1" values="0.93">
+   </PIN>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="120" srcpinname="Transform Out" dstnodeid="125" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="94" srcpinname="Transform Out" dstnodeid="120" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="125" srcpinname="Transform Out" dstnodeid="63" dstpinname="Transform In">
    </LINK>
    </PATCH>
