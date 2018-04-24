@@ -137,6 +137,9 @@ namespace Notuiv
         [Input("Attached Auxiliary Keys", BinSize = 0, Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.Hidden)]
         public ISpread<ISpread<string>> FAttAuxKeys;
 
+        [Input("Set Attached Values")]
+        public IDiffSpread<bool> FSetAttVals;
+
         [Input("Display Transform")]
         public IDiffSpread<VMatrix> FDispTr;
         [Input("Transformation Update Mode", DefaultEnumEntry = "All")]
@@ -174,8 +177,10 @@ namespace Notuiv
             el.FadeOutDelay = FFadeOutDel[i];
             el.SubContextOptions = FSubContext[i];
             el.OnlyHitIfParentIsHit = FClipParentHitting[i];
+            var setvals = FSetAttVals[i] || isnew;
+            el.SetAttachedValues = setvals;
 
-            if (FAttAux[i].SliceCount > 0 || FAttTexts[i].SliceCount > 0 || FAttVals[i].SliceCount > 0)
+            if (setvals && (FAttAux[i].SliceCount > 0 || FAttTexts[i].SliceCount > 0 || FAttVals[i].SliceCount > 0))
             {
                 if(el.Value == null)
                     el.Value = new AttachedValues();
@@ -231,7 +236,7 @@ namespace Notuiv
                                     FFadeIn.IsChanged || FFadeOut.IsChanged || FFadeInDel.IsChanged || FFadeOutDel.IsChanged ||
                                     FTransFollowTime.IsChanged || FBehaviors.IsChanged || FTransparent.IsChanged || FActive.IsChanged ||
                                     FDispTr.IsChanged || FTrUpdateMode.IsChanged || FClipParentHitting.IsChanged || FSubContext.IsChanged ||
-                                    AttachedChanged() || AuxDataChanged();
+                                    FSetAttVals.IsChanged || AttachedChanged() || AuxDataChanged();
             bool changed = FChildren.IsChanged || changewochildren;
 
             int sprmax = SpreadUtils.SpreadMax(FChildren, FName, FBehaviors, FDispTr);

@@ -10,6 +10,20 @@ namespace Notuiv
 {
 
     [PluginInfo(
+        Name = "Plane",
+        Category = "Notui.ElementPrototype",
+        Version = "Join",
+        Author = "microdee"
+    )]
+    public class PlaneElementNode : AbstractElementNode<InfinitePlaneElementPrototype>
+    {
+        protected override InfinitePlaneElementPrototype ConstructPrototype(int i, string id)
+        {
+            return new InfinitePlaneElementPrototype(string.IsNullOrWhiteSpace(id) ? null : id);
+        }
+    }
+
+    [PluginInfo(
         Name = "Rectangle",
         Category = "Notui.ElementPrototype",
         Version = "Join",
@@ -46,13 +60,13 @@ namespace Notuiv
     public class SegmentElementNode : AbstractElementNode<SegmentElementPrototype>
     {
         [Input("Inner Radius")]
-        public ISpread<float> FInnerRadius;
+        public IDiffSpread<float> FInnerRadius;
 
         [Input("Cycles")]
-        public ISpread<float> FCycles;
+        public IDiffSpread<float> FCycles;
 
         [Input("Phase")]
-        public ISpread<float> FPhase;
+        public IDiffSpread<float> FPhase;
 
         protected override SegmentElementPrototype ConstructPrototype(int i, string id)
         {
@@ -73,7 +87,7 @@ namespace Notuiv
 
         protected override bool AuxDataChanged()
         {
-            return FInnerRadius.IsChanged || FCycles.IsChanged;
+            return FInnerRadius.IsChanged || FCycles.IsChanged || FPhase.IsChanged;
         }
     }
 
@@ -122,13 +136,13 @@ namespace Notuiv
     public class SetSegmentParamsNode : SetExtraParamsNodeBase<SegmentElement>
     {
         [Input("Inner Radius")]
-        public ISpread<float> FInnerRad;
+        public IDiffSpread<float> FInnerRad;
 
         [Input("Cycles")]
-        public ISpread<float> FCycles;
+        public IDiffSpread<float> FCycles;
 
         [Input("Phase")]
-        public ISpread<float> FPhase;
+        public IDiffSpread<float> FPhase;
 
         public override void SetExtraParameters(int i, SegmentElement element)
         {
@@ -146,20 +160,21 @@ namespace Notuiv
     )]
     public class PolygonElementNode : AbstractElementNode<PolygonElementPrototype>
     {
-        [Input("Vertices")] public ISpread<ISpread<Vector3D>> FVerts;
+        [Input("Vertices")]
+        public IDiffSpread<ISpread<Vector2D>> FVerts;
 
         protected override PolygonElementPrototype ConstructPrototype(int i, string id)
         {
             var res = new PolygonElementPrototype(string.IsNullOrWhiteSpace(id) ? null : id);
             res.Vertices.Clear();
-            res.Vertices.AddRange(FVerts[i].Select(v => v.xy.AsSystemVector()));
+            res.Vertices.AddRange(FVerts[i].Select(v => v.AsSystemVector()));
             return res;
         }
 
         protected override void FillElementAuxData(PolygonElementPrototype el, int i)
         {
             el.Vertices.Clear();
-            el.Vertices.AddRange(FVerts[i].Select(v => v.xy.AsSystemVector()));
+            el.Vertices.AddRange(FVerts[i].Select(v => v.AsSystemVector()));
         }
 
         protected override bool AuxDataChanged()
@@ -205,7 +220,7 @@ namespace Notuiv
     public class SetPolygon2DParamsNode : SetExtraParamsNodeBase<PolygonElement>
     {
         [Input("Vertices")]
-        public ISpread<ISpread<Vector2D>> FVerts;
+        public IDiffSpread<ISpread<Vector2D>> FVerts;
 
         public override void SetExtraParameters(int i, PolygonElement element)
         {
@@ -237,7 +252,7 @@ namespace Notuiv
     public class BoxElementNode : AbstractElementNode<BoxElementPrototype>
     {
         [Input("Size", DefaultValues = new [] {1.0, 1.0, 1.0})]
-        public ISpread<Vector3D> FSize;
+        public IDiffSpread<Vector3D> FSize;
 
         protected override BoxElementPrototype ConstructPrototype(int i, string id)
         {
@@ -295,7 +310,7 @@ namespace Notuiv
     public class SetBoxParamsNode : SetExtraParamsNodeBase<BoxElement>
     {
         [Input("Size", DefaultValues = new[] { 1.0, 1.0, 1.0 })]
-        public ISpread<Vector3D> FSize;
+        public IDiffSpread<Vector3D> FSize;
 
         public override void SetExtraParameters(int i, BoxElement element)
         {

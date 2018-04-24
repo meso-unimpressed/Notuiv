@@ -37,8 +37,8 @@
     <Reference Include="mp.pddn, Version=1.1.26.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\mp.pddn.1.1.26\lib\net47\mp.pddn.dll</HintPath>
     </Reference>
-    <Reference Include="Notui, Version=0.1.20.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Notui.0.1.20-beta\lib\net47\Notui.dll</HintPath>
+    <Reference Include="Notui, Version=0.1.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Notui.0.1.21-beta\lib\net47\Notui.dll</HintPath>
     </Reference>
     <Reference Include="SevenZip, Version=9.20.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\LZMA-SDK.9.20\lib\net20\SevenZip.dll</HintPath>

@@ -67,7 +67,7 @@ namespace Notuiv
         [Input("Hosting Element")]
         public Pin<NotuiElement> FHostElements;
         [Input("Element Prototypes")]
-        public ISpread<ISpread<ElementPrototype>> FElements;
+        public IDiffSpread<ISpread<ElementPrototype>> FElements;
         [Input("Force Update Elements", IsBang = true, Visibility = PinVisibility.Hidden)]
         public ISpread<bool> FUpdateElements;
         [Input("Auto Update Elements", DefaultBoolean = true, Visibility = PinVisibility.Hidden)]
