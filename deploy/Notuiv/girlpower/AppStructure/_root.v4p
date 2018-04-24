@@ -1,0 +1,141 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\girlpower\AppStructure\_root.v4p" systemname="AppStructure" filename="D:\local\vvvv-gp\packs\Notuiv\girlpower\AppStructure.v4p" scrollx="0" scrolly="-360">
+   <BOUNDS type="Window" left="7620" top="2865" width="8640" height="8925">
+   </BOUNDS>
+   <PACK Name="dx11" Version="1.2">
+   </PACK>
+   <PACK Name="KeyboardUI" Version="1.1.1">
+   </PACK>
+   <PACK Name="vvvv-Message" Version="2.9.10">
+   </PACK>
+   <PACK Name="addonpack" Version="36.0.0">
+   </PACK>
+   <NODE systemname="StructureUI" filename="%VVVV%\packs\Notuiv\girlpower\AppStructure\StructureUI.v4p" componentmode="Hidden" id="1" nodename="%VVVV%\packs\Notuiv\girlpower\AppStructure\StructureUI.v4p">
+   <BOUNDS type="Node" left="1275" top="1545" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1275" top="1545" width="4800" height="3600">
+   </BOUNDS>
+   <BOUNDS type="Window" left="4305" top="5370" width="14010" height="11325">
+   </BOUNDS>
+   <PIN pinname="Element Prototype" visible="1">
+   </PIN>
+   </NODE>
+   <NODE id="0" systemname="Output" filename="%VVVV%\packs\Notuiv\girlpower\AppStructure\Output.v4p" componentmode="Hidden" nodename="%VVVV%\packs\Notuiv\girlpower\AppStructure\Output.v4p">
+   <BOUNDS type="Window" left="2160" top="4410" width="11115" height="12015">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1275" top="6570" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1275" top="6570" width="4800" height="3600">
+   </BOUNDS>
+   <PIN pinname="Element Prototypes" visible="1">
+   </PIN>
+   <PIN pinname="Layer In" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="1" srcpinname="Element Prototype" dstnodeid="0" dstpinname="Element Prototypes">
+   </LINK>
+   <NODE systemname="RenderUI" filename="%VVVV%\packs\Notuiv\girlpower\AppStructure\RenderUI.v4p" componentmode="Hidden" id="2" nodename="%VVVV%\packs\Notuiv\girlpower\AppStructure\RenderUI.v4p">
+   <BOUNDS type="Node" left="1605" top="5070" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1605" top="5070" width="4800" height="3600">
+   </BOUNDS>
+   <BOUNDS type="Window" left="6120" top="5565" width="15465" height="23160">
+   </BOUNDS>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="StateFulUIBehavior" filename="%VVVV%\packs\Notuiv\girlpower\AppStructure\StateFulUIBehavior.v4p" componentmode="Hidden" id="3" nodename="%VVVV%\packs\Notuiv\girlpower\AppStructure\StateFulUIBehavior.v4p">
+   <BOUNDS type="Node" left="1425" top="4260" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1425" top="4260" width="4800" height="3600">
+   </BOUNDS>
+   <BOUNDS type="Window" left="22380" top="16665" width="9000" height="9180">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="4">
+   <BOUNDS type="Node" left="1275" top="690" width="9090" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1275" top="690" width="4230" height="735">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|First you&apos;d define your UI structure with Prototypes. Even if they&apos;re prototypes they can be dynamically modified and created as this pattern doesn&apos;t violate dataflow.|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="5">
+   <BOUNDS type="Node" left="1410" top="2025" width="7815" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1410" top="2025" width="4965" height="2220">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Then if you have any behavior with side-effects or states which should be sustained on the element instances themselves it&apos;s recommended to put that into a separate patch.&cr;&lf;This pattern violates the Dataflow so watch out ;)&cr;&lf;&cr;&lf;This is almost like Interaction Behaviors but they are acting like function Delegates which you can only create in C# or VL. Interaction Behavior delegates has also the advantage that they can run parallellized inside the element&apos;s thread in the Context mainloop. Obviously vanilla VVVV can&apos;t do that.|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="6">
+   <BOUNDS type="Node" left="1620" top="4710" width="5565" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1620" top="4710" width="5565" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Last but not least you&apos;d draw your elements completely separated from logic|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="7">
+   <BOUNDS type="Node" left="1755" top="5760" width="5745" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1755" top="5760" width="4680" height="750">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|And finally this output patch contains the Notui Context node and the renderer. Notui relies on Depth while hittesting so it makes sense to turn on the Depth buffer on the DX11 Renderers|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="Layer" dstnodeid="0" dstpinname="Layer In">
+   </LINK>
+   <NODE systemname="MainLoop (VVVV)" nodename="MainLoop (VVVV)" componentmode="Hidden" id="-6">
+   <BOUNDS type="Node" left="5610" top="7575" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Maximum Foreground FPS" visible="1">
+   </PIN>
+   <PIN pinname="Maximum Background FPS" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="8">
+   <BOUNDS type="Box" left="5715" top="7035" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5715" top="7035" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1000">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="8" srcpinname="Y Output Value" dstnodeid="-6" dstpinname="Maximum Foreground FPS">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Y Output Value" dstnodeid="-6" dstpinname="Maximum Background FPS">
+   </LINK>
+   </PATCH>

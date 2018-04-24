@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Context (Notui) help.v4p" scrollx="0" scrolly="15120" locked="0">
-   <BOUNDS type="Window" left="1575" top="360" width="24510" height="28875">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Context (Notui) help.v4p" scrollx="0" scrolly="-360" locked="0">
+   <BOUNDS type="Window" left="4245" top="1650" width="24510" height="28875">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
    <BOUNDS type="Node" left="360" top="4080" width="5100" height="450">
@@ -35,7 +35,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="13245" top="26160" width="6000" height="4500">
    </BOUNDS>
-   <BOUNDS type="Window" left="0" top="14160" width="28800" height="18000">
+   <BOUNDS type="Window" left="28800" top="0" width="28800" height="16200">
    </BOUNDS>
    <PIN pinname="Show Cursor" slicecount="1" visible="1" pintype="Input" values="1">
    </PIN>
@@ -93,7 +93,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="20520" top="25335" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -847,7 +847,7 @@
    </PIN>
    <PIN pinname="X" slicecount="1" values="0.28">
    </PIN>
-   <PIN pinname="Y" slicecount="1" values="-0.09">
+   <PIN pinname="Y" slicecount="1" values="-0.11">
    </PIN>
    <PIN pinname="Z" slicecount="1" values="0.125">
    </PIN>
@@ -1095,9 +1095,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="268">
-   <BOUNDS type="Box" left="16050" top="9645" width="1590" height="270">
+   <BOUNDS type="Box" left="17385" top="9120" width="1590" height="270">
    </BOUNDS>
-   <BOUNDS type="Node" left="16050" top="9645" width="0" height="0">
+   <BOUNDS type="Node" left="17385" top="9120" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Enum" slicecount="1" visible="1" values="None">
    </PIN>
@@ -1328,7 +1328,7 @@
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
    </NODE>
-   <NODE systemname="GridSplit (Transform)" nodename="GridSplit (Transform)" componentmode="Hidden" id="313" filename="%VVVV%\packs\mp.essentials\nodes\modules\transform\GridSplit (Transform).v4p">
+   <NODE systemname="GridSplit (Transform)" nodename="GridSplit (Transform)" componentmode="InAWindow" id="313" filename="%VVVV%\packs\mp.essentials\nodes\modules\transform\GridSplit (Transform).v4p">
    <BOUNDS type="Node" left="11490" top="5190" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Width" visible="1">
@@ -1369,6 +1369,8 @@
    </PIN>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
+   <PIN pinname="ScaleXY" slicecount="2" values="1,1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="315" srcpinname="Transform Out" dstnodeid="229" dstpinname="Transform In">
    </LINK>
@@ -1391,7 +1393,7 @@
    <LINK srcnodeid="315" srcpinname="Transform Out" dstnodeid="238" dstpinname="Transform In">
    </LINK>
    <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="317">
-   <BOUNDS type="Node" left="11955" top="5610" width="100" height="100">
+   <BOUNDS type="Node" left="12795" top="5610" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -1403,8 +1405,6 @@
    <LINK srcnodeid="313" srcpinname="Translate" dstnodeid="317" dstpinname="Input 1">
    </LINK>
    <LINK srcnodeid="314" srcpinname="Y Output Value" dstnodeid="317" dstpinname="Input 2">
-   </LINK>
-   <LINK srcnodeid="317" srcpinname="Output" dstnodeid="315" dstpinname="TranslateXY">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="318">
    <BOUNDS type="Box" left="12285" top="4305" width="795" height="240">
@@ -1531,11 +1531,11 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="325">
-   <BOUNDS type="Box" left="22080" top="25440" width="795" height="480">
+   <BOUNDS type="Box" left="20640" top="24690" width="285" height="405">
    </BOUNDS>
-   <BOUNDS type="Node" left="22080" top="25440" width="0" height="0">
+   <BOUNDS type="Node" left="20640" top="24690" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="1,1">
+   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="2,2">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -1551,9 +1551,9 @@
    <LINK srcnodeid="325" srcpinname="Y Output Value" dstnodeid="5" dstpinname="Merged Layout">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="326">
-   <BOUNDS type="Box" left="21570" top="27270" width="795" height="480">
+   <BOUNDS type="Box" left="21150" top="24645" width="285" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="21570" top="27270" width="0" height="0">
+   <BOUNDS type="Node" left="21150" top="24645" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="2" visible="1" values="1,0">
    </PIN>
@@ -1617,9 +1617,9 @@
    <LINK srcnodeid="229" srcpinname="Transform Out" dstnodeid="108" dstpinname="Transform In">
    </LINK>
    <NODE systemname="Sliding (Notui.Behavior Join)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Sliding (Notui.Behavior Join)" componentmode="Hidden" id="339">
-   <BOUNDS type="Node" left="9870" top="8040" width="100" height="100">
+   <BOUNDS type="Node" left="9870" top="8130" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="9870" top="8040" width="3000" height="3000">
+   <BOUNDS type="Box" left="9870" top="8130" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -1657,11 +1657,13 @@
    </PIN>
    <PIN pinname="UseSelectedPlane" visible="1">
    </PIN>
+   <PIN pinname="UseChildrenInteracting" visible="1">
+   </PIN>
    </NODE>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="338">
-   <BOUNDS type="Box" left="12225" top="7590" width="1575" height="300">
+   <BOUNDS type="Box" left="12195" top="7545" width="1575" height="300">
    </BOUNDS>
-   <BOUNDS type="Node" left="12225" top="7590" width="0" height="0">
+   <BOUNDS type="Node" left="12195" top="7545" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Enum" slicecount="1" visible="1" values="OwnPlane">
    </PIN>
@@ -1891,11 +1893,11 @@
    <LINK srcnodeid="324" srcpinname="On Interaction Begin" dstnodeid="160" dstpinname="Input">
    </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="360">
-   <BOUNDS type="Box" left="10665" top="9450" width="1590" height="270">
+   <BOUNDS type="Box" left="10875" top="9255" width="1590" height="270">
    </BOUNDS>
-   <BOUNDS type="Node" left="10665" top="9450" width="0" height="0">
+   <BOUNDS type="Node" left="10875" top="9255" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="1" visible="1" values="Translation">
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="None">
    </PIN>
    <PIN pinname="Default" slicecount="1" values="None">
    </PIN>
@@ -1904,34 +1906,10 @@
    <PIN pinname="Maximum Characters" slicecount="1" values="-1">
    </PIN>
    </NODE>
-   <NODE systemname="Circle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Circle (Notui.ElementPrototype Join)" componentmode="Hidden" id="364">
-   <BOUNDS type="Node" left="7755" top="9750" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="7755" top="9750" width="3000" height="3000">
-   </BOUNDS>
-   </NODE>
-   <LINK srcnodeid="27" srcpinname="Y Output Value" dstnodeid="364" dstpinname="Active">
-   </LINK>
-   <LINK srcnodeid="39" srcpinname="Y Output Value" dstnodeid="364" dstpinname="Fade Out Time">
-   </LINK>
-   <LINK srcnodeid="91" srcpinname="Output String" dstnodeid="364" dstpinname="Name">
-   </LINK>
-   <LINK srcnodeid="108" srcpinname="Transform Out" dstnodeid="364" dstpinname="Display Transform">
-   </LINK>
-   <LINK srcnodeid="117" srcpinname="Element Prototype" dstnodeid="364" dstpinname="Children">
-   </LINK>
-   <LINK srcnodeid="278" srcpinname="Y Output Value" dstnodeid="364" dstpinname="Transparent">
-   </LINK>
-   <LINK srcnodeid="39" srcpinname="Y Output Value" dstnodeid="364" dstpinname="Fade In Time">
-   </LINK>
-   <LINK srcnodeid="339" srcpinname="Output" dstnodeid="364" dstpinname="Behaviors">
-   </LINK>
-   <LINK srcnodeid="360" srcpinname="Output Enum" dstnodeid="364" dstpinname="Transformation Update Mode">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="365">
-   <BOUNDS type="Box" left="20205" top="9870" width="795" height="480">
+   <BOUNDS type="Box" left="10395" top="6525" width="795" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="20205" top="9870" width="0" height="0">
+   <BOUNDS type="Node" left="10395" top="6525" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="2" visible="1" values="0,1">
    </PIN>
@@ -1963,32 +1941,6 @@
    <LINK srcnodeid="335" srcpinname="Y Output Value" dstnodeid="350" dstpinname="FlickTime">
    </LINK>
    <LINK srcnodeid="335" srcpinname="Y Output Value" dstnodeid="264" dstpinname="FlickTime">
-   </LINK>
-   <NODE systemname="Rectangle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Rectangle (Notui.ElementPrototype Join)" componentmode="Hidden" id="367">
-   <BOUNDS type="Node" left="13620" top="9855" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="13620" top="9855" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Behaviors" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="90" srcpinname="Y Output Value" dstnodeid="367" dstpinname="Active">
-   </LINK>
-   <LINK srcnodeid="89" srcpinname="Y Output Value" dstnodeid="367" dstpinname="Fade Out Time">
-   </LINK>
-   <LINK srcnodeid="92" srcpinname="Output String" dstnodeid="367" dstpinname="Name">
-   </LINK>
-   <LINK srcnodeid="102" srcpinname="Y Output Value" dstnodeid="367" dstpinname="Transparent">
-   </LINK>
-   <LINK srcnodeid="268" srcpinname="Output Enum" dstnodeid="367" dstpinname="Transformation Update Mode">
-   </LINK>
-   <LINK srcnodeid="89" srcpinname="Y Output Value" dstnodeid="367" dstpinname="Fade In Time">
-   </LINK>
-   <LINK srcnodeid="249" srcpinname="Transform Out" dstnodeid="367" dstpinname="Display Transform">
-   </LINK>
-   <LINK srcnodeid="351" srcpinname="Element Prototype" dstnodeid="367" dstpinname="Children">
-   </LINK>
-   <LINK srcnodeid="264" srcpinname="Output" dstnodeid="367" dstpinname="Behaviors">
    </LINK>
    <NODE systemname="R (Node)" nodename="R (Node)" componentmode="Hidden" id="369" debug="0">
    <BOUNDS type="Node" left="13050" top="12015" width="100" height="100">
@@ -2725,7 +2677,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="375" top="2670" width="4020" height="720">
    </BOUNDS>
-   <PIN pinname="Input String" visible="0" slicecount="1" values="|Don&apos;t let this patch intimidate you. This is an appetizer for an advanced use case see the node catalog and individual help patches here:|">
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Don&apos;t let this patch intimidate you. This is an appetizer for an advanced use case. See the node catalog and individual help patches here:|">
    </PIN>
    <PIN pinname="Output String" visible="0">
    </PIN>
@@ -2763,24 +2715,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="299" srcpinname="Render State" dstnodeid="253" dstpinname="Render State">
-   </LINK>
-   <NODE systemname="Cons (Notui.ElementPrototype)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Cons (Notui.ElementPrototype)" componentmode="Hidden" id="93">
-   <BOUNDS type="Node" left="9255" top="11955" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="9255" top="11955" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Input 1" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Input 2" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="93" srcpinname="Output" dstnodeid="291" dstpinname="Element Prototypes">
-   </LINK>
-   <LINK srcnodeid="364" srcpinname="Element Prototype" dstnodeid="93" dstpinname="Input 1">
-   </LINK>
-   <LINK srcnodeid="367" srcpinname="Element Prototype" dstnodeid="93" dstpinname="Input 2">
    </LINK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="446">
    <BOUNDS type="Node" left="345" top="255" width="345" height="270">
@@ -2853,9 +2787,9 @@
    <LINK srcnodeid="349" srcpinname="Output Enum" dstnodeid="350" dstpinname="UseSelectedPlane">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="450">
-   <BOUNDS type="Box" left="10845" top="29460" width="285" height="240">
+   <BOUNDS type="Box" left="10815" top="29370" width="285" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="10845" top="29460" width="0" height="0">
+   <BOUNDS type="Node" left="10815" top="29370" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="-1">
    </PIN>
@@ -2877,5 +2811,91 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="441" srcpinname="AttachadMouse" dstnodeid="451" dstpinname="Mouse">
+   </LINK>
+   <PACK Name="dx11" Version="1.2">
+   </PACK>
+   <LINK srcnodeid="313" srcpinname="Translate" dstnodeid="315" dstpinname="TranslateXY">
+   </LINK>
+   <NODE systemname="Cons (Notui.ElementPrototype)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Cons (Notui.ElementPrototype)" componentmode="Hidden" id="453">
+   <BOUNDS type="Node" left="9255" top="11955" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9255" top="11955" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="453" srcpinname="Output" dstnodeid="291" dstpinname="Element Prototypes">
+   </LINK>
+   <NODE systemname="Circle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Circle (Notui.ElementPrototype Join)" componentmode="Hidden" id="364">
+   <BOUNDS type="Node" left="7755" top="9750" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7755" top="9750" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="27" srcpinname="Y Output Value" dstnodeid="364" dstpinname="Active">
+   </LINK>
+   <LINK srcnodeid="39" srcpinname="Y Output Value" dstnodeid="364" dstpinname="Fade Out Time">
+   </LINK>
+   <LINK srcnodeid="91" srcpinname="Output String" dstnodeid="364" dstpinname="Name">
+   </LINK>
+   <LINK srcnodeid="108" srcpinname="Transform Out" dstnodeid="364" dstpinname="Display Transform">
+   </LINK>
+   <LINK srcnodeid="117" srcpinname="Element Prototype" dstnodeid="364" dstpinname="Children">
+   </LINK>
+   <LINK srcnodeid="278" srcpinname="Y Output Value" dstnodeid="364" dstpinname="Transparent">
+   </LINK>
+   <LINK srcnodeid="39" srcpinname="Y Output Value" dstnodeid="364" dstpinname="Fade In Time">
+   </LINK>
+   <LINK srcnodeid="339" srcpinname="Output" dstnodeid="364" dstpinname="Behaviors">
+   </LINK>
+   <LINK srcnodeid="360" srcpinname="Output Enum" dstnodeid="364" dstpinname="Transformation Update Mode">
+   </LINK>
+   <LINK srcnodeid="364" srcpinname="Element Prototype" dstnodeid="453" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="Rectangle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Rectangle (Notui.ElementPrototype Join)" componentmode="Hidden" id="367">
+   <BOUNDS type="Node" left="13620" top="9855" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="13620" top="9855" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Behaviors" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="90" srcpinname="Y Output Value" dstnodeid="367" dstpinname="Active">
+   </LINK>
+   <LINK srcnodeid="89" srcpinname="Y Output Value" dstnodeid="367" dstpinname="Fade Out Time">
+   </LINK>
+   <LINK srcnodeid="92" srcpinname="Output String" dstnodeid="367" dstpinname="Name">
+   </LINK>
+   <LINK srcnodeid="102" srcpinname="Y Output Value" dstnodeid="367" dstpinname="Transparent">
+   </LINK>
+   <LINK srcnodeid="268" srcpinname="Output Enum" dstnodeid="367" dstpinname="Transformation Update Mode">
+   </LINK>
+   <LINK srcnodeid="89" srcpinname="Y Output Value" dstnodeid="367" dstpinname="Fade In Time">
+   </LINK>
+   <LINK srcnodeid="249" srcpinname="Transform Out" dstnodeid="367" dstpinname="Display Transform">
+   </LINK>
+   <LINK srcnodeid="351" srcpinname="Element Prototype" dstnodeid="367" dstpinname="Children">
+   </LINK>
+   <LINK srcnodeid="264" srcpinname="Output" dstnodeid="367" dstpinname="Behaviors">
+   </LINK>
+   <LINK srcnodeid="367" srcpinname="Element Prototype" dstnodeid="453" dstpinname="Input 2">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="454">
+   <BOUNDS type="Box" left="12690" top="7965" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="12690" top="7965" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="454" srcpinname="Y Output Value" dstnodeid="339" dstpinname="UseChildrenInteracting">
    </LINK>
    </PATCH>

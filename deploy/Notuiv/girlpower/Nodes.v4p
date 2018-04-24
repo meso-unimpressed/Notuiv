@@ -1,107 +1,107 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
    <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\girlpower\Nodes.v4p" systemname="Nodes" filename="D:\local\lib\md.ecosystem\packs\Notuiv\deploy\girlpower\Nodes.v4p" scrollx="0" scrolly="-360" locked="0">
-   <BOUNDS type="Window" left="11580" top="6150" width="20580" height="10965">
+   <BOUNDS type="Window" left="11580" top="6150" width="21660" height="10965">
    </BOUNDS>
    <NODE systemname="ElementTransformation (Notui Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="ElementTransformation (Notui Split)" componentmode="Hidden" id="0">
-   <BOUNDS type="Node" left="12540" top="4485" width="100" height="100">
+   <BOUNDS type="Node" left="14160" top="5955" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="12540" top="4485" width="3000" height="3000">
+   <BOUNDS type="Box" left="14160" top="5955" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="SetAttachedValues (Notui.Element Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SetAttachedValues (Notui.Element Join)" componentmode="Hidden" id="1">
-   <BOUNDS type="Node" left="8760" top="5010" width="1350" height="270">
+   <BOUNDS type="Node" left="10380" top="6480" width="1350" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="8760" top="5010" width="3000" height="3000">
+   <BOUNDS type="Box" left="10380" top="6480" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="IntersectionPoint (Notui Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="IntersectionPoint (Notui Split)" componentmode="Hidden" id="2">
-   <BOUNDS type="Node" left="12525" top="5010" width="100" height="100">
+   <BOUNDS type="Node" left="14145" top="6480" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="12525" top="5010" width="3000" height="3000">
+   <BOUNDS type="Box" left="14145" top="6480" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="GetAttachedValues (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="GetAttachedValues (Notui.Element Split)" componentmode="Hidden" id="3">
-   <BOUNDS type="Node" left="8760" top="4485" width="100" height="100">
+   <BOUNDS type="Node" left="10380" top="5955" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="8760" top="4485" width="3000" height="3000">
+   <BOUNDS type="Box" left="10380" top="5955" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="AttachedValues (Notui Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="AttachedValues (Notui Split)" componentmode="Hidden" id="4">
-   <BOUNDS type="Node" left="12540" top="3375" width="100" height="100">
+   <BOUNDS type="Node" left="14160" top="4845" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="12540" top="3375" width="3000" height="3000">
+   <BOUNDS type="Box" left="14160" top="4845" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="ValueSlider2D (Notui.Behavior Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="ValueSlider2D (Notui.Behavior Join)" componentmode="Hidden" id="5">
-   <BOUNDS type="Node" left="15060" top="3930" width="1050" height="270">
+   <BOUNDS type="Node" left="16680" top="5400" width="1050" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="15060" top="3930" width="3000" height="3000">
+   <BOUNDS type="Box" left="16680" top="5400" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="PrototypeInfo (Notui.ElementPrototype Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="PrototypeInfo (Notui.ElementPrototype Split)" componentmode="Hidden" id="6">
-   <BOUNDS type="Node" left="5355" top="3930" width="100" height="100">
+   <BOUNDS type="Node" left="5325" top="8205" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="5355" top="3930" width="3000" height="3000">
+   <BOUNDS type="Box" left="5325" top="8205" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="InstanceInfo (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="InstanceInfo (Notui.Element Split)" componentmode="Hidden" id="7">
-   <BOUNDS type="Node" left="8760" top="2865" width="100" height="100">
+   <BOUNDS type="Node" left="10380" top="4335" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="8760" top="2865" width="3000" height="3000">
+   <BOUNDS type="Box" left="10380" top="4335" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="SlidingInfo (Notui.Behavior Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SlidingInfo (Notui.Behavior Split)" componentmode="Hidden" id="8">
-   <BOUNDS type="Node" left="17925" top="2865" width="100" height="100">
+   <BOUNDS type="Node" left="19545" top="4335" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="17925" top="2865" width="3000" height="3000">
+   <BOUNDS type="Box" left="19545" top="4335" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="Rectangle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Rectangle (Notui.ElementPrototype Join)" componentmode="Hidden" id="9">
-   <BOUNDS type="Node" left="5355" top="2865" width="100" height="100">
+   <BOUNDS type="Node" left="5325" top="4860" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="5355" top="2865" width="3000" height="3000">
+   <BOUNDS type="Box" left="5325" top="4860" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="Context (Notui)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui)" componentmode="Hidden" id="10">
-   <BOUNDS type="Node" left="645" top="2865" width="100" height="100">
+   <BOUNDS type="Node" left="615" top="4335" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="645" top="2865" width="3000" height="3000">
+   <BOUNDS type="Box" left="615" top="4335" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="Context (Notui Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui Split)" componentmode="Hidden" id="11">
-   <BOUNDS type="Node" left="645" top="3375" width="100" height="100">
+   <BOUNDS type="Node" left="615" top="4860" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="645" top="3375" width="3000" height="3000">
+   <BOUNDS type="Box" left="615" top="4860" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="Events (Notui.Element)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Events (Notui.Element)" componentmode="Hidden" id="12">
-   <BOUNDS type="Node" left="8760" top="3375" width="100" height="100">
+   <BOUNDS type="Node" left="10380" top="4845" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="8760" top="3375" width="3000" height="3000">
+   <BOUNDS type="Box" left="10380" top="4845" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="Circle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Circle (Notui.ElementPrototype Join)" componentmode="Hidden" id="13">
-   <BOUNDS type="Node" left="5355" top="3375" width="100" height="100">
+   <BOUNDS type="Node" left="5325" top="5370" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="5355" top="3375" width="3000" height="3000">
+   <BOUNDS type="Box" left="5325" top="5370" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="Sift (Notui.Context Type)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context Type)" componentmode="Hidden" id="14">
-   <BOUNDS type="Node" left="1515" top="4380" width="100" height="100">
+   <BOUNDS type="Node" left="1485" top="5850" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="1515" top="4380" width="3000" height="3000">
+   <BOUNDS type="Box" left="1485" top="5850" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="Sift (Notui.Context Opaq)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context Opaq)" componentmode="Hidden" id="15">
-   <BOUNDS type="Node" left="645" top="4380" width="100" height="100">
+   <BOUNDS type="Node" left="615" top="5850" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="645" top="4380" width="3000" height="3000">
+   <BOUNDS type="Box" left="615" top="5850" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="16">
-   <BOUNDS type="Node" left="8385" top="1470" width="1020" height="270">
+   <BOUNDS type="Node" left="8415" top="2280" width="1020" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="8385" top="1470" width="1170" height="510">
+   <BOUNDS type="Box" left="8415" top="2280" width="1170" height="510">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="Nodes">
    </PIN>
@@ -121,9 +121,9 @@
    <PACK Name="addonpack" Version="36.0.0">
    </PACK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="17">
-   <BOUNDS type="Node" left="5355" top="2355" width="1515" height="270">
+   <BOUNDS type="Node" left="5325" top="3825" width="1515" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="5355" top="2355" width="1515" height="270">
+   <BOUNDS type="Box" left="5325" top="3825" width="2550" height="420">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|Element Prototypes|">
    </PIN>
@@ -133,11 +133,13 @@
    </PIN>
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="18">
-   <BOUNDS type="Node" left="645" top="2355" width="705" height="270">
+   <BOUNDS type="Node" left="615" top="3825" width="705" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="645" top="2355" width="705" height="270">
+   <BOUNDS type="Box" left="615" top="3825" width="1185" height="420">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="Context">
    </PIN>
@@ -147,11 +149,13 @@
    </PIN>
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="19">
-   <BOUNDS type="Node" left="2955" top="2865" width="1185" height="270">
+   <BOUNDS type="Node" left="2925" top="4335" width="1185" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="2955" top="2865" width="1185" height="270">
+   <BOUNDS type="Box" left="2925" top="4335" width="1185" height="270">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|The main node|">
    </PIN>
@@ -163,9 +167,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="20">
-   <BOUNDS type="Node" left="8715" top="2355" width="1410" height="270">
+   <BOUNDS type="Node" left="10335" top="3825" width="1410" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="8715" top="2355" width="1410" height="270">
+   <BOUNDS type="Box" left="10335" top="3825" width="2670" height="390">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|Element Instances|">
    </PIN>
@@ -175,17 +179,19 @@
    </PIN>
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
    </NODE>
    <NODE systemname="Sliding (Notui.Behavior Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sliding (Notui.Behavior Join)" componentmode="Hidden" id="21">
-   <BOUNDS type="Node" left="15060" top="2865" width="100" height="100">
+   <BOUNDS type="Node" left="16680" top="4335" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="15060" top="2865" width="3000" height="3000">
+   <BOUNDS type="Box" left="16680" top="4335" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="22">
-   <BOUNDS type="Node" left="15060" top="2355" width="825" height="270">
+   <BOUNDS type="Node" left="16680" top="3825" width="825" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="15060" top="2355" width="825" height="270">
+   <BOUNDS type="Box" left="16680" top="3825" width="1395" height="405">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="Behaviors">
    </PIN>
@@ -195,53 +201,55 @@
    </PIN>
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
    </NODE>
    <NODE systemname="Touch (Notui Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Touch (Notui Split)" componentmode="Hidden" id="23">
-   <BOUNDS type="Node" left="645" top="3900" width="100" height="100">
+   <BOUNDS type="Node" left="615" top="5370" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="645" top="3900" width="3000" height="3000">
+   <BOUNDS type="Box" left="615" top="5370" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="SetTransformation (Notui.Element)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SetTransformation (Notui.Element)" componentmode="Hidden" id="24">
-   <BOUNDS type="Node" left="8760" top="5595" width="100" height="100">
+   <BOUNDS type="Node" left="10380" top="7065" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="8760" top="5595" width="3000" height="3000">
+   <BOUNDS type="Box" left="10380" top="7065" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="SetTransformation (Notui.Element Matrix)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SetTransformation (Notui.Element Matrix)" componentmode="Hidden" id="25">
-   <BOUNDS type="Node" left="10440" top="5595" width="100" height="100">
+   <BOUNDS type="Node" left="12060" top="7065" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="10440" top="5595" width="3000" height="3000">
+   <BOUNDS type="Box" left="12060" top="7065" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="ElementTransformation (Notui Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="ElementTransformation (Notui Join)" componentmode="Hidden" id="26">
-   <BOUNDS type="Node" left="12540" top="3930" width="100" height="100">
+   <BOUNDS type="Node" left="14160" top="5400" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="12540" top="3930" width="3000" height="3000">
+   <BOUNDS type="Box" left="14160" top="5400" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="Wrap (Notui.Auxiliary)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Wrap (Notui.Auxiliary)" componentmode="Hidden" id="27">
-   <BOUNDS type="Node" left="12525" top="5595" width="100" height="100">
+   <BOUNDS type="Node" left="14145" top="7065" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="12525" top="5595" width="3000" height="3000">
+   <BOUNDS type="Box" left="14145" top="7065" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="Unwrap (Notui.Auxiliary)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Unwrap (Notui.Auxiliary)" componentmode="Hidden" id="28">
-   <BOUNDS type="Node" left="13350" top="5595" width="100" height="100">
+   <BOUNDS type="Node" left="14970" top="7065" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="13350" top="5595" width="3000" height="3000">
+   <BOUNDS type="Box" left="14970" top="7065" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="GetAuxiliary (Notui.Element)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="GetAuxiliary (Notui.Element)" componentmode="Hidden" id="29">
-   <BOUNDS type="Node" left="10440" top="4485" width="100" height="100">
+   <BOUNDS type="Node" left="12060" top="5955" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="10440" top="4485" width="3000" height="3000">
+   <BOUNDS type="Box" left="12060" top="5955" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="SetAuxiliary (Notui.Element Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SetAuxiliary (Notui.Element Join)" componentmode="Hidden" id="30">
-   <BOUNDS type="Node" left="10440" top="5010" width="100" height="100">
+   <BOUNDS type="Node" left="12060" top="6480" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="10440" top="5010" width="3000" height="3000">
+   <BOUNDS type="Box" left="12060" top="6480" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="About (Notuiv)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="About (Notuiv)" componentmode="Hidden" id="31">
@@ -251,11 +259,17 @@
    </BOUNDS>
    <PIN pinname="Notuiv Version" visible="1">
    </PIN>
+   <PIN pinname="mp.pddn Version" visible="1">
+   </PIN>
+   <PIN pinname="md.stdl Version" visible="1">
+   </PIN>
+   <PIN pinname="Notui Version" visible="1">
+   </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="32">
-   <BOUNDS type="Box" left="10695" top="1170" width="795" height="240">
+   <BOUNDS type="Box" left="10695" top="2820" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="10695" top="1170" width="0" height="0">
+   <BOUNDS type="Node" left="10695" top="2820" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -263,13 +277,15 @@
    </PIN>
    <PIN pinname="Maximum Characters" slicecount="1" values="-1">
    </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Notuiv Version|">
+   </PIN>
    </NODE>
    <LINK srcnodeid="31" srcpinname="Notuiv Version" dstnodeid="32" dstpinname="Input String">
    </LINK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="33">
-   <BOUNDS type="Node" left="8355" top="390" width="345" height="270">
+   <BOUNDS type="Node" left="8385" top="1200" width="345" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="8355" top="390" width="2055" height="1155">
+   <BOUNDS type="Box" left="8385" top="1200" width="2055" height="1155">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="₪IV">
    </PIN>
@@ -285,27 +301,157 @@
    </PIN>
    </NODE>
    <NODE systemname="MouseSplit (Mouse Accumulated)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="MouseSplit (Mouse Accumulated)" componentmode="Hidden" id="34">
-   <BOUNDS type="Node" left="12525" top="6210" width="100" height="100">
+   <BOUNDS type="Node" left="14145" top="7680" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="12525" top="6210" width="3000" height="3000">
+   <BOUNDS type="Box" left="14145" top="7680" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="MouseEvents (Notui.Element)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="MouseEvents (Notui.Element)" componentmode="Hidden" id="35">
-   <BOUNDS type="Node" left="8760" top="3915" width="100" height="100">
+   <BOUNDS type="Node" left="10380" top="5385" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="8760" top="3915" width="3000" height="3000">
+   <BOUNDS type="Box" left="10380" top="5385" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="Sift (Notui.Context Type)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context Type)" componentmode="Hidden" id="36">
-   <BOUNDS type="Node" left="2445" top="4380" width="100" height="100">
+   <BOUNDS type="Node" left="2415" top="5850" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="2445" top="4380" width="3000" height="3000">
+   <BOUNDS type="Box" left="2415" top="5850" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="MouseWheelScroll (Notui.Behavior Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="MouseWheelScroll (Notui.Behavior Join)" componentmode="Hidden" id="37">
-   <BOUNDS type="Node" left="15060" top="3375" width="100" height="100">
+   <BOUNDS type="Node" left="16680" top="4845" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="15060" top="3375" width="3000" height="3000">
+   <BOUNDS type="Box" left="16680" top="4845" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Segment (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Segment (Notui.ElementPrototype Join)" componentmode="Hidden" id="39">
+   <BOUNDS type="Node" left="5325" top="5850" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5325" top="5850" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Polygon2D (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Polygon2D (Notui.ElementPrototype Join)" componentmode="Hidden" id="40">
+   <BOUNDS type="Node" left="5325" top="6480" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5325" top="6480" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Box (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Box (Notui.ElementPrototype Join)" componentmode="Hidden" id="42">
+   <BOUNDS type="Node" left="5325" top="7005" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5325" top="7005" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="SizeXYZ" slicecount="3" values="1,1,1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Sphere (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sphere (Notui.ElementPrototype Join)" componentmode="Hidden" id="43">
+   <BOUNDS type="Node" left="5325" top="7590" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5325" top="7590" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <PACK Name="dx11" Version="1.2">
+   </PACK>
+   <NODE systemname="GetSegmentParams (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="GetSegmentParams (Notui.Element Split)" componentmode="Hidden" id="44">
+   <BOUNDS type="Node" left="10380" top="7710" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10380" top="7710" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="GetBoxParams (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="GetBoxParams (Notui.Element Split)" componentmode="Hidden" id="45">
+   <BOUNDS type="Node" left="10380" top="8220" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10380" top="8220" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="GetPolygon2DParams (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="GetPolygon2DParams (Notui.Element Split)" componentmode="Hidden" id="46">
+   <BOUNDS type="Node" left="10380" top="8730" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10380" top="8730" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="SetSegmentParams (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SetSegmentParams (Notui.Element Split)" componentmode="Hidden" id="49">
+   <BOUNDS type="Node" left="12180" top="7710" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12180" top="7710" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="SetBoxParams (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SetBoxParams (Notui.Element Split)" componentmode="Hidden" id="48">
+   <BOUNDS type="Node" left="12180" top="8220" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12180" top="8220" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="SetPolygon2DParams (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SetPolygon2DParams (Notui.Element Split)" componentmode="Hidden" id="47">
+   <BOUNDS type="Node" left="12180" top="8730" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12180" top="8730" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="50">
+   <BOUNDS type="Box" left="11205" top="1140" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11205" top="1140" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|mp.pddn Version|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="31" srcpinname="mp.pddn Version" dstnodeid="50" dstpinname="Input String">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="51">
+   <BOUNDS type="Box" left="11040" top="1680" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11040" top="1680" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|md.stdl Version|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="31" srcpinname="md.stdl Version" dstnodeid="51" dstpinname="Input String">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="52">
+   <BOUNDS type="Box" left="10845" top="2265" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10845" top="2265" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Notui Version|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="31" srcpinname="Notui Version" dstnodeid="52" dstpinname="Input String">
+   </LINK>
+   <NODE systemname="SubContext (Notui Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SubContext (Notui Split)" componentmode="Hidden" id="53">
+   <BOUNDS type="Node" left="600" top="6480" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="600" top="6480" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="SubContextOptions (Notui Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="SubContextOptions (Notui Join)" componentmode="Hidden" id="54">
+   <BOUNDS type="Node" left="2535" top="6480" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2535" top="6480" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Plane (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Plane (Notui.ElementPrototype Join)" componentmode="Hidden" id="55">
+   <BOUNDS type="Node" left="5325" top="4365" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5325" top="4365" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    </PATCH>
