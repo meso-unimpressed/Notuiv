@@ -32,22 +32,27 @@ namespace Notuiv
     public class SubContextOptionsNode : IPluginEvaluate
     {
         [Input("Include Hitting Touches Too")]
-        public ISpread<bool> FIncludeHitting;
+        public IDiffSpread<bool> FIncludeHitting;
         [Input("Touch Coordinate Source")]
-        public ISpread<SubContextOptions.IntersectionSpaceSelection> FTouchCoordSrc;
+        public IDiffSpread<SubContextOptions.IntersectionSpaceSelection> FTouchCoordSrc;
 
         [Output("Output")]
         public ISpread<SubContextOptions> FOut;
 
         public void Evaluate(int SpreadMax)
         {
-            FOut.SliceCount = SpreadMax;
-            for (int i = 0; i < SpreadMax; i++)
+            FOut.Stream.IsChanged = false;
+            if (FIncludeHitting.IsChanged || FTouchCoordSrc.IsChanged)
             {
-                if(FOut[i] == null)
-                    FOut[i] = new SubContextOptions();
-                FOut[i].IncludeHitting = FIncludeHitting[i];
-                FOut[i].TouchSpaceSource = FTouchCoordSrc[i];
+                FOut.SliceCount = SpreadMax;
+                for (int i = 0; i < SpreadMax; i++)
+                {
+                    if (FOut[i] == null)
+                        FOut[i] = new SubContextOptions();
+                    FOut[i].IncludeHitting = FIncludeHitting[i];
+                    FOut[i].TouchSpaceSource = FTouchCoordSrc[i];
+                }
+                FOut.Stream.IsChanged = true;
             }
         }
     }
@@ -120,20 +125,21 @@ namespace Notuiv
                         FTouches[i].SliceCount = 0;
                         continue;
                     }
-
-                    FContext.SliceCount = 1;
+                    
                     var context = hostel.SubContext.Context;
-                    context.View = FViewTr[0].AsSystemMatrix4X4();
-                    context.Projection = FProjTr[0].AsSystemMatrix4X4();
-                    context.AspectRatio = FAspTr[0].AsSystemMatrix4X4();
+                    context.View = FViewTr[i].AsSystemMatrix4X4();
+                    context.Projection = FProjTr[i].AsSystemMatrix4X4();
+                    context.AspectRatio = FAspTr[i].AsSystemMatrix4X4();
 
                     if (_areElementsChanged > 0 && FAutoUpdateElements[i] || FUpdateElements[i])
                     {
                         context.AddOrUpdateElements(true, FElements[i].Where(el => el != null).ToArray());
                     }
 
+                    FContext[i].SliceCount = 1;
                     FContext[i][0] = context;
 
+                    FFlatElements[i].SliceCount = context.FlatElements.Count;
                     for (int j = 0; j < context.FlatElements.Count; j++)
                     {
                         var element = context.FlatElements[j];

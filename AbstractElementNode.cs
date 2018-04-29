@@ -99,7 +99,7 @@ namespace Notuiv
         protected abstract TPrototype ConstructPrototype(int i, string id);
         
         [Input("Children")]
-        public ISpread<ISpread<ElementPrototype>> FChildren;
+        public IDiffSpread<ISpread<ElementPrototype>> FChildren;
 
         [Input("Name", DefaultString = "callmenames")]
         public IDiffSpread<string> FName;
@@ -120,7 +120,7 @@ namespace Notuiv
         public IDiffSpread<float> FTransFollowTime;
 
         [Input("Behaviors")]
-        public ISpread<ISpread<InteractionBehavior>> FBehaviors;
+        public IDiffSpread<ISpread<InteractionBehavior>> FBehaviors;
         [Input("Transparent")]
         public IDiffSpread<bool> FTransparent;
         [Input("Active", DefaultBoolean = true)]
@@ -129,13 +129,13 @@ namespace Notuiv
         public IDiffSpread<bool> FClipParentHitting;
 
         [Input("Attached Values", BinSize = 0, Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.Hidden)]
-        public ISpread<ISpread<float>> FAttVals;
+        public IDiffSpread<ISpread<float>> FAttVals;
         [Input("Attached Texts", BinSize = 0, Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.Hidden)]
-        public ISpread<ISpread<string>> FAttTexts;
+        public IDiffSpread<ISpread<string>> FAttTexts;
         [Input("Attached Auxiliary Objects", BinSize = 0, Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.Hidden)]
-        public ISpread<ISpread<AuxiliaryObject>> FAttAux;
+        public IDiffSpread<ISpread<AuxiliaryObject>> FAttAux;
         [Input("Attached Auxiliary Keys", BinSize = 0, Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.Hidden)]
-        public ISpread<ISpread<string>> FAttAuxKeys;
+        public IDiffSpread<ISpread<string>> FAttAuxKeys;
 
         [Input("Set Attached Values")]
         public IDiffSpread<bool> FSetAttVals;
@@ -143,10 +143,10 @@ namespace Notuiv
         [Input("Display Transform")]
         public IDiffSpread<VMatrix> FDispTr;
         [Input("Transformation Update Mode", DefaultEnumEntry = "All")]
-        public ISpread<ISpread<ApplyTransformMode>> FTrUpdateMode;
+        public IDiffSpread<ISpread<ApplyTransformMode>> FTrUpdateMode;
 
         [Input("Sub Context", Visibility = PinVisibility.OnlyInspector)]
-        public ISpread<SubContextOptions> FSubContext;
+        public IDiffSpread<SubContextOptions> FSubContext;
 
         [Output("Element Prototype")]
         public ISpread<TPrototype> FElementProt;
