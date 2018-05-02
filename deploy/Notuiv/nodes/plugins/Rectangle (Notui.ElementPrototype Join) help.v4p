@@ -365,9 +365,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="32">
-   <BOUNDS type="Box" left="4515" top="26130" width="3345" height="255">
+   <BOUNDS type="Box" left="4800" top="26130" width="3345" height="255">
    </BOUNDS>
-   <BOUNDS type="Node" left="4515" top="26130" width="0" height="0">
+   <BOUNDS type="Node" left="4800" top="26130" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -381,9 +381,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="33">
-   <BOUNDS type="Node" left="4650" top="26685" width="3720" height="270">
+   <BOUNDS type="Node" left="4935" top="26685" width="3720" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="4650" top="26685" width="4860" height="960">
+   <BOUNDS type="Box" left="4935" top="26685" width="4860" height="960">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|You can also use this to get element instances from the context for your convenience. But keep in mind this way you can&apos;t follow the fading out process. For that you need to get your element from the context in an other way like with an arbitrary name or ID.|">
    </PIN>
@@ -409,9 +409,9 @@
    <LINK srcnodeid="30" srcpinname="Output Node" dstnodeid="34" dstpinname="Element Prototypes">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="36">
-   <BOUNDS type="Box" left="5010" top="27885" width="285" height="240">
+   <BOUNDS type="Box" left="5295" top="27885" width="285" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="5010" top="27885" width="0" height="0">
+   <BOUNDS type="Node" left="5295" top="27885" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -479,9 +479,9 @@
    <LINK srcnodeid="40" srcpinname="Element Id" dstnodeid="32" dstpinname="Input String">
    </LINK>
    <NODE systemname="InstanceInfo (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="InstanceInfo (Notui.Element Split)" componentmode="Hidden" id="41">
-   <BOUNDS type="Node" left="4335" top="28695" width="100" height="100">
+   <BOUNDS type="Node" left="4620" top="28695" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="4335" top="28695" width="3000" height="3000">
+   <BOUNDS type="Box" left="4620" top="28695" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Element" visible="1" slicecount="1" values="||">
    </PIN>
@@ -489,9 +489,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="42">
-   <BOUNDS type="Box" left="4815" top="29280" width="3285" height="255">
+   <BOUNDS type="Box" left="5100" top="29280" width="3285" height="255">
    </BOUNDS>
-   <BOUNDS type="Node" left="4815" top="29280" width="0" height="0">
+   <BOUNDS type="Node" left="5100" top="29280" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -505,9 +505,9 @@
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
    <NODE systemname="Sift (Notui.Context String)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context String)" componentmode="Hidden" id="38">
-   <BOUNDS type="Node" left="4335" top="28230" width="100" height="100">
+   <BOUNDS type="Node" left="4620" top="28230" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="4335" top="28230" width="3000" height="3000">
+   <BOUNDS type="Box" left="4620" top="28230" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>

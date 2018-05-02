@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Sphere (Notui.ElementPrototype Join) help.v4p" scrollx="0" scrolly="1080">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Sphere (Notui.ElementPrototype Join) help.v4p" scrollx="0" scrolly="2040">
    <BOUNDS type="Window" left="1185" top="5250" width="16500" height="15435">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -336,8 +336,6 @@
    <PIN pinname="WorldSurfaceTangentTransform" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="34" srcpinname="Hitting Intersections" dstnodeid="13" dstpinname="Input">
-   </LINK>
    <NODE systemname="Constant (DX11.Effect)" filename="%VVVV%\packs\dx11\nodes\dx11\Constant.fx" nodename="Constant (DX11.Effect)" componentmode="Hidden" id="12">
    <BOUNDS type="Node" left="6735" top="14985" width="100" height="100">
    </BOUNDS>
@@ -733,5 +731,7 @@
    <LINK srcnodeid="57" srcpinname="Output" dstnodeid="10" dstpinname="ScaleY">
    </LINK>
    <LINK srcnodeid="57" srcpinname="Output" dstnodeid="10" dstpinname="ScaleZ">
+   </LINK>
+   <LINK srcnodeid="34" srcpinname="Hitting Intersections" dstnodeid="13" dstpinname="Input">
    </LINK>
    </PATCH>

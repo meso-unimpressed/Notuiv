@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\girlpower\gugelmeps.v4p" systemname="gugelmeps" filename="D:\local\vvvv-gp\packs\Notuiv\girlpower\gugelmeps.v4p" scrollx="0" scrolly="0">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\girlpower\gugelmeps.v4p" systemname="gugelmeps" filename="D:\local\vvvv-gp\packs\Notuiv\girlpower\gugelmeps.v4p" scrollx="0" scrolly="-360">
    <BOUNDS type="Window" left="31455" top="9765" width="14130" height="14610">
    </BOUNDS>
    <PACK Name="dx11" Version="1.2">
