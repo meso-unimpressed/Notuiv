@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using md.stdl.Coding;
 using md.stdl.Interaction;
 using Notui;
@@ -27,6 +29,11 @@ namespace Notuiv
     )]
     public class IntersectionPointSplitNodes : ObjectSplitNode<IntersectionPoint>
     {
+        [ImportingConstructor]
+        public IntersectionPointSplitNodes()
+        {
+            UseObjectCache = false;
+        }
         public override Type TransformType(Type original, MemberInfo member)
         {
             return MiscExtensions.MapSystemNumericsTypeToVVVV(original);

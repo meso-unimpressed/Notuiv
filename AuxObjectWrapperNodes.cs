@@ -44,6 +44,7 @@ namespace Notuiv
         private bool _typeChanged;
         private bool _init = true;
         private DiffSpreadPin _input;
+        private bool _prevvalid = false;
 
         [Output("Output")] public ISpread<AuxiliaryObject> FOut;
 
@@ -62,6 +63,7 @@ namespace Notuiv
 
         public void Evaluate(int SpreadMax)
         {
+            FOut.Stream.IsChanged = false;
             var valid = _input != null;
             if (valid) valid = _input.Spread.SliceCount > 0;
             if (valid) valid = _input[0] != null;
@@ -78,11 +80,14 @@ namespace Notuiv
                 }
 
                 _typeChanged = false;
+                FOut.Stream.IsChanged = true;
             }
             else
             {
+                FOut.Stream.IsChanged = _prevvalid;
                 FOut.SliceCount = 0;
             }
+            _prevvalid = valid;
         }
     }
 

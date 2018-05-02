@@ -200,14 +200,11 @@ namespace Notuiv
                 FTrUpdateMode[i].Aggregate(ApplyTransformMode.None, (current, mode) => current | mode);
 
             el.TransformApplication = trupdmode;
-            if(FChildren[i].All(chel => chel != null))
+            el.Children.Clear();
+            foreach (var child in FChildren[i].Where(ch => ch != null))
             {
-                el.Children.Clear();
-                foreach (var child in FChildren[i])
-                {
-                    child.Parent = el;
-                    el.Children.Add(child.Id, child);
-                }
+                child.Parent = el;
+                el.Children.Add(child.Id, child);
             }
             FillElementAuxData(el, i);
 
@@ -240,6 +237,9 @@ namespace Notuiv
             bool changed = FChildren.IsChanged || changewochildren;
 
             int sprmax = SpreadUtils.SpreadMax(FChildren, FName, FBehaviors, FDispTr);
+            if (FChildren.SliceCount == 0 || FName.SliceCount == 0 || FBehaviors.SliceCount == 0 ||
+                FDispTr.SliceCount == 0)
+                sprmax = 0;
 
             FElementProt.Stream.IsChanged = false;
 
@@ -247,33 +247,41 @@ namespace Notuiv
             {
                 if (FManId[0])
                 {
-                    for (int i = 0; i < FId.SliceCount; i++)
+                    if (sprmax > 0)
                     {
-                        if(string.IsNullOrWhiteSpace(FId[i])) continue;
-                        if (_manualIdElements.ContainsKey(FId[i]))
+                        for (int i = 0; i < FId.SliceCount; i++)
                         {
-                            FillElement(_manualIdElements[FId[i]], i, false);
+                            if(string.IsNullOrWhiteSpace(FId[i])) continue;
+                            if (_manualIdElements.ContainsKey(FId[i]))
+                            {
+                                FillElement(_manualIdElements[FId[i]], i, false);
+                            }
+                            else
+                            {
+                                var prot = FillElement(ConstructPrototype(i, FId[i]), i, true);
+                                _manualIdElements.Add(prot.Id, prot);
+                            }
                         }
-                        else
+
+                        foreach (var k in _manualIdElements.Keys.ToArray())
                         {
-                            var prot = FillElement(ConstructPrototype(i, FId[i]), i, true);
-                            _manualIdElements.Add(prot.Id, prot);
+                            if(FId.Contains(k)) continue;
+                            _manualIdElements.Remove(k);
+                        }
+
+                        FElementProt.SliceCount = FElementId.SliceCount = _manualIdElements.Count;
+                        int ii = 0;
+                        foreach (var id in FId.Where(id => !string.IsNullOrWhiteSpace(id)))
+                        {
+                            FElementProt[ii] = _manualIdElements[id];
+                            FElementId[ii] = FElementProt[ii].Id;
+                            ii++;
                         }
                     }
-
-                    foreach (var k in _manualIdElements.Keys.ToArray())
+                    else
                     {
-                        if(FId.Contains(k)) continue;
-                        _manualIdElements.Remove(k);
-                    }
-
-                    FElementProt.SliceCount = FElementId.SliceCount = _manualIdElements.Count;
-                    int ii = 0;
-                    foreach (var id in FId.Where(id => !string.IsNullOrWhiteSpace(id)))
-                    {
-                        FElementProt[ii] = _manualIdElements[id];
-                        FElementId[ii] = FElementProt[ii].Id;
-                        ii++;
+                        _manualIdElements.Clear();
+                        FElementProt.SliceCount = FElementId.SliceCount = 0;
                     }
                 }
                 else

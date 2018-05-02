@@ -178,7 +178,7 @@ namespace Notuiv
                 _areElementsChanged = 2;
             if (_areElementsChanged > 0)
             {
-                Context.AddOrUpdateElements(true, FElements.ToArray());
+                Context.AddOrUpdateElements(true, FElements.Where(el => el != null).ToArray());
                 _areElementsChanged--;
             }
 
