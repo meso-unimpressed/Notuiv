@@ -141,9 +141,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="12">
-   <BOUNDS type="Box" left="4500" top="21120" width="795" height="240">
+   <BOUNDS type="Box" left="4500" top="21420" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="4500" top="21120" width="0" height="0">
+   <BOUNDS type="Node" left="4500" top="21420" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
    </PIN>
@@ -151,9 +151,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="15">
-   <BOUNDS type="Box" left="4665" top="22680" width="1590" height="270">
+   <BOUNDS type="Box" left="4665" top="22830" width="1590" height="270">
    </BOUNDS>
-   <BOUNDS type="Node" left="4665" top="22680" width="0" height="0">
+   <BOUNDS type="Node" left="4665" top="22830" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Enum" slicecount="1" visible="1" values="All">
    </PIN>
@@ -171,9 +171,9 @@
    <PACK Name="addonpack" Version="36.0.0">
    </PACK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="16">
-   <BOUNDS type="Box" left="4785" top="24510" width="795" height="240">
+   <BOUNDS type="Box" left="4785" top="24660" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="4785" top="24510" width="0" height="0">
+   <BOUNDS type="Node" left="4785" top="24660" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="-1">
    </PIN>
@@ -299,11 +299,11 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="25">
-   <BOUNDS type="Node" left="4620" top="21465" width="4710" height="270">
+   <BOUNDS type="Node" left="4620" top="21765" width="4710" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="4620" top="21465" width="4725" height="840">
+   <BOUNDS type="Box" left="4620" top="21765" width="4725" height="735">
    </BOUNDS>
-   <PIN pinname="Input String" visible="0" slicecount="1" values="|Simple transformation. It&apos;s called display because originally there was a separate transformation for interaction but I scrapped that in the end but the name stuck.|">
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Simple transformation. It&apos;s called display because originally there was a separate transformation for interaction, I scrapped that in the end but the name stuck.|">
    </PIN>
    <PIN pinname="Output String" visible="0">
    </PIN>
@@ -313,9 +313,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="28">
-   <BOUNDS type="Node" left="4770" top="22995" width="5580" height="270">
+   <BOUNDS type="Node" left="4770" top="23145" width="5580" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="4770" top="22995" width="4950" height="1170">
+   <BOUNDS type="Box" left="4770" top="23145" width="4950" height="1170">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|Select what components the transform should be applied from the prototype. All components will be applied on element instantiation this is only filtering for after creation. At None it will never update the transform after instantiation. This is useful to not overwrite the influence of behaviors on the transformations.|">
    </PIN>
@@ -327,9 +327,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="29">
-   <BOUNDS type="Node" left="4905" top="24840" width="3390" height="270">
+   <BOUNDS type="Node" left="4905" top="24990" width="3390" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="4905" top="24840" width="3750" height="270">
+   <BOUNDS type="Box" left="4905" top="24990" width="3750" height="270">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|Spreading the Update mode behaves like bit flags.|">
    </PIN>
@@ -341,9 +341,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="30">
-   <BOUNDS type="Box" left="810" top="26130" width="795" height="240">
+   <BOUNDS type="Box" left="810" top="26280" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="810" top="26130" width="0" height="0">
+   <BOUNDS type="Node" left="810" top="26280" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Element Prototype|">
    </PIN>
@@ -351,9 +351,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="31">
-   <BOUNDS type="Node" left="1110" top="26625" width="2490" height="270">
+   <BOUNDS type="Node" left="1110" top="26775" width="2490" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="1110" top="26625" width="2490" height="270">
+   <BOUNDS type="Box" left="1110" top="26775" width="2490" height="270">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|Connect this to the Context node|">
    </PIN>
@@ -365,9 +365,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="32">
-   <BOUNDS type="Box" left="4800" top="26130" width="3345" height="255">
+   <BOUNDS type="Box" left="4800" top="26280" width="3345" height="255">
    </BOUNDS>
-   <BOUNDS type="Node" left="4800" top="26130" width="0" height="0">
+   <BOUNDS type="Node" left="4800" top="26280" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -381,9 +381,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="33">
-   <BOUNDS type="Node" left="4935" top="26685" width="3720" height="270">
+   <BOUNDS type="Node" left="4935" top="26835" width="3720" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="4935" top="26685" width="4860" height="960">
+   <BOUNDS type="Box" left="4935" top="26835" width="4860" height="960">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|You can also use this to get element instances from the context for your convenience. But keep in mind this way you can&apos;t follow the fading out process. For that you need to get your element from the context in an other way like with an arbitrary name or ID.|">
    </PIN>
@@ -395,9 +395,9 @@
    </PIN>
    </NODE>
    <NODE systemname="Context (Notui)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui)" componentmode="Hidden" id="34">
-   <BOUNDS type="Node" left="810" top="27990" width="100" height="100">
+   <BOUNDS type="Node" left="810" top="28140" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="810" top="27990" width="3000" height="3000">
+   <BOUNDS type="Box" left="810" top="28140" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Element Prototypes" visible="1" slicecount="1" values="||">
    </PIN>
@@ -409,9 +409,9 @@
    <LINK srcnodeid="30" srcpinname="Output Node" dstnodeid="34" dstpinname="Element Prototypes">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="36">
-   <BOUNDS type="Box" left="5295" top="27885" width="285" height="240">
+   <BOUNDS type="Box" left="5295" top="28035" width="285" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="5295" top="27885" width="0" height="0">
+   <BOUNDS type="Node" left="5295" top="28035" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -427,9 +427,9 @@
    </PIN>
    </NODE>
    <NODE nodename="Rectangle (Notui.ElementPrototype Join)" componentmode="Hidden" id="40">
-   <BOUNDS type="Node" left="810" top="25335" width="0" height="0">
+   <BOUNDS type="Node" left="810" top="25485" width="0" height="0">
    </BOUNDS>
-   <BOUNDS type="Box" left="810" top="25335" width="0" height="0">
+   <BOUNDS type="Box" left="810" top="25485" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Manual Id" visible="1">
    </PIN>
@@ -479,9 +479,9 @@
    <LINK srcnodeid="40" srcpinname="Element Id" dstnodeid="32" dstpinname="Input String">
    </LINK>
    <NODE systemname="InstanceInfo (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="InstanceInfo (Notui.Element Split)" componentmode="Hidden" id="41">
-   <BOUNDS type="Node" left="4620" top="28695" width="100" height="100">
+   <BOUNDS type="Node" left="4620" top="28845" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="4620" top="28695" width="3000" height="3000">
+   <BOUNDS type="Box" left="4620" top="28845" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Element" visible="1" slicecount="1" values="||">
    </PIN>
@@ -489,9 +489,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="42">
-   <BOUNDS type="Box" left="5100" top="29280" width="3285" height="255">
+   <BOUNDS type="Box" left="5100" top="29430" width="3285" height="255">
    </BOUNDS>
-   <BOUNDS type="Node" left="5100" top="29280" width="0" height="0">
+   <BOUNDS type="Node" left="5100" top="29430" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -505,9 +505,9 @@
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
    <NODE systemname="Sift (Notui.Context String)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context String)" componentmode="Hidden" id="38">
-   <BOUNDS type="Node" left="4620" top="28230" width="100" height="100">
+   <BOUNDS type="Node" left="4620" top="28380" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="4620" top="28230" width="3000" height="3000">
+   <BOUNDS type="Box" left="4620" top="28380" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -767,9 +767,9 @@
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="58">
    <BOUNDS type="Node" left="4830" top="20220" width="8520" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="4830" top="20220" width="4575" height="555">
+   <BOUNDS type="Box" left="4830" top="20220" width="4575" height="960">
    </BOUNDS>
-   <PIN pinname="Input String" visible="0" slicecount="1" values="|Overwrite attached values from the prototype. Attached values will be written at instantiation regardless of this toggle|">
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Update attached values from the prototype. Attached values will be written at instantiation regardless of this toggle. Note this toggle is not forcing update, updating will still only happen when any of the inputs are changed|">
    </PIN>
    <PIN pinname="Output String" visible="0">
    </PIN>
