@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FeralTic">
+      <HintPath>dlls\FeralTic.dll</HintPath>
+    </Reference>
     <Reference Include="md.stdl, Version=0.1.50.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\md-stdl.0.1.50-beta\lib\net47\md.stdl.dll</HintPath>
     </Reference>
@@ -45,9 +48,19 @@
     </Reference>
     <Reference Include="SharpDX, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>packages\SharpDX.4.0.1\lib\net45\SharpDX.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D11">
+      <HintPath>dlls\SharpDX.Direct3D11.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SharpDX.DXGI">
+      <HintPath>dlls\SharpDX.DXGI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SharpDX.RawInput, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>packages\SharpDX.RawInput.4.0.1\lib\net45\SharpDX.RawInput.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SimMetrics.Net, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\SimMetrics.Net.1.0.4\lib\net45\SimMetrics.Net.dll</HintPath>
@@ -101,9 +114,18 @@
       <HintPath>dlls\vvvvlib\VVVV.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="VVVV.DX11.Core">
+      <HintPath>dlls\VVVV.DX11.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VVVV.DX11.Lib">
+      <HintPath>dlls\VVVV.DX11.Lib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="VVVV.DX11.Nodes, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dlls\VVVV.DX11.Nodes.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.Hosting">
       <HintPath>dlls\vvvvlib\VVVV.Hosting.dll</HintPath>
@@ -135,6 +157,7 @@
     <Compile Include="AbstractBehaviorNode.cs" />
     <Compile Include="AbstractElementNode.cs" />
     <Compile Include="AttachedValuesNodes.cs" />
+    <Compile Include="AuxDX11ResourceWrapperNodes.cs" />
     <Compile Include="AuxObjectWrapperNodes.cs" />
     <Compile Include="BasicBehaviors.cs" />
     <Compile Include="BasicElementNodes.cs" />
