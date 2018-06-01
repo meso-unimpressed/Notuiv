@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha36.1.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Context (Notui) help.v4p" scrollx="0" scrolly="-360" locked="0">
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Context (Notui) help.v4p" scrollx="15" scrolly="2160" locked="0">
    <BOUNDS type="Window" left="195" top="225" width="24510" height="28875">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -740,20 +740,6 @@
    </NODE>
    <LINK srcnodeid="238" srcpinname="Transform Out" dstnodeid="249" dstpinname="Transform In">
    </LINK>
-   <NODE systemname="IntersectionPoint (Notui Split)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="IntersectionPoint (Notui Split)" componentmode="Hidden" id="250">
-   <BOUNDS type="Node" left="19590" top="19665" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="19590" top="19665" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1">
-   </PIN>
-   <PIN pinname="ElementSpaceXYZ" visible="1">
-   </PIN>
-   <PIN pinname="Transformation" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="196" srcpinname="Touching Intersections" dstnodeid="250" dstpinname="Input">
-   </LINK>
    <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="253">
    <BOUNDS type="Node" left="13785" top="24540" width="100" height="100">
    </BOUNDS>
@@ -799,17 +785,17 @@
    <LINK srcnodeid="255" srcpinname="Geometry Out" dstnodeid="254" dstpinname="Geometry">
    </LINK>
    <NODE systemname="Translate (Transform)" nodename="Translate (Transform)" componentmode="Hidden" id="256">
-   <BOUNDS type="Node" left="19590" top="20220" width="100" height="100">
+   <BOUNDS type="Node" left="20565" top="22485" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
-   <PIN pinname="Z" slicecount="1" values="-0.01">
+   <PIN pinname="Z" slicecount="1" values="0" visible="1">
    </PIN>
    </NODE>
    <NODE systemname="UniformScale (Transform)" nodename="UniformScale (Transform)" componentmode="Hidden" id="257">
-   <BOUNDS type="Node" left="19545" top="20955" width="100" height="100">
+   <BOUNDS type="Node" left="19590" top="20070" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform In" visible="1">
    </PIN>
@@ -818,10 +804,6 @@
    <PIN pinname="XYZ" slicecount="1" values="0.2">
    </PIN>
    </NODE>
-   <LINK srcnodeid="256" srcpinname="Transform Out" dstnodeid="257" dstpinname="Transform In">
-   </LINK>
-   <LINK srcnodeid="257" srcpinname="Transform Out" dstnodeid="254" dstpinname="Transform In">
-   </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="258">
    <BOUNDS type="Box" left="13215" top="25665" width="405" height="240">
    </BOUNDS>
@@ -839,9 +821,9 @@
    <LINK srcnodeid="258" srcpinname="Output Enum" dstnodeid="4" dstpinname="AA Samples per Pixel">
    </LINK>
    <NODE systemname="Cylinder (DX11.Geometry)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Cylinder (DX11.Geometry)" componentmode="Hidden" id="259">
-   <BOUNDS type="Node" left="17970" top="20865" width="100" height="100">
+   <BOUNDS type="Node" left="17955" top="19890" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="17970" top="20865" width="3000" height="3000">
+   <BOUNDS type="Box" left="17955" top="19890" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Geometry Out" visible="1">
    </PIN>
@@ -862,8 +844,6 @@
    <PIN pinname="X" slicecount="1" values="0.25">
    </PIN>
    </NODE>
-   <LINK srcnodeid="257" srcpinname="Transform Out" dstnodeid="261" dstpinname="Transform In">
-   </LINK>
    <NODE systemname="PhongDirectional (DX11.Effect)" filename="%VVVV%\packs\dx11\nodes\dx11\PhongDirectional.fx" nodename="PhongDirectional (DX11.Effect)" componentmode="Hidden" id="260">
    <BOUNDS type="Node" left="17850" top="22095" width="100" height="100">
    </BOUNDS>
@@ -883,9 +863,9 @@
    <LINK srcnodeid="261" srcpinname="Transform Out" dstnodeid="260" dstpinname="Transform In">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="262">
-   <BOUNDS type="Box" left="18255" top="20175" width="795" height="240">
+   <BOUNDS type="Box" left="18240" top="19200" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="18255" top="20175" width="0" height="0">
+   <BOUNDS type="Node" left="18240" top="19200" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.1">
    </PIN>
@@ -1122,6 +1102,8 @@
    <PIN pinname="Bake Buttons Into ID" visible="1">
    </PIN>
    <PIN pinname="Mouse Touch ID" visible="1">
+   </PIN>
+   <PIN pinname="Thread Count" slicecount="1" values="4">
    </PIN>
    </NODE>
    <LINK srcnodeid="49" srcpinname="Y Output Value" dstnodeid="291" dstpinname="Consider Touch New Before">
@@ -2388,8 +2370,6 @@
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
    </NODE>
-   <LINK srcnodeid="250" srcpinname="Transformation" dstnodeid="256" dstpinname="Transform In">
-   </LINK>
    <NODE systemname="Touch (Notui Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Touch (Notui Split)" componentmode="Hidden" id="201">
    <BOUNDS type="Node" left="15855" top="15225" width="100" height="100">
    </BOUNDS>
@@ -2514,7 +2494,7 @@
    </NODE>
    <LINK srcnodeid="441" srcpinname="AttachadMouse" dstnodeid="451" dstpinname="Mouse">
    </LINK>
-   <PACK Name="dx11" Version="1.2">
+   <PACK Name="dx11" Version="1.3.0.1">
    </PACK>
    <NODE systemname="Cons (Notui.ElementPrototype)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Cons (Notui.ElementPrototype)" componentmode="Hidden" id="453">
    <BOUNDS type="Node" left="9255" top="11955" width="100" height="100">
@@ -2861,5 +2841,115 @@
    <LINK srcnodeid="289" srcpinname="Transform Out" dstnodeid="467" dstpinname="Transform In">
    </LINK>
    <LINK srcnodeid="467" srcpinname="Transform Out" dstnodeid="82" dstpinname="Transform In">
+   </LINK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
+   </PACK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="471">
+   <BOUNDS type="Node" left="540" top="39030" width="810" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="540" top="39030" width="1335" height="405">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|In config:|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="472">
+   <BOUNDS type="Node" left="540" top="39480" width="1155" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="540" top="39480" width="4500" height="1020">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Thread Count:&cr;&lf;Specify the number of threads used to process the elements. 1 means elements are just processed sequentially but still asynchronously, below 1 (or 0) turns off multithreading|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="IntersectionPoint (Notui Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="IntersectionPoint (Notui Split)" componentmode="Hidden" id="473">
+   <BOUNDS type="Node" left="19440" top="18990" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="19440" top="18990" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="WorldTransform" visible="1">
+   </PIN>
+   <PIN pinname="WorldSurfaceTangentTransform" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="196" srcpinname="Touching Intersections" dstnodeid="473" dstpinname="Input">
+   </LINK>
+   <NODE systemname="Subtract (Value)" nodename="Subtract (Value)" componentmode="Hidden" id="474">
+   <BOUNDS type="Node" left="21405" top="19830" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="475">
+   <BOUNDS type="Box" left="20715" top="19410" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="20715" top="19410" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.01">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Vector (2d Join)" nodename="Vector (2d Join)" componentmode="Hidden" id="476">
+   <BOUNDS type="Node" left="20865" top="20340" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="X" visible="1">
+   </PIN>
+   <PIN pinname="Y" visible="1">
+   </PIN>
+   <PIN pinname="XY" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="475" srcpinname="Y Output Value" dstnodeid="476" dstpinname="X">
+   </LINK>
+   <LINK srcnodeid="474" srcpinname="Output" dstnodeid="476" dstpinname="Y">
+   </LINK>
+   <LINK srcnodeid="475" srcpinname="Y Output Value" dstnodeid="474" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="476" srcpinname="XY" dstnodeid="256" dstpinname="Z">
+   </LINK>
+   <NODE systemname="Select (Transform)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Select (Transform)" componentmode="Hidden" id="477">
+   <BOUNDS type="Node" left="20550" top="22050" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="20550" top="22050" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Select" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="477" srcpinname="Output" dstnodeid="256" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="473" srcpinname="WorldSurfaceTangentTransform" dstnodeid="257" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="257" srcpinname="Transform Out" dstnodeid="477" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="257" srcpinname="Transform Out" dstnodeid="261" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="256" srcpinname="Transform Out" dstnodeid="254" dstpinname="Transform In">
    </LINK>
    </PATCH>

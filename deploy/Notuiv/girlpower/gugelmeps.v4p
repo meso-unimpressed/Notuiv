@@ -1,8 +1,8 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha36.1.dtd" >
    <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\girlpower\gugelmeps.v4p" systemname="gugelmeps" filename="D:\local\vvvv-gp\packs\Notuiv\girlpower\gugelmeps.v4p" scrollx="0" scrolly="-360">
    <BOUNDS type="Window" left="31455" top="9765" width="14130" height="14610">
    </BOUNDS>
-   <PACK Name="dx11" Version="1.2">
+   <PACK Name="dx11" Version="1.3.0.1">
    </PACK>
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
@@ -259,7 +259,7 @@
    <LINK srcnodeid="12" srcpinname="Layer" dstnodeid="19" dstpinname="Layer 1">
    </LINK>
    <NODE systemname="Assets (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\modules\Assets (DX11.Texture 2d).v4p" nodename="Assets (DX11.Texture 2d)" componentmode="Hidden" id="11">
-   <BOUNDS type="Node" left="5625" top="8205" width="100" height="100">
+   <BOUNDS type="Node" left="5625" top="10455" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -383,9 +383,9 @@
    <LINK srcnodeid="17" srcpinname="Output" dstnodeid="4" dstpinname="Behaviors">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="34">
-   <BOUNDS type="Box" left="6765" top="8250" width="795" height="480">
+   <BOUNDS type="Box" left="5970" top="9345" width="795" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="6765" top="8250" width="0" height="0">
+   <BOUNDS type="Node" left="5970" top="9345" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="2" visible="1" values="1024,1024">
    </PIN>
@@ -532,26 +532,6 @@
    </LINK>
    <LINK srcnodeid="45" srcpinname="Output" dstnodeid="36" dstpinname="Values">
    </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="48">
-   <BOUNDS type="Box" left="9495" top="9630" width="285" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="9495" top="9630" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Toggle">
-   </PIN>
-   <PIN pinname="X Input Value" slicecount="1" values="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="48" srcpinname="Y Output Value" dstnodeid="36" dstpinname="Set Values">
-   </LINK>
    <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="49">
    <BOUNDS type="Node" left="11490" top="9930" width="100" height="100">
    </BOUNDS>
@@ -588,16 +568,6 @@
    </NODE>
    <LINK srcnodeid="50" srcpinname="Output" dstnodeid="52" dstpinname="Input 2">
    </LINK>
-   <NODE systemname="UniformScale (Transform)" nodename="UniformScale (Transform)" componentmode="Hidden" id="53">
-   <BOUNDS type="Node" left="5745" top="9570" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Transform Out" visible="1">
-   </PIN>
-   <PIN pinname="XYZ" slicecount="1" visible="1" values="2">
-   </PIN>
-   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
-   </PIN>
-   </NODE>
    <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="54">
    <BOUNDS type="Node" left="7140" top="11115" width="100" height="100">
    </BOUNDS>
@@ -664,4 +634,32 @@
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
    </NODE>
+   <NODE systemname="EQ (Value)" nodename="EQ (Value)" componentmode="Hidden" id="59">
+   <BOUNDS type="Node" left="10830" top="9645" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Epsilon" slicecount="1" values="0.0001">
+   </PIN>
+   <PIN pinname="Inverse Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="44" srcpinname="Output" dstnodeid="59" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="59" srcpinname="Inverse Output" dstnodeid="36" dstpinname="Set Values">
+   </LINK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
+   </PACK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="60">
+   <BOUNDS type="Box" left="8190" top="11580" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="8190" top="11580" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="52" srcpinname="Output" dstnodeid="60" dstpinname="Y Input Value">
+   </LINK>
    </PATCH>

@@ -84,7 +84,7 @@ namespace Notuiv.Filters
         Version = "String",
         Author = "microdee"
     )]
-    public class StringElementFilterNode : ContextElementFilterNode, IPartImportsSatisfiedNotification
+    public class StringContextElementFilterNode : ContextElementFilterNode, IPartImportsSatisfiedNotification
     {
         [Input("Query Flattened", Order = 100)]
         public IDiffSpread<bool> FQueryFlattened;
@@ -127,7 +127,7 @@ namespace Notuiv.Filters
         Version = "Type",
         Author = "microdee"
     )]
-    public class TypeElementFilterNode : ContextElementFilterNode, IPartImportsSatisfiedNotification
+    public class TypeContextElementFilterNode : ContextElementFilterNode, IPartImportsSatisfiedNotification
     {
         [Input("Query Flattened", Order = 100)]
         public IDiffSpread<bool> FQueryFlattened;
@@ -167,7 +167,7 @@ namespace Notuiv.Filters
         Version = "Opaq",
         Author = "microdee"
     )]
-    public class OpaqElementFilterNode : ContextElementFilterNode, IPartImportsSatisfiedNotification
+    public class OpaqContextElementFilterNode : ContextElementFilterNode, IPartImportsSatisfiedNotification
     {
         [Input("Separator", Order = 100, DefaultString = "/")]
         public IDiffSpread<string> FSeparator;

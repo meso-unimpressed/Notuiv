@@ -1,8 +1,8 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\girlpower\AppStructure\StateFulUIBehavior.v4p" systemname="StateFulUIBehavior" filename="D:\local\vvvv-gp\packs\Notuiv\girlpower\AppStructure\StateFulUIBehavior.v4p" scrollx="0" scrolly="-360">
-   <BOUNDS type="Window" left="22380" top="16665" width="9000" height="9180">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta36.dtd" >
+   <PATCH nodename="C:\apps\code\vvvv_50beta36_x64\packs\Notuiv\girlpower\AppStructure\StateFulUIBehavior.v4p" systemname="StateFulUIBehavior" filename="D:\local\vvvv-gp\packs\Notuiv\girlpower\AppStructure\StateFulUIBehavior.v4p" scrollx="0" scrolly="-360">
+   <BOUNDS type="Window" left="11745" top="1440" width="9000" height="9180">
    </BOUNDS>
-   <PACK Name="dx11" Version="1.2">
+   <PACK Name="dx11" Version="1.0.5">
    </PACK>
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
@@ -14,6 +14,8 @@
    <BOUNDS type="Node" left="3705" top="555" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input Value" visible="1">
+   </PIN>
+   <PIN pinname="Receive String" slicecount="1" values="Notui.Context">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -259,6 +261,8 @@
    </BOUNDS>
    <PIN pinname="Input Value" visible="1">
    </PIN>
+   <PIN pinname="Receive String" slicecount="1" values="Notui.Context">
+   </PIN>
    </NODE>
    <NODE systemname="Sift (Notui.Context String)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Sift (Notui.Context String)" componentmode="Hidden" id="28">
    <BOUNDS type="Node" left="4080" top="7860" width="100" height="100">
@@ -424,4 +428,6 @@
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
    </NODE>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
+   </PACK>
    </PATCH>

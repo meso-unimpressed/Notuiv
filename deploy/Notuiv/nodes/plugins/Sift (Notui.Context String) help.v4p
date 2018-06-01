@@ -1,4 +1,4 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha36.1.dtd" >
    <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Sift (Notui.Context String) help.v4p" scrollx="0" scrolly="-360">
    <BOUNDS type="Window" left="2115" top="3090" width="15675" height="8415">
    </BOUNDS>
@@ -165,7 +165,7 @@
    <LINK srcnodeid="7" srcpinname="Context" dstnodeid="14" dstpinname="Input Node">
    </LINK>
    <NODE systemname="Sift (Notui.Context String)" nodename="Sift (Notui.Context String)" componentmode="Hidden" id="15" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll">
-   <BOUNDS type="Node" left="3780" top="4335" width="100" height="100">
+   <BOUNDS type="Node" left="4935" top="4335" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Query" visible="1">
    </PIN>
@@ -195,9 +195,9 @@
    <LINK srcnodeid="7" srcpinname="Context" dstnodeid="15" dstpinname="Context">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="18">
-   <BOUNDS type="Box" left="4470" top="3570" width="480" height="480">
+   <BOUNDS type="Box" left="5625" top="3435" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="4470" top="3570" width="0" height="0">
+   <BOUNDS type="Node" left="5625" top="3435" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -221,9 +221,9 @@
    <PACK Name="addonpack" Version="36.0.0">
    </PACK>
    <NODE systemname="InstanceInfo (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="InstanceInfo (Notui.Element Split)" componentmode="Hidden" id="19">
-   <BOUNDS type="Node" left="3780" top="4860" width="100" height="100">
+   <BOUNDS type="Node" left="4935" top="4860" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="3780" top="4860" width="3000" height="3000">
+   <BOUNDS type="Box" left="4935" top="4860" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Element" visible="1">
    </PIN>
@@ -233,9 +233,9 @@
    <LINK srcnodeid="15" srcpinname="Output" dstnodeid="19" dstpinname="Element">
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="20">
-   <BOUNDS type="Box" left="4380" top="5370" width="795" height="240">
+   <BOUNDS type="Box" left="5535" top="5370" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="4380" top="5370" width="0" height="0">
+   <BOUNDS type="Node" left="5535" top="5370" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -418,6 +418,24 @@
    <BOUNDS type="Box" left="10560" top="3660" width="2895" height="270">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|use the name or the ID for comparison|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <PACK Name="dx11" Version="1.3.0.1">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
+   </PACK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="33">
+   <BOUNDS type="Node" left="10380" top="1500" width="3825" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10380" top="1500" width="3825" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|You can spread the Query pin on the Sift nodes ;)|">
    </PIN>
    <PIN pinname="Output String" visible="0">
    </PIN>

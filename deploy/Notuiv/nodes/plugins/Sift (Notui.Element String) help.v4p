@@ -1,0 +1,437 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha36.1.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\nodes\plugins\Sift (Notui.Element String) help.v4p" scrollx="0" scrolly="-360">
+   <BOUNDS type="Window" left="9285" top="2895" width="17760" height="8760">
+   </BOUNDS>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
+   <BOUNDS type="Node" left="225" top="225" width="5100" height="450">
+   </BOUNDS>
+   <BOUNDS type="Box" left="225" top="225" width="5100" height="450">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="0" values="|Sift (Notui.Element String)|">
+   </PIN>
+   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" visible="1" values="14">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="2">
+   <BOUNDS type="Node" left="225" top="600" width="5100" height="600">
+   </BOUNDS>
+   <BOUNDS type="Box" left="225" top="600" width="5100" height="600">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="0" values="|Sift element instances from a parent element via Opaq path|">
+   </PIN>
+   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
+   </PIN>
+   </NODE>
+   <PACK Name="dx11" Version="1.3.0.1">
+   </PACK>
+   <PACK Name="KeyboardUI" Version="1.1.1">
+   </PACK>
+   <PACK Name="vvvv-Message" Version="2.9.10">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
+   </PACK>
+   <PACK Name="addonpack" Version="36.0.0">
+   </PACK>
+   <NODE systemname="GridSplit (Transform)" filename="%VVVV%\packs\mp.essentials\nodes\modules\transform\GridSplit (Transform).v4p" nodename="GridSplit (Transform)" componentmode="Hidden" id="67">
+   <BOUNDS type="Node" left="4545" top="2625" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Rows" visible="1">
+   </PIN>
+   <PIN pinname="Columns" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="66">
+   <BOUNDS type="Box" left="5100" top="1620" width="330" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5100" top="1620" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="4">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="66" srcpinname="Y Output Value" dstnodeid="67" dstpinname="Rows">
+   </LINK>
+   <LINK srcnodeid="66" srcpinname="Y Output Value" dstnodeid="67" dstpinname="Columns">
+   </LINK>
+   <NODE systemname="Context (Notui)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Context (Notui)" componentmode="Hidden" id="65">
+   <BOUNDS type="Node" left="855" top="5430" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="855" top="5430" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Element Prototypes" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Context" visible="1">
+   </PIN>
+   <PIN pinname="Hierarchical Elements" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Select (String)" filename="" nodename="Select (String)" componentmode="Hidden" id="64">
+   <BOUNDS type="Node" left="720" top="2025" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="720" top="2025" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Select" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="63">
+   <BOUNDS type="Node" left="2445" top="1800" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="66" srcpinname="Y Output Value" dstnodeid="63" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="66" srcpinname="Y Output Value" dstnodeid="63" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="63" srcpinname="Output" dstnodeid="64" dstpinname="Select">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="62">
+   <BOUNDS type="Box" left="720" top="1590" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="720" top="1590" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="herp">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="Multiline">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="62" srcpinname="Output String" dstnodeid="64" dstpinname="Input">
+   </LINK>
+   <NODE systemname="SetSlice (String)" nodename="SetSlice (String)" componentmode="Hidden" id="61">
+   <BOUNDS type="Node" left="720" top="2745" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Spread" visible="1">
+   </PIN>
+   <PIN pinname="Index" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="60">
+   <BOUNDS type="Box" left="915" top="2370" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="915" top="2370" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="derp">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="text">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="60" srcpinname="Output String" dstnodeid="61" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="64" srcpinname="Output" dstnodeid="61" dstpinname="Spread">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="59">
+   <BOUNDS type="Box" left="1440" top="2745" width="360" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1440" top="2745" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="4">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="59" srcpinname="Y Output Value" dstnodeid="61" dstpinname="Index">
+   </LINK>
+   <NODE systemname="Rectangle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Rectangle (Notui.ElementPrototype Join)" componentmode="Hidden" id="56">
+   <BOUNDS type="Node" left="855" top="3780" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="855" top="3780" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Element Id" visible="1">
+   </PIN>
+   <PIN pinname="Element Prototype" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="67" srcpinname="Transform Out" dstnodeid="56" dstpinname="Display Transform">
+   </LINK>
+   <LINK srcnodeid="61" srcpinname="Output" dstnodeid="56" dstpinname="Name">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="55">
+   <BOUNDS type="Box" left="5385" top="4920" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5385" top="4920" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Use Name|">
+   </PIN>
+   </NODE>
+   <NODE systemname="InstanceInfo (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="InstanceInfo (Notui.Element Split)" componentmode="Hidden" id="54">
+   <BOUNDS type="Node" left="4695" top="6195" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4695" top="6195" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Element" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Name Out" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="53">
+   <BOUNDS type="Box" left="4995" top="6750" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4995" top="6750" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="54" srcpinname="Name Out" dstnodeid="53" dstpinname="Input String">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="50">
+   <BOUNDS type="Box" left="9630" top="4905" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9630" top="4905" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Use Name|">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="49">
+   <BOUNDS type="Box" left="9105" top="3450" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9105" top="3450" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="derp">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Query">
+   </PIN>
+   </NODE>
+   <NODE systemname="InstanceInfo (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="InstanceInfo (Notui.Element Split)" componentmode="Hidden" id="48">
+   <BOUNDS type="Node" left="8940" top="6165" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8940" top="6165" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Element" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Name Out" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="47">
+   <BOUNDS type="Box" left="9240" top="6705" width="750" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9240" top="6705" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="48" srcpinname="Name Out" dstnodeid="47" dstpinname="Input String">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="45">
+   <BOUNDS type="Box" left="9480" top="4125" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9480" top="4125" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Contains">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="43">
+   <BOUNDS type="Node" left="10035" top="4230" width="3075" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10035" top="4230" width="3075" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|do contains comparison instead of match|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="42">
+   <BOUNDS type="Node" left="10170" top="4995" width="2895" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10170" top="4995" width="2895" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|use the name or the ID for comparison|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="Rectangle (Notui.ElementPrototype Join)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Rectangle (Notui.ElementPrototype Join)" componentmode="Hidden" id="68">
+   <BOUNDS type="Node" left="705" top="4785" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="705" top="4785" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Name" visible="1">
+   </PIN>
+   <PIN pinname="Children" visible="1">
+   </PIN>
+   <PIN pinname="Element Prototype" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="69">
+   <BOUNDS type="Box" left="1020" top="4335" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1020" top="4335" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="berp">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="callmenames">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="69" srcpinname="Output String" dstnodeid="68" dstpinname="Name">
+   </LINK>
+   <LINK srcnodeid="56" srcpinname="Element Prototype" dstnodeid="68" dstpinname="Children">
+   </LINK>
+   <LINK srcnodeid="68" srcpinname="Element Prototype" dstnodeid="65" dstpinname="Element Prototypes">
+   </LINK>
+   <NODE systemname="Sift (Notui.Element String)" nodename="Sift (Notui.Element String)" componentmode="Hidden" id="57" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll">
+   <BOUNDS type="Node" left="4695" top="5670" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Query" visible="1">
+   </PIN>
+   <PIN pinname="Context" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Use Name" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="56" srcpinname="Element Id" dstnodeid="57" dstpinname="Query">
+   </LINK>
+   <LINK srcnodeid="55" srcpinname="Y Output Value" dstnodeid="57" dstpinname="Use Name">
+   </LINK>
+   <LINK srcnodeid="57" srcpinname="Output" dstnodeid="54" dstpinname="Element">
+   </LINK>
+   <LINK srcnodeid="65" srcpinname="Hierarchical Elements" dstnodeid="57" dstpinname="Context">
+   </LINK>
+   <NODE systemname="Sift (Notui.Element String)" nodename="Sift (Notui.Element String)" componentmode="Hidden" id="51" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll">
+   <BOUNDS type="Node" left="8940" top="5670" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Query" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Context" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Use Name" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Query Flattened" visible="1">
+   </PIN>
+   <PIN pinname="Contains" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="50" srcpinname="Y Output Value" dstnodeid="51" dstpinname="Use Name">
+   </LINK>
+   <LINK srcnodeid="49" srcpinname="Output String" dstnodeid="51" dstpinname="Query">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Output" dstnodeid="48" dstpinname="Element">
+   </LINK>
+   <LINK srcnodeid="45" srcpinname="Y Output Value" dstnodeid="51" dstpinname="Contains">
+   </LINK>
+   <LINK srcnodeid="65" srcpinname="Hierarchical Elements" dstnodeid="51" dstpinname="Context">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="70">
+   <BOUNDS type="Node" left="10050" top="3450" width="3825" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10050" top="3450" width="3825" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Queries can be grouped (binsized) to elements|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="71">
+   <BOUNDS type="Box" left="1515" top="6150" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1515" top="6150" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Hierarchical Elements|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="65" srcpinname="Hierarchical Elements" dstnodeid="71" dstpinname="Input Node">
+   </LINK>
+   </PATCH>

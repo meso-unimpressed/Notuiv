@@ -33,6 +33,9 @@ namespace Notuiv
         [Import] public IPluginHost2 PluginHost;
         [Import] public IHDEHost Host;
 
+        [Config("Thread Count", DefaultValue = 4)]
+        public IDiffSpread<int> FThreads;
+
         [Input("Element Prototypes")]
         public Pin<ElementPrototype> FElements;
 
@@ -111,6 +114,8 @@ namespace Notuiv
             Context.ConsiderNewBefore = FConsiderNew[0];
             Context.ConsiderReleasedAfter = FConsiderReleased[0];
             Context.MinimumForce = FMinForce[0];
+
+            if (FThreads.IsChanged) Context.ParallelThreads = FThreads[0];
 
             var touchcount = FAuxTouches.SliceCount;
             var touches = Enumerable.Empty<(Vector2, int, float)>();
