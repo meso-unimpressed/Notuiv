@@ -10,6 +10,20 @@ namespace Notuiv
 {
 
     [PluginInfo(
+        Name = "Void",
+        Category = "Notui.ElementPrototype",
+        Version = "Join",
+        Author = "microdee"
+    )]
+    public class VoidElementNode : AbstractElementNode<VoidElementPrototype>
+    {
+        protected override VoidElementPrototype ConstructPrototype(int i, string id)
+        {
+            return new VoidElementPrototype(string.IsNullOrWhiteSpace(id) ? null : id);
+        }
+    }
+
+    [PluginInfo(
         Name = "Plane",
         Category = "Notui.ElementPrototype",
         Version = "Join",
