@@ -212,7 +212,6 @@ namespace Notuiv
         }
 
         private int init = 0;
-        private readonly Dictionary<string, TPrototype> _manualIdElements = new Dictionary<string, TPrototype>();
 
         private bool BinSizedSpreadChanged<T>(ISpread<ISpread<T>> spread)
         {
@@ -245,60 +244,19 @@ namespace Notuiv
 
             if (changed || init < 2)
             {
-                if (FManId[0])
+                FElementProt.ResizeAndDismiss(sprmax, i => FillElement(ConstructPrototype(i, null), i, true));
+                FElementId.SliceCount = sprmax;
+                for (int i = 0; i < FElementProt.SliceCount; i++)
                 {
-                    if (sprmax > 0)
+                    var isnew = false;
+                    if (FElementProt[i] == null)
                     {
-                        for (int i = 0; i < FId.SliceCount; i++)
-                        {
-                            if(string.IsNullOrWhiteSpace(FId[i])) continue;
-                            if (_manualIdElements.ContainsKey(FId[i]))
-                            {
-                                FillElement(_manualIdElements[FId[i]], i, false);
-                            }
-                            else
-                            {
-                                var prot = FillElement(ConstructPrototype(i, FId[i]), i, true);
-                                _manualIdElements.Add(prot.Id, prot);
-                            }
-                        }
-
-                        foreach (var k in _manualIdElements.Keys.ToArray())
-                        {
-                            if(FId.Contains(k)) continue;
-                            _manualIdElements.Remove(k);
-                        }
-
-                        FElementProt.SliceCount = FElementId.SliceCount = _manualIdElements.Count;
-                        int ii = 0;
-                        foreach (var id in FId.Where(id => !string.IsNullOrWhiteSpace(id)))
-                        {
-                            FElementProt[ii] = _manualIdElements[id];
-                            FElementId[ii] = FElementProt[ii].Id;
-                            ii++;
-                        }
+                        FElementProt[i] = ConstructPrototype(i, FManId[i] ? FId[i] : null);
+                        isnew = true;
                     }
-                    else
-                    {
-                        _manualIdElements.Clear();
-                        FElementProt.SliceCount = FElementId.SliceCount = 0;
-                    }
-                }
-                else
-                {
-                    FElementProt.ResizeAndDismiss(sprmax, i => FillElement(ConstructPrototype(i, null), i, true));
-                    FElementId.SliceCount = sprmax;
-                    for (int i = 0; i < FElementProt.SliceCount; i++)
-                    {
-                        var isnew = false;
-                        if (FElementProt[i] == null)
-                        {
-                            FElementProt[i] = ConstructPrototype(i, null);
-                            isnew = true;
-                        }
-                        FillElement(FElementProt[i], i, isnew);
-                        FElementId[i] = FElementProt[i].Id;
-                    }
+                    FillElement(FElementProt[i], i, isnew);
+                    if (FManId[i]) FElementProt[i].Id = FId[i];
+                    FElementId[i] = FElementProt[i].Id;
                 }
                 //FElementProt.Flush();
                 FElementProt.Stream.IsChanged = true;
