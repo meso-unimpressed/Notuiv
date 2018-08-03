@@ -81,6 +81,8 @@ namespace Notuiv
         [Input("Element")] public Pin<NotuiElement> FElement;
         [Input("Display")] public Pin<ElementTransformation> FDisp;
         [Input("Set Display")] public ISpread<bool> FSetDisp;
+        [Input("Target")] public Pin<ElementTransformation> FTarget;
+        [Input("Set Target")] public ISpread<bool> FSetTarget;
 
         [Input("Transformation Update Mode", DefaultEnumEntry = "All")]
         public ISpread<ISpread<ApplyTransformMode>> FTrUpdateMode;
@@ -100,6 +102,11 @@ namespace Notuiv
                     {
                         if(FDisp[i] != null)
                             FElement[i].DisplayTransformation.UpdateFrom(FDisp[i], trupdmode);
+                    }
+                    if (FSetTarget[i] && FTarget.IsConnected && FTarget.SliceCount > 0)
+                    {
+                        if (FTarget[i] != null)
+                            FElement[i].TargetTransformation.UpdateFrom(FTarget[i], trupdmode);
                     }
                 }
             }
@@ -122,6 +129,8 @@ namespace Notuiv
         [Input("Element")] public Pin<NotuiElement> FElement;
         [Input("Display")] public ISpread<Matrix4x4> FDisp;
         [Input("Set Display")] public ISpread<bool> FSetDisp;
+        [Input("Target")] public ISpread<Matrix4x4> FTarget;
+        [Input("Set Target")] public ISpread<bool> FSetTarget;
 
         [Output("Element Out")] public ISpread<NotuiElement> FElementOut;
 
@@ -139,9 +148,15 @@ namespace Notuiv
                         tr.Position = pos.AsSystemVector();
                         tr.Rotation = rotation.AsSystemQuaternion();
                         tr.Scale = scale.AsSystemVector();
-
                     }
-
+                    if (FSetTarget[i] && FTarget.SliceCount > 0)
+                    {
+                        FTarget[i].Decompose(out var scale, out Vector4D rotation, out var pos);
+                        var tr = FElement[i].TargetTransformation;
+                        tr.Position = pos.AsSystemVector();
+                        tr.Rotation = rotation.AsSystemQuaternion();
+                        tr.Scale = scale.AsSystemVector();
+                    }
                     FElementOut[i] = FElement[i];
                 }
             }

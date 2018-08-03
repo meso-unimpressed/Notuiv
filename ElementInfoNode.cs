@@ -160,6 +160,8 @@ namespace Notuiv
         public ISpread<ISpread<InteractionBehavior>> FBehavsOut;
         [Output("Parent", BinVisibility = PinVisibility.Hidden)]
         public ISpread<ISpread<NotuiElement>> FParent;
+        [Output("Prototype", Visibility = PinVisibility.Hidden)]
+        public ISpread<ElementPrototype> FPrototype;
         [Output("Context", Visibility = PinVisibility.OnlyInspector)]
         public ISpread<NotuiContext> FContext;
         
@@ -186,6 +188,7 @@ namespace Notuiv
             }
             FElementOut[i] = element;
             FNameOut[i] = element.Name;
+            FPrototype[i] = element.Prototype;
             
             FId[i] = element.Id;
             FHit[i] = element.Hit;
@@ -204,7 +207,7 @@ namespace Notuiv
             FLocDisplay[i] = element.DisplayTransformation;
         }
 
-        protected int _prevSliceCount;
+        protected int _prevSliceCount = -1;
 
         public void Evaluate(int SpreadMax)
         {
@@ -223,8 +226,9 @@ namespace Notuiv
             }
             else
             {
+                if(_prevSliceCount != 0)
+                    this.SetSliceCountForAllOutput(0);
                 _prevSliceCount = 0;
-                this.SetSliceCountForAllOutput(0);
             }
         }
     }

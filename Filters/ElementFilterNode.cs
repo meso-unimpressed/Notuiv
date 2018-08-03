@@ -12,7 +12,7 @@ namespace Notuiv.Filters
 {
     public abstract class ElementFilterNode : IPluginEvaluate
     {
-        [Input("Context")]
+        [Input("Element")]
         public Pin<NotuiElement> FElement;
         
         private Spread<NotuiElement> _prevElements = new Spread<NotuiElement>();
@@ -23,7 +23,7 @@ namespace Notuiv.Filters
         [Output("Output")]
         public ISpread<ISpread<NotuiElement>> FOut;
 
-        protected abstract void Filter(int ei, int qi, NotuiElement element, string filter);
+        protected abstract void Filter(int ei, NotuiElement element, ISpread<string> filter);
 
         private int _elementsChanged = 0;
 
@@ -94,10 +94,7 @@ namespace Notuiv.Filters
                 for (int i = 0; i < FElement.SliceCount; i++)
                 {
                     FOut[i].SliceCount = 0;
-                    for (int j = 0; j < FQuery[i].SliceCount; j++)
-                    {
-                        Filter(i, j, FElement[i], FQuery[i][j]);
-                    }
+                    Filter(i, FElement[i], FQuery[i]);
                 }
                 //FOut.Stream.IsChanged = true;
                 _elementsChanged--;
@@ -122,45 +119,57 @@ namespace Notuiv.Filters
         public IDiffSpread<bool> FContains;
         [Input("Use Name", Order = 102, DefaultBoolean = true)]
         public IDiffSpread<bool> FUseName;
+        [Input("Exclude", Order = 103)]
+        public IDiffSpread<bool> FExclude;
 
         public void OnImportsSatisfied()
         {
             FContains.Changed += spread => HandleElementChange(this, EventArgs.Empty);
             FUseName.Changed += spread => HandleElementChange(this, EventArgs.Empty);
+            FExclude.Changed += spread => HandleElementChange(this, EventArgs.Empty);
         }
 
-        protected override void Filter(int ei, int qi, NotuiElement element, string filter)
+        protected override void Filter(int ei, NotuiElement element, ISpread<string> filter)
         {
-            if (string.IsNullOrWhiteSpace(filter) || FContains.SliceCount == 0 || FUseName.SliceCount == 0)
+            bool NameCompare(NotuiElement el)
+            {
+                var res = false;
+                foreach (var f in filter)
+                {
+                    if(string.IsNullOrWhiteSpace(f)) continue;
+                    res = FContains[ei]
+                        ? el.Name.Contains(f)
+                        : el.Name.Equals(f, StringComparison.InvariantCulture);
+
+                    if (!res) continue;
+                    break;
+                }
+                return FExclude[ei] ? !res : res;
+            };
+            bool IdCompare(NotuiElement el)
+            {
+                var res = false;
+                foreach (var f in filter)
+                {
+                    if (string.IsNullOrWhiteSpace(f)) continue;
+                    res = FContains[ei]
+                        ? el.Id.Contains(f)
+                        : el.Id.Equals(f, StringComparison.InvariantCulture);
+
+                    if (!res) continue;
+                    break;
+                }
+                return FExclude[ei] ? !res : res;
+            };
+
+            if (FContains.SliceCount == 0 || FUseName.SliceCount == 0 || FExclude.SliceCount == 0)
                 return;
             else
             {
                 if (FOut.SliceCount == 0) return;
-                if (FUseName[ei])
-                {
-                    FOut[ei].AddRange(
-                        element.Children.Values
-                            .Where(
-                                el => FContains[ei] ?
-                                    el.Name.Contains(filter) :
-                                    el.Name.Equals(filter, StringComparison.InvariantCulture)
-                            )
-                    );
-                }
-                else
-                {
-                    if (FContains[ei])
-                    {
-                        foreach (var child in element.Children.Keys)
-                        {
-                            if (child.Contains(filter)) FOut[ei].Add(element.Children[child]);
-                        }
-                    }
-                    else
-                    {
-                        if (element.Children.ContainsKey(filter)) FOut[ei].Add(element.Children[filter]);
-                    }
-                }
+                FOut[ei].AddRange(FUseName[ei]
+                    ? element.Children.Values.Where(NameCompare)
+                    : element.Children.Values.Where(IdCompare));
             }
         }
     }
@@ -175,22 +184,39 @@ namespace Notuiv.Filters
     {
         [Input("Contains", Order = 101)]
         public IDiffSpread<bool> FContains;
+        [Input("Exclude", Order = 103)]
+        public IDiffSpread<bool> FExclude;
 
         public void OnImportsSatisfied()
         {
             FContains.Changed += spread => HandleElementChange(this, EventArgs.Empty);
+            FExclude.Changed += spread => HandleElementChange(this, EventArgs.Empty);
         }
 
-        protected override void Filter(int ei, int qi, NotuiElement element, string filter)
+        protected override void Filter(int ei, NotuiElement element, ISpread<string> filter)
         {
             bool CompareType(NotuiElement el)
             {
-                if (el.EnvironmentObject is VEnvironmentData venvdat)
-                    return FContains[ei] ? venvdat.TypeCSharpName.Contains(filter) : venvdat.TypeCSharpName == filter;
-                return FContains[ei] ? el.GetType().GetCSharpName().Contains(filter) : el.GetType().GetCSharpName() == filter;
-            }
+                var res = false;
+                foreach (var f in filter)
+                {
+                    if (string.IsNullOrWhiteSpace(f)) continue;
+                    if (el.EnvironmentObject is VEnvironmentData venvdat)
+                        res = FContains[ei] ? venvdat.TypeCSharpName.Contains(f) : venvdat.TypeCSharpName == f;
+                    else
+                    {
+                        res = FContains[ei]
+                        ? el.GetType().GetCSharpName().Contains(f)
+                        : el.GetType().GetCSharpName() == f;
+                    }
 
-            if (string.IsNullOrWhiteSpace(filter) ||  FContains.SliceCount == 0)
+                    if (!res) continue;
+                    break;
+                }
+                return FExclude[ei] ? !res : res;
+            };
+
+            if (FContains.SliceCount == 0 || FExclude.SliceCount == 0)
                 return;
             else
             {
@@ -220,13 +246,14 @@ namespace Notuiv.Filters
             FUseName.Changed += spread => HandleElementChange(this, EventArgs.Empty);
         }
 
-        protected override void Filter(int ei, int qi, NotuiElement element, string filter)
+        protected override void Filter(int ei, NotuiElement element, ISpread<string> filter)
         {
-            if (string.IsNullOrWhiteSpace(filter) || FUseName.SliceCount == 0 || FSeparator.SliceCount == 0) return;
-            else
+            if(FUseName.SliceCount == 0 || FSeparator.SliceCount == 0) return;
+            foreach (var f in filter)
             {
+                if (string.IsNullOrWhiteSpace(f)) continue;
                 if (FOut.SliceCount == 0) return;
-                FOut[ei].AddRange(element.Opaq(filter, FSeparator[ei], FUseName[ei]));
+                FOut[ei].AddRange(element.Opaq(f, FSeparator[ei], FUseName[ei]));
             }
         }
     }

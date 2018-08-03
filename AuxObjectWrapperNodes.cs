@@ -137,7 +137,7 @@ namespace Notuiv
                     var cspread = (ISpread)_output[i];
                     if (FIn[i] is VAuxObject vaux)
                     {
-                        if (vaux.Object.GetType().Is(PinGroup.GroupType))
+                        if(PinGroup.GroupType.IsInstanceOfType(vaux.Object))
                         {
                             cspread.SliceCount = 1;
                             cspread[0] = vaux.Object;
