@@ -57,7 +57,7 @@ namespace Notuiv
     }
 
     public abstract class AbstractBehaviorNode<T> : IPartImportsSatisfiedNotification, IPluginEvaluate
-        where T: InteractionBehavior, new()
+        where T: new()
     {
         [Output("Output")] public Pin<T> FOutput;
 
@@ -268,7 +268,7 @@ namespace Notuiv
             IsMemberDictionary.Add(member, dictionary);
         }
 
-        private void FillObject(PropertyInfo member, InteractionBehavior behav, int i)
+        private void FillObject(PropertyInfo member, T behav, int i)
         {
             if (IsMemberDictionary[member])
             {

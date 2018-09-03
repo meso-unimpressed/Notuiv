@@ -375,6 +375,8 @@
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
+   <PIN pinname="Element" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="56" srcpinname="Element Id" dstnodeid="57" dstpinname="Query">
    </LINK>
@@ -398,6 +400,12 @@
    <PIN pinname="Query Flattened" visible="1">
    </PIN>
    <PIN pinname="Contains" visible="1">
+   </PIN>
+   <PIN pinname="Element" visible="1">
+   </PIN>
+   <PIN pinname="Output Bin Size" visible="1">
+   </PIN>
+   <PIN pinname="Exclude" slicecount="1" values="0">
    </PIN>
    </NODE>
    <LINK srcnodeid="50" srcpinname="Y Output Value" dstnodeid="51" dstpinname="Use Name">
@@ -433,5 +441,23 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="65" srcpinname="Hierarchical Elements" dstnodeid="71" dstpinname="Input Node">
+   </LINK>
+   <LINK srcnodeid="65" srcpinname="Hierarchical Elements" dstnodeid="57" dstpinname="Element">
+   </LINK>
+   <LINK srcnodeid="65" srcpinname="Hierarchical Elements" dstnodeid="51" dstpinname="Element">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="72">
+   <BOUNDS type="Box" left="10350" top="5850" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10350" top="5850" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Output Bin Size" dstnodeid="72" dstpinname="Y Input Value">
    </LINK>
    </PATCH>
