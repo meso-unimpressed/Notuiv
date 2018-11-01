@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using md.stdl.Coding;
 using md.stdl.Interaction;
 using Notui;
@@ -34,14 +37,6 @@ namespace Notuiv
         {
             UseObjectCache = false;
         }
-        public override Type TransformType(Type original, MemberInfo member)
-        {
-            return MiscExtensions.MapSystemNumericsTypeToVVVV(original);
-        }
-        public override object TransformOutput(object obj, MemberInfo member, int i)
-        {
-            return MiscExtensions.MapSystemNumericsValueToVVVV(obj);
-        }
     }
 
     [PluginInfo(
@@ -52,22 +47,7 @@ namespace Notuiv
     )]
     public class PrototypeInfoSplitNodes : ObjectSplitNode<ElementPrototype>
     {
-        public override Type TransformType(Type original, MemberInfo member)
-        {
-            if (original.Is(typeof(Stopwatch)))
-            {
-                return typeof(double);
-            }
-            return MiscExtensions.MapSystemNumericsTypeToVVVV(original);
-        }
-        public override object TransformOutput(object obj, MemberInfo member, int i)
-        {
-            if (obj is Stopwatch s)
-            {
-                return s.Elapsed.TotalSeconds;
-            }
-            return MiscExtensions.MapSystemNumericsValueToVVVV(obj);
-        }
+        public override bool StopWatchToSeconds => true;
     }
 
     [PluginInfo(
@@ -78,22 +58,23 @@ namespace Notuiv
     )]
     public class AccumulatedMouseSplitNodes : ObjectSplitNode<AccumulatingMouseObserver>
     {
-        public override Type TransformType(Type original, MemberInfo member)
-        {
-            if (original.Is(typeof(Stopwatch)))
-            {
-                return typeof(double);
-            }
-            return MiscExtensions.MapSystemNumericsTypeToVVVV(original);
-        }
-        public override object TransformOutput(object obj, MemberInfo member, int i)
-        {
-            if (obj is Stopwatch s)
-            {
-                return s.Elapsed.TotalSeconds;
-            }
-            return MiscExtensions.MapSystemNumericsValueToVVVV(obj);
-        }
+        public override bool StopWatchToSeconds => true;
+    }
+
+    [PluginInfo(
+        Name = "ElementSplitter",
+        Category = "Notui.Element",
+        Version = "Split",
+        Author = "microdee",
+        Ignore = true
+    )]
+    public class ElementSplitterNode : ObjectSplitNode<NotuiElement>
+    {
+        public override bool StopWatchToSeconds => true;
+        public override bool ManualInit => true;
+
+        [ImportingConstructor]
+        public ElementSplitterNode() { }
     }
 
     [PluginInfo(

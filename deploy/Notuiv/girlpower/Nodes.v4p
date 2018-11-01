@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha36.1.dtd" >
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta37.dtd" >
    <PATCH nodename="D:\local\vvvv-gp\packs\Notuiv\girlpower\Nodes.v4p" systemname="Nodes" filename="D:\local\lib\md.ecosystem\packs\Notuiv\deploy\girlpower\Nodes.v4p" scrollx="0" scrolly="-360" locked="0">
-   <BOUNDS type="Window" left="12885" top="12300" width="21660" height="10965">
+   <BOUNDS type="Window" left="12885" top="12300" width="21660" height="13785">
    </BOUNDS>
    <NODE systemname="ElementTransformation (Notui Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="ElementTransformation (Notui Split)" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="14910" top="5955" width="100" height="100">
@@ -338,7 +338,7 @@
    <BOUNDS type="Box" left="5325" top="8085" width="3000" height="3000">
    </BOUNDS>
    </NODE>
-   <PACK Name="dx11" Version="1.3.0.1">
+   <PACK Name="dx11" Version="1.3.1.1">
    </PACK>
    <NODE systemname="GetSegmentParams (Notui.Element Split)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="GetSegmentParams (Notui.Element Split)" componentmode="Hidden" id="44">
    <BOUNDS type="Node" left="11130" top="7710" width="100" height="100">
@@ -523,5 +523,71 @@
    </BOUNDS>
    <BOUNDS type="Box" left="5325" top="4305" width="3000" height="3000">
    </BOUNDS>
+   </NODE>
+   <NODE systemname="Element.Name (Notui.NotuiElement)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Element.Name (Notui.NotuiElement)" componentmode="Hidden" id="64">
+   <BOUNDS type="Node" left="11145" top="10785" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Element.DisplayMatrix (Notui.NotuiElement)" filename="%VVVV%\packs\Notuiv\nodes\plugins\Notuiv.dll" nodename="Element.DisplayMatrix (Notui.NotuiElement)" componentmode="Hidden" id="65">
+   <BOUNDS type="Node" left="12360" top="10785" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="66">
+   <BOUNDS type="Node" left="13980" top="10785" width="495" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="13980" top="10785" width="495" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="etc...">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="67">
+   <BOUNDS type="Node" left="11130" top="9825" width="1410" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="11130" top="9825" width="2670" height="390">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Factory Generated|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="68">
+   <BOUNDS type="Node" left="11115" top="10440" width="2775" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="11115" top="10440" width="2775" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Get individual properties of elements|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="69">
+   <BOUNDS type="Node" left="11205" top="11145" width="4935" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="11205" top="11145" width="4935" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|More types will be handled this way too (like prototypes or touches)|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
    </NODE>
    </PATCH>
