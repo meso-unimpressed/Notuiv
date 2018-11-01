@@ -97,7 +97,10 @@ namespace Notuiv
         [Import] public IHDEHost Host;
 
         protected abstract TPrototype ConstructPrototype(int i, string id);
-        
+
+        [Input("Set External", Visibility = PinVisibility.OnlyInspector)]
+        public Pin<ElementPrototype> FExternal;
+
         [Input("Children")]
         public IDiffSpread<ISpread<ElementPrototype>> FChildren;
 
@@ -133,7 +136,7 @@ namespace Notuiv
         [Input("Attached Texts", BinSize = 0, Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.Hidden)]
         public IDiffSpread<ISpread<string>> FAttTexts;
         [Input("Attached Auxiliary Objects", BinSize = 0, Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.Hidden)]
-        public IDiffSpread<ISpread<AuxiliaryObject>> FAttAux;
+        public IDiffSpread<ISpread<IAuxiliaryObject>> FAttAux;
         [Input("Attached Auxiliary Keys", BinSize = 0, Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.Hidden)]
         public IDiffSpread<ISpread<string>> FAttAuxKeys;
 
@@ -156,6 +159,30 @@ namespace Notuiv
 
         protected virtual void FillElementAuxData(TPrototype el, int i) { }
         protected virtual bool AuxDataChanged() { return false; }
+
+        protected bool UseExternal(int i, out TPrototype exprot)
+        {
+            if (FExternal.IsConnected &&
+                FExternal.SliceCount > 0 &&
+                FExternal[i] != null &&
+                FExternal[i] is TPrototype tprot)
+            {
+                exprot = tprot;
+                return true;
+            }
+            exprot = null;
+            return false;
+        }
+
+        protected TPrototype ProvidePrototype(int i, string id)
+        {
+            if (UseExternal(i, out var tprot))
+            {
+                return tprot;
+            }
+
+            return ConstructPrototype(i, id);
+        }
 
         protected TPrototype FillElement(TPrototype el, int i, bool isnew)
         {
@@ -244,18 +271,25 @@ namespace Notuiv
 
             if (changed || init < 2)
             {
-                FElementProt.ResizeAndDismiss(sprmax, i => FillElement(ConstructPrototype(i, null), i, true));
+                if (FExternal.IsChanged)
+                    FElementProt.SliceCount = 0;
+
+                FElementProt.ResizeAndDismiss(sprmax, i => FillElement(ProvidePrototype(i, null), i, true));
                 FElementId.SliceCount = sprmax;
                 for (int i = 0; i < FElementProt.SliceCount; i++)
                 {
                     var isnew = false;
                     if (FElementProt[i] == null)
                     {
-                        FElementProt[i] = ConstructPrototype(i, FManId[i] ? FId[i] : null);
+                        FElementProt[i] = ProvidePrototype(i, FManId[i] ? FId[i] : null);
                         isnew = true;
                     }
                     FillElement(FElementProt[i], i, isnew);
-                    if (FManId[i]) FElementProt[i].Id = FId[i];
+
+                    if (!UseExternal(i, out var tprot))
+                    {
+                        if (FManId[i]) FElementProt[i].Id = FId[i];
+                    }
                     FElementId[i] = FElementProt[i].Id;
                 }
                 //FElementProt.Flush();
