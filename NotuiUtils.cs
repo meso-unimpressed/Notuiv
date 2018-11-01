@@ -198,12 +198,12 @@ namespace Notuiv
             };
         }
 
-        public override AuxiliaryObject Copy()
+        public override IAuxiliaryObject Copy()
         {
             return new VEnvironmentData(_element);
         }
 
-        public override void UpdateFrom(AuxiliaryObject other)
+        public override void UpdateFrom(IAuxiliaryObject other)
         {
             if (other is VEnvironmentData venvdat)
             {

@@ -60,7 +60,7 @@ namespace Notuiv
         private bool _prevvalid = false;
 
         [Input("Flag Changed", IsBang = true)] public ISpread<bool> FFlagChanged;
-        [Output("Output")] public ISpread<AuxiliaryObject> FOut;
+        [Output("Output")] public ISpread<IAuxiliaryObject> FOut;
 
         public void OnImportsSatisfied()
         {
@@ -128,7 +128,7 @@ namespace Notuiv
         private bool _init = true;
         private SpreadPin _output;
 
-        [Input("Input")] public Pin<AuxiliaryObject> FIn;
+        [Input("Input")] public Pin<IAuxiliaryObject> FIn;
 
         public void OnImportsSatisfied()
         {

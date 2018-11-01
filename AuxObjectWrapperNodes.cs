@@ -16,12 +16,12 @@ namespace Notuiv
     {
         public object Object { get; set; }
 
-        public override AuxiliaryObject Copy()
+        public override IAuxiliaryObject Copy()
         {
             return new VAuxObject { Object = Object };
         }
 
-        public override void UpdateFrom(AuxiliaryObject other)
+        public override void UpdateFrom(IAuxiliaryObject other)
         {
             if (other is VAuxObject vaux)
                 Object = vaux.Object;
@@ -46,7 +46,7 @@ namespace Notuiv
         private DiffSpreadPin _input;
         private bool _prevvalid = false;
 
-        [Output("Output")] public ISpread<AuxiliaryObject> FOut;
+        [Output("Output")] public ISpread<IAuxiliaryObject> FOut;
 
         public void OnImportsSatisfied()
         {
@@ -108,7 +108,7 @@ namespace Notuiv
         private bool _init = true;
         private SpreadPin _output;
 
-        [Input("Input")] public Pin<AuxiliaryObject> FIn;
+        [Input("Input")] public Pin<IAuxiliaryObject> FIn;
 
         public void OnImportsSatisfied()
         {

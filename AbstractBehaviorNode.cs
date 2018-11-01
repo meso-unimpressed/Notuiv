@@ -13,7 +13,7 @@ using VVVV.PluginInterfaces.V2.NonGeneric;
 namespace Notuiv
 {
     public abstract class BehaviorInstanceInfoNode<TBehav, TState> : IPluginEvaluate
-        where TBehav : InteractionBehavior where TState : AuxiliaryObject
+        where TBehav : InteractionBehavior where TState : IAuxiliaryObject
     {
         public const string BehaviorStatePrefix = "Internal.Behavior:";
 

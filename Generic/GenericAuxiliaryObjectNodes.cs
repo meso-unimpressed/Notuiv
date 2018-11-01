@@ -15,7 +15,7 @@ namespace Notuiv.Generic
                 Help = "Concatenates all Input spreads.",
                 Tags = "generic, spreadop"
                 )]
-    public class AuxiliaryObjectConsNode : Cons<AuxiliaryObject> { }
+    public class AuxiliaryObjectConsNode : Cons<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "CAR",
                 Category = "Notui.Auxiliary",
@@ -24,7 +24,7 @@ namespace Notuiv.Generic
                 Tags = "split, generic, spreadop",
                 Author = "woei"
                )]
-    public class AuxiliaryObjectCARBinNode : CARBin<AuxiliaryObject> { }
+    public class AuxiliaryObjectCARBinNode : CARBin<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "CDR",
                 Category = "Notui.Auxiliary",
@@ -33,7 +33,7 @@ namespace Notuiv.Generic
                 Tags = "split, generic, spreadop",
                 Author = "woei"
                )]
-    public class AuxiliaryObjectCDRBinNode : CDRBin<AuxiliaryObject> { }
+    public class AuxiliaryObjectCDRBinNode : CDRBin<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "Reverse",
                 Category = "Notui.Auxiliary",
@@ -42,7 +42,7 @@ namespace Notuiv.Generic
                 Tags = "invert, generic, spreadop",
                 Author = "woei"
                )]
-    public class AuxiliaryObjectReverseBinNode : ReverseBin<AuxiliaryObject> { }
+    public class AuxiliaryObjectReverseBinNode : ReverseBin<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "Shift",
                 Category = "Notui.Auxiliary",
@@ -51,7 +51,7 @@ namespace Notuiv.Generic
                 Tags = "generic, spreadop",
                 Author = "woei"
                )]
-    public class AuxiliaryObjectShiftBinNode : ShiftBin<AuxiliaryObject> { }
+    public class AuxiliaryObjectShiftBinNode : ShiftBin<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "SetSlice",
                 Category = "Notui.Auxiliary",
@@ -60,7 +60,7 @@ namespace Notuiv.Generic
                 Tags = "generic, spreadop",
                 Author = "woei"
                )]
-    public class AuxiliaryObjectSetSliceNode : SetSlice<AuxiliaryObject> { }
+    public class AuxiliaryObjectSetSliceNode : SetSlice<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "DeleteSlice",
                 Category = "Notui.Auxiliary",
@@ -68,14 +68,14 @@ namespace Notuiv.Generic
                 Tags = "remove, generic, spreadop",
                 Author = "woei"
                )]
-    public class AuxiliaryObjectDeleteSliceNode : DeleteSlice<AuxiliaryObject> { }
+    public class AuxiliaryObjectDeleteSliceNode : DeleteSlice<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "Select",
                 Category = "Notui.Auxiliary",
                 Help = "Returns each slice of the Input spread as often as specified by the corresponding Select slice. 0 meaning the slice will be omitted. ",
                 Tags = "repeat, resample, duplicate, spreadop"
                )]
-    public class AuxiliaryObjectSelectNode : Select<AuxiliaryObject> { }
+    public class AuxiliaryObjectSelectNode : Select<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "Select",
                 Category = "Notui.Auxiliary",
@@ -84,14 +84,14 @@ namespace Notuiv.Generic
                 Tags = "repeat, resample, duplicate, spreadop",
                 Author = "woei"
             )]
-    public class AuxiliaryObjectSelectBinNode : SelectBin<AuxiliaryObject> { }
+    public class AuxiliaryObjectSelectBinNode : SelectBin<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "Unzip",
                 Category = "Notui.Auxiliary",
                 Help = "The inverse of Zip. Interprets the Input spread as being interleaved and untangles it.",
                 Tags = "split, generic, spreadop"
                )]
-    public class AuxiliaryObjectUnzipNode : Unzip<AuxiliaryObject> { }
+    public class AuxiliaryObjectUnzipNode : Unzip<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "Unzip",
                 Category = "Notui.Auxiliary",
@@ -99,14 +99,14 @@ namespace Notuiv.Generic
                 Help = "The inverse of Zip. Interprets the Input spread as being interleaved and untangles it. With Bin Size.",
                 Tags = "split, generic, spreadop"
                )]
-    public class AuxiliaryObjectUnzipBinNode : Unzip<IInStream<AuxiliaryObject>> { }
+    public class AuxiliaryObjectUnzipBinNode : Unzip<IInStream<IAuxiliaryObject>> { }
 
     [PluginInfo(Name = "Zip",
                 Category = "Notui.Auxiliary",
                 Help = "Interleaves all Input spreads.",
                 Tags = "interleave, join, generic, spreadop"
                )]
-    public class AuxiliaryObjectZipNode : Zip<AuxiliaryObject> { }
+    public class AuxiliaryObjectZipNode : Zip<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "Zip",
                 Category = "Notui.Auxiliary",
@@ -114,7 +114,7 @@ namespace Notuiv.Generic
                 Help = "Interleaves all Input spreads.",
                 Tags = "interleave, join, generic, spreadop"
                )]
-    public class AuxiliaryObjectZipBinNode : Zip<IInStream<AuxiliaryObject>> { }
+    public class AuxiliaryObjectZipBinNode : Zip<IInStream<IAuxiliaryObject>> { }
 
     [PluginInfo(Name = "GetSpread",
                 Category = "Notui.Auxiliary",
@@ -122,7 +122,7 @@ namespace Notuiv.Generic
                 Help = "Returns sub-spreads from the input specified via offset and count",
                 Tags = "generic, spreadop",
                 Author = "woei")]
-    public class AuxiliaryObjectGetSpreadNode : GetSpreadAdvanced<AuxiliaryObject> { }
+    public class AuxiliaryObjectGetSpreadNode : GetSpreadAdvanced<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "SetSpread",
                 Category = "Notui.Auxiliary",
@@ -131,12 +131,12 @@ namespace Notuiv.Generic
                 Tags = "generic, spreadop",
                 Author = "woei"
                )]
-    public class AuxiliaryObjectSetSpreadNode : SetSpread<AuxiliaryObject> { }
+    public class AuxiliaryObjectSetSpreadNode : SetSpread<IAuxiliaryObject> { }
 
     [PluginInfo(Name = "SplitAt",
                 Category = "Notui.Auxiliary",
                 Help = "Splits the Input spread in two at the specified Index.",
                 Tags = "generic, spreadop"
                 )]
-    public class AuxiliaryObjectSplitAtNode : SplitAtNode<AuxiliaryObject> { }
+    public class AuxiliaryObjectSplitAtNode : SplitAtNode<IAuxiliaryObject> { }
 }

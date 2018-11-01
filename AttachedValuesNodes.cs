@@ -19,7 +19,7 @@ namespace Notuiv
         [Output("Values")] public ISpread<ISpread<float>> FVals;
         [Output("Texts")] public ISpread<ISpread<string>> FTexts;
         [Output("Auxiliary Keys")] public ISpread<ISpread<string>> FAuxKeys;
-        [Output("Auxiliary Values")] public ISpread<ISpread<AuxiliaryObject>> FAuxVals;
+        [Output("Auxiliary Values")] public ISpread<ISpread<IAuxiliaryObject>> FAuxVals;
 
         public void Evaluate(int SpreadMax)
         {
@@ -37,9 +37,9 @@ namespace Notuiv
                     FVals[i].AssignFrom(element.Value.Values);
                     FTexts[i].AssignFrom(element.Value.Texts);
                     if (FAuxKeys.SliceCount == 0) FAuxKeys.SliceCount = FElement.SliceCount;
-                    FAuxKeys[i].AssignFrom(element.Value.Auxiliary.Keys);
+                    FAuxKeys[i] = element.Value.Auxiliary.Keys.ToSpread();
                     if (FAuxVals.SliceCount == 0) FAuxVals.SliceCount = FElement.SliceCount;
-                    FAuxVals[i].AssignFrom(element.Value.Auxiliary.Values);
+                    FAuxVals[i] = element.Value.Auxiliary.Values.ToSpread();
                 }
             }
         }
@@ -99,7 +99,7 @@ namespace Notuiv
         [Input("Element")] public Pin<NotuiElement> FElement;
         
         [Input("Keys")] public ISpread<ISpread<string>> FAuxKeys;
-        [Input("Values")] public ISpread<ISpread<AuxiliaryObject>> FAuxVals;
+        [Input("Values")] public ISpread<ISpread<IAuxiliaryObject>> FAuxVals;
         [Input("Set", IsBang = true)] public ISpread<bool> FSetAux;
         [Input("Remove", IsBang = true)] public ISpread<bool> FRemoveAux;
         [Input("Toggle", IsBang = true)] public ISpread<bool> FTogAux;
@@ -161,7 +161,7 @@ namespace Notuiv
         [Input("Keys")] public ISpread<ISpread<string>> FAuxKeys;
 
         [Output("Keys Out")] public ISpread<ISpread<string>> FAuxKeysOut;
-        [Output("Values")] public ISpread<ISpread<AuxiliaryObject>> FAuxVals;
+        [Output("Values")] public ISpread<ISpread<IAuxiliaryObject>> FAuxVals;
         [Output("Found")] public ISpread<ISpread<bool>> FFound;
 
         private bool _prevconn = false;
