@@ -30,7 +30,7 @@ namespace Notuiv
                 var element = FElement[i];
                 if (element.Value == null)
                 {
-                    FVals[i].SliceCount = FTexts[i].SliceCount = FAuxKeys[i].SliceCount = FAuxVals.SliceCount = 0;
+                    FVals[i].SliceCount = FTexts[i].SliceCount = FAuxKeys[i].SliceCount = FAuxVals[i].SliceCount = 0;
                 }
                 else
                 {

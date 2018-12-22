@@ -111,7 +111,7 @@ namespace Notuiv
         Version = "Split",
         Author = "microdee"
     )]
-    public class GetSegmentParamsNode : GetExtraParamsNodeBase<SegmentElement>
+    public class GetSegmentParamsNode : GetExtraParamsNodeBase<SegmentElement, SegmentElementPrototype>
     {
         [Output("Inner Radius")]
         public ISpread<float> FInnerRad;
@@ -122,7 +122,13 @@ namespace Notuiv
         [Output("Phase")]
         public ISpread<float> FPhase;
 
-        public override void GetExtraParameters(int i, SegmentElement element)
+        public override void GetExtraInstParameters(int i, SegmentElement element)
+        {
+            FInnerRad[i] = element.HoleRadius;
+            FCycles[i] = element.Cycles;
+            FPhase[i] = element.Phase;
+        }
+        public override void GetExtraProtParameters(int i, SegmentElementPrototype element)
         {
             FInnerRad[i] = element.HoleRadius;
             FCycles[i] = element.Cycles;
@@ -131,7 +137,7 @@ namespace Notuiv
 
         public override void SetSliceCounts()
         {
-            FCycles.SliceCount = FInnerRad.SliceCount = FPhase.SliceCount = FIn.SliceCount;
+            FCycles.SliceCount = FInnerRad.SliceCount = FPhase.SliceCount = In.SliceCount;
         }
 
         public override void EmptySpreads()
@@ -203,19 +209,23 @@ namespace Notuiv
         Version = "Split",
         Author = "microdee"
     )]
-    public class GetPolygon2DParamsNode : GetExtraParamsNodeBase<PolygonElement>
+    public class GetPolygon2DParamsNode : GetExtraParamsNodeBase<PolygonElement, PolygonElementPrototype>
     {
         [Output("Vertices")]
         public ISpread<ISpread<Vector2D>> FVerts;
 
-        public override void GetExtraParameters(int i, PolygonElement element)
+        public override void GetExtraInstParameters(int i, PolygonElement element)
+        {
+            FVerts[i].AssignFrom(element.Vertices.Select(v => v.AsVVector()));
+        }
+        public override void GetExtraProtParameters(int i, PolygonElementPrototype element)
         {
             FVerts[i].AssignFrom(element.Vertices.Select(v => v.AsVVector()));
         }
 
         public override void SetSliceCounts()
         {
-            FVerts.SliceCount = FIn.SliceCount;
+            FVerts.SliceCount = In.SliceCount;
         }
 
         public override void EmptySpreads()
@@ -293,19 +303,23 @@ namespace Notuiv
         Version = "Split",
         Author = "microdee"
     )]
-    public class GetBoxParamsNode : GetExtraParamsNodeBase<BoxElement>
+    public class GetBoxParamsNode : GetExtraParamsNodeBase<BoxElement, BoxElementPrototype>
     {
         [Output("Size")]
         public ISpread<Vector3D> FSize;
 
-        public override void GetExtraParameters(int i, BoxElement element)
+        public override void GetExtraInstParameters(int i, BoxElement element)
+        {
+            FSize[i] = element.Size.AsVVector();
+        }
+        public override void GetExtraProtParameters(int i, BoxElementPrototype element)
         {
             FSize[i] = element.Size.AsVVector();
         }
 
         public override void SetSliceCounts()
         {
-            FSize.SliceCount = FIn.SliceCount;
+            FSize.SliceCount = In.SliceCount;
         }
 
         public override void EmptySpreads()

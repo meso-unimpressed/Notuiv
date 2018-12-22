@@ -239,6 +239,7 @@ namespace Notuiv
                         {
                             try
                             {
+                                if (!type.IsConstructedGenericType) return false;
                                 var res = type.GetGenericTypeDefinition();
                                 if (res == null) return false;
                                 return res == typeof(IEnumerable<>);

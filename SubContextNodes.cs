@@ -51,6 +51,7 @@ namespace Notuiv
                         FOut[i] = new SubContextOptions();
                     FOut[i].IncludeHitting = FIncludeHitting[i];
                     FOut[i].TouchSpaceSource = FTouchCoordSrc[i];
+                    FOut[i].UpdateOnlyChangeFlagged = true;
                 }
                 FOut.Stream.IsChanged = true;
             }
@@ -73,6 +74,9 @@ namespace Notuiv
         public Pin<NotuiElement> FHostElements;
         [Input("Element Prototypes")]
         public IDiffSpread<ISpread<ElementPrototype>> FElements;
+
+        private Spread<Spread<ElementPrototype>> _prevElements = new Spread<Spread<ElementPrototype>>();
+
         [Input("Force Update Elements", IsBang = true, Visibility = PinVisibility.Hidden)]
         public ISpread<bool> FUpdateElements;
         [Input("Auto Update Elements", DefaultBoolean = true, Visibility = PinVisibility.Hidden)]
@@ -109,6 +113,7 @@ namespace Notuiv
             if (FHostElements.IsConnected && FHostElements.SliceCount > 0 && FHostElements[0] != null)
             {
                 if (FElements.IsChanged) _areElementsChanged = 2;
+                _prevElements.SliceCount = FHostElements.SliceCount;
                 FContext.SliceCount = FHostElements.SliceCount;
                 FElementsOut.SliceCount = FHostElements.SliceCount;
                 FFlatElements.SliceCount = FHostElements.SliceCount;
@@ -130,6 +135,16 @@ namespace Notuiv
                     context.View = FViewTr[i].AsSystemMatrix4X4();
                     context.Projection = FProjTr[i].AsSystemMatrix4X4();
                     context.AspectRatio = FAspTr[i].AsSystemMatrix4X4();
+
+
+                    for (int j = 0; j < FElements[i].SliceCount; j++)
+                    {
+                        if (FElements[i][j] == null) continue;
+                        if (_prevElements[i].Contains(FElements[i][j])) continue;
+                        FElements[i][j].IsChanged = ElementNodeUtils.ChangedFrames;
+                    }
+
+                    _prevElements[i].AssignFrom(FElements[i]);
 
                     if (_areElementsChanged > 0 && FAutoUpdateElements[i] || FUpdateElements[i])
                     {

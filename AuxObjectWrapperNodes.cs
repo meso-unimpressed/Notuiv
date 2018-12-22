@@ -108,7 +108,7 @@ namespace Notuiv
         private bool _init = true;
         private SpreadPin _output;
 
-        [Input("Input")] public Pin<IAuxiliaryObject> FIn;
+        [Input("Input")] public Pin<IAuxiliaryObject> Input;
 
         public void OnImportsSatisfied()
         {
@@ -125,17 +125,17 @@ namespace Notuiv
 
         public void Evaluate(int SpreadMax)
         {
-            var valid = FIn.IsConnected;
+            var valid = Input.IsConnected;
             if (valid) valid = _output != null;
-            if (valid) valid = FIn.SliceCount > 0;
+            if (valid) valid = Input.SliceCount > 0;
             if (valid)
             {
-                if(!FIn.IsChanged && !_typeChanged) return;
-                _output.Spread.SliceCount = FIn.SliceCount;
-                for (int i = 0; i < FIn.SliceCount; i++)
+                if(!Input.IsChanged && !_typeChanged) return;
+                _output.Spread.SliceCount = Input.SliceCount;
+                for (int i = 0; i < Input.SliceCount; i++)
                 {
                     var cspread = (ISpread)_output[i];
-                    if (FIn[i] is VAuxObject vaux)
+                    if (Input[i] is VAuxObject vaux)
                     {
                         if(PinGroup.GroupType.IsInstanceOfType(vaux.Object))
                         {

@@ -63,10 +63,18 @@ namespace Notuiv.Filters
                 _prevContext = null;
             }
 
+            if (FContext.IsChanged && FContext.IsConnected && FContext.SliceCount > 0)
+            {
+                _elementsChanged = 2;
+            }
+
             if (_elementsChanged > 0)
             {
-                for (int i = 0; i < FQuery.SliceCount; i++)
-                    Filter(i);
+                if(FContext.SliceCount > 0 && FContext[0] != null)
+                {
+                    for (int i = 0; i < FQuery.SliceCount; i++)
+                        Filter(i);
+                }
                 FOut.Stream.IsChanged = true;
                 _elementsChanged--;
             }

@@ -33,53 +33,60 @@ namespace Notuiv
         [Import] public IPluginHost2 PluginHost;
         [Import] public IHDEHost Host;
 
-        [Config("Thread Count", DefaultValue = 4)]
-        public IDiffSpread<int> FThreads;
+        [Config("Thread Count", DefaultValue = 4, IsSingle = true)]
+        public IDiffSpread<int> ThreadsIn;
 
         [Input("Element Prototypes")]
-        public Pin<ElementPrototype> FElements;
+        public Pin<ElementPrototype> ElementsIn;
+        [Input("Force Update Elements", IsSingle = true, IsBang = true)]
+        public ISpread<bool> ForceUpdateIn;
 
-        [Input("Mouse")]
-        public Pin<Mouse> FMouse;
-        [Input("Mouse Touch ID", DefaultValue = -1)]
-        public ISpread<int> FMouseId;
-        [Input("Mouse Always Present")]
-        public ISpread<bool> FAlwaysPresent;
-        [Input("Mouse Pressed Force", DefaultValue = 1.0)]
-        public ISpread<float> FMouseForce;
+        private Spread<ElementPrototype> _prevElements = new Spread<ElementPrototype>();
+
+        [Input("Mouse", IsSingle = true)]
+        public Pin<Mouse> MouseIn;
+        [Input("Mouse Touch ID", DefaultValue = -1, IsSingle = true)]
+        public ISpread<int> MouseIdIn;
+        [Input("Mouse Always Present", IsSingle = true)]
+        public ISpread<bool> AlwaysPresentIn;
+        [Input("Mouse Pressed Force", DefaultValue = 1.0, IsSingle = true)]
+        public ISpread<float> MouseForceIn;
 
         [Input("DX11 Touches")]
-        public Pin<TouchData> FDx11Touches;
-        [Input("DX11 Touch Force", DefaultValue = 1.0)]
-        public ISpread<float> FDx11TouchForce;
+        public Pin<TouchData> Dx11TouchesIn;
+        [Input("DX11 Touch Force", DefaultValue = 1.0, IsSingle = true)]
+        public ISpread<float> Dx11TouchForceIn;
         [Input("Aux Touches ", DimensionNames = new []{"X", "Y", "F", "Id"})]
-        public IDiffSpread<Vector4D> FAuxTouches;
+        public IDiffSpread<Vector4D> AuxTouchesIn;
 
-        [Input("Minimum Force for Interaction", DefaultValue = 0.5)]
-        public IDiffSpread<float> FMinForce;
-        [Input("Consider Touch New Before", DefaultValue = 1)]
-        public ISpread<int> FConsiderNew;
-        [Input("Consider Touch Released After", DefaultValue = 1)]
-        public ISpread<int> FConsiderReleased;
+        [Input("Minimum Force for Interaction", DefaultValue = 0.5, IsSingle = true)]
+        public IDiffSpread<float> MinForceIn;
+        [Input("Consider Touch New Before", DefaultValue = 1, IsSingle = true)]
+        public ISpread<int> ConsiderNewIn;
+        [Input("Consider Touch Released After", DefaultValue = 1, IsSingle = true)]
+        public ISpread<int> ConsiderReleasedIn;
 
-        [Input("View")]
-        public Pin<VMatrix> FViewTr;
-        [Input("Projection")]
-        public Pin<VMatrix> FProjTr;
-        [Input("Aspect Ratio")]
-        public Pin<VMatrix> FAspTr;
+        [Input("View", IsSingle = true)]
+        public Pin<VMatrix> ViewTrIn;
+        [Input("Projection", IsSingle = true)]
+        public Pin<VMatrix> ProjTrIn;
+        [Input("Aspect Ratio", IsSingle = true)]
+        public Pin<VMatrix> AspTrIn;
 
         [Output("Context")]
-        public ISpread<NotuiContext> FContext;
+        public ISpread<NotuiContext> ContextOut;
         [Output("Hierarchical Elements")]
-        public ISpread<NotuiElement> FElementsOut;
+        public ISpread<NotuiElement> ElementsOut;
         [Output("Flat Elements")]
-        public ISpread<NotuiElement> FFlatElements;
+        public ISpread<NotuiElement> FlatElementsOut;
         
         [Output("Touches")]
-        public ISpread<Touch> FTouches;
+        public ISpread<Touch> TouchesOut;
 
-        public NotuiContext Context = new NotuiContext();
+        public NotuiContext Context = new NotuiContext
+        {
+            UpdateOnlyChangeFlagged = true
+        };
 
         private double _prevFrameTime = 0;
         private bool _initMo = true;
@@ -87,19 +94,19 @@ namespace Notuiv
 
         public bool IsTouchDefault()
         {
-            bool def = FAuxTouches.SliceCount == 1;
-            def = def && FAuxTouches[0].xy.Length < 0.00001;
-            def = def && Math.Abs(FAuxTouches[0].w) < 0.00001;
-            def = def && Math.Abs(FAuxTouches[0].z) < 0.00001;
+            bool def = AuxTouchesIn.SliceCount == 1;
+            def = def && AuxTouchesIn[0].xy.Length < 0.00001;
+            def = def && Math.Abs(AuxTouchesIn[0].w) < 0.00001;
+            def = def && Math.Abs(AuxTouchesIn[0].z) < 0.00001;
             return def;
         }
 
         public void OnImportsSatisfied()
         {
-            FElements.Disconnected += (sender, args) =>
-            {
-                Context.AddOrUpdateElements(true); // this is basically asking all elements to request their deletion
-            };
+            //FElements.Disconnected += (sender, args) =>
+            //{
+            //    Context.AddOrUpdateElements(true); // this is basically asking all elements to request their deletion
+            //};
         }
 
         /* Button order in rawinput apparently:
@@ -111,39 +118,39 @@ namespace Notuiv
         public void Evaluate(int SpreadMax)
         {
 
-            Context.ConsiderNewBefore = FConsiderNew[0];
-            Context.ConsiderReleasedAfter = FConsiderReleased[0];
-            Context.MinimumForce = FMinForce[0];
+            Context.ConsiderNewBefore = ConsiderNewIn.TryGetSlice(0);
+            Context.ConsiderReleasedAfter = ConsiderReleasedIn.TryGetSlice(0);
+            Context.MinimumForce = MinForceIn.TryGetSlice(0);
 
-            if (FThreads.IsChanged) Context.ParallelThreads = FThreads[0];
+            if (ThreadsIn.IsChanged) Context.ParallelThreads = ThreadsIn.TryGetSlice(0);
 
-            var touchcount = FAuxTouches.SliceCount;
+            var touchcount = AuxTouchesIn.SliceCount;
             var touches = Enumerable.Empty<(Vector2, int, float)>();
 
-            touches = touches.Concat(Enumerable.Range(0, FDx11Touches.SliceCount).Where(i => FDx11Touches[i] != null).Select(i =>
+            touches = touches.Concat(Enumerable.Range(0, Dx11TouchesIn.SliceCount).Where(i => Dx11TouchesIn[i] != null).Select(i =>
             {
-                var touch = FDx11Touches[i];
+                var touch = Dx11TouchesIn[i];
                 var pos = new Vector2(touch.Pos.X, touch.Pos.Y);
-                return (pos, touch.Id, FDx11TouchForce[i]);
+                return (pos, touch.Id, Dx11TouchForceIn[i]);
             }));
 
             if (!IsTouchDefault())
             {
                 touches = touches.Concat(Enumerable.Range(0, touchcount).Select(i =>
-                    (FAuxTouches[i].xy.AsSystemVector(), (int)FAuxTouches[i].w, (float)FAuxTouches[i].z)));
+                    (AuxTouchesIn[i].xy.AsSystemVector(), (int)AuxTouchesIn[i].w, (float)AuxTouchesIn[i].z)));
             }
 
-            Context.MouseAlwaysPresent = FAlwaysPresent[0];
-            Context.MouseTouchForce = FMouseForce[0];
-            Context.MouseTouchId = FMouseId[0];
+            Context.MouseAlwaysPresent = AlwaysPresentIn.TryGetSlice(0);
+            Context.MouseTouchForce = MouseForceIn.TryGetSlice(0);
+            Context.MouseTouchId = MouseIdIn.TryGetSlice(0);
 
-            if (FMouse.IsConnected && FMouse.SliceCount > 0)
+            if (MouseIn.IsConnected && MouseIn.SliceCount > 0)
             {
-                if (FMouse[0] != null)
+                if (MouseIn[0] != null)
                 {
                     if (_initMo)
                     {
-                        Context.SubmitMouse(FMouse[0]);
+                        Context.SubmitMouse(MouseIn[0]);
                         _initMo = false;
                     }
                 }
@@ -170,33 +177,47 @@ namespace Notuiv
             var dt = Host.FrameTime - _prevFrameTime;
             if (_prevFrameTime <= 0.00001) dt = 0;
 
-            if(FViewTr.IsConnected && FViewTr.SliceCount > 0)
-                Context.View = FViewTr[0].AsSystemMatrix4X4();
+            if(ViewTrIn.IsConnected && ViewTrIn.SliceCount > 0)
+                Context.View = ViewTrIn[0].AsSystemMatrix4X4();
+            else Context.View = SMatrix.Identity;
 
-            if (FProjTr.IsConnected && FProjTr.SliceCount > 0)
-                Context.Projection = FProjTr[0].AsSystemMatrix4X4();
+            if (ProjTrIn.IsConnected && ProjTrIn.SliceCount > 0)
+                Context.Projection = ProjTrIn[0].AsSystemMatrix4X4();
+            else Context.Projection = SMatrix.Identity;
 
-            if (FAspTr.IsConnected && FAspTr.SliceCount > 0)
-                Context.AspectRatio = FAspTr[0].AsSystemMatrix4X4();
+            if (AspTrIn.IsConnected && AspTrIn.SliceCount > 0)
+                Context.AspectRatio = AspTrIn[0].AsSystemMatrix4X4();
+            else Context.AspectRatio = SMatrix.Identity;
 
-            if (FElements.IsChanged && FElements.IsConnected)
-                _areElementsChanged = 2;
-            if (_areElementsChanged > 0)
+            if (ElementsIn.IsChanged)
             {
-                Context.AddOrUpdateElements(true, FElements.Where(el => el != null).ToArray());
+                for (int i = 0; i < ElementsIn.SliceCount; i++)
+                {
+                    if (ElementsIn[i] == null) continue;
+                    if (_prevElements.Contains(ElementsIn[i])) continue;
+                    ElementsIn[i].IsChanged = ElementNodeUtils.ChangedFrames;
+                }
+
+                _prevElements.AssignFrom(ElementsIn);
+                _areElementsChanged = 2;
+            }
+            
+            if (_areElementsChanged > 0 || ForceUpdateIn.TryGetSlice(0))
+            {
+                Context.AddOrUpdateElements(true, ElementsIn.Where(el => el != null).ToArray());
                 _areElementsChanged--;
             }
 
             Context.Mainloop((float)dt);
 
-            FContext[0] = Context;
+            ContextOut[0] = Context;
 
-            FFlatElements.SliceCount = Context.FlatElements.Count;
+            FlatElementsOut.SliceCount = Context.FlatElements.Count;
 
             for (int i = 0; i < Context.FlatElements.Count; i++)
             {
                 var element = Context.FlatElements[i];
-                FFlatElements[i] = element;
+                FlatElementsOut[i] = element;
                 switch (element.EnvironmentObject)
                 {
                     case null:
@@ -210,8 +231,8 @@ namespace Notuiv
                 }
             }
             
-            FElementsOut.AssignFrom(Context.RootElements.Values);
-            FTouches.AssignFrom(Context.Touches.Values);
+            ElementsOut.AssignFrom(Context.RootElements.Values);
+            TouchesOut.AssignFrom(Context.Touches.Values);
 
             _prevFrameTime = Host.FrameTime;
         }

@@ -56,10 +56,20 @@ namespace Notuiv
             if (FTrans.IsChanged || FRot.IsChanged || FScale.IsChanged)
             {
                 FTransform.SliceCount = SpreadMax;
-                for (int i = 0; i < SpreadMax; i++)
+                for (int i = SpreadMax - 1; i >=0; i--)
                 {
                     if(FTransform[i] == null)
                         FTransform[i] = new ElementTransformation();
+                    else if(i > 0)
+                    {
+                        for (int j = i - 1; j >= 0; j--)
+                        {
+                            if (FTransform[i] != FTransform[j]) continue;
+                            FTransform[i] = new ElementTransformation();
+                            break;
+                        }
+                    }
+
                     FTransform[i].Position = FTrans[i].AsSystemVector();
                     FTransform[i].Rotation = FRot[i].AsSystemQuaternion();
                     FTransform[i].Scale = FScale[i].AsSystemVector();

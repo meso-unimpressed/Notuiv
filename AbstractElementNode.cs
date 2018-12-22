@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
+using md.stdl.Coding;
 using Notui;
 using md.stdl.Mathematics;
+using mp.pddn;
 using VVVV.PluginInterfaces.V2;
 using VVVV.Utils.VMath;
 using VMatrix = VVVV.Utils.VMath.Matrix4x4;
@@ -10,40 +12,48 @@ using SMatrix = System.Numerics.Matrix4x4;
 
 namespace Notuiv
 {
-    public abstract class GetExtraParamsNodeBase<T> : IPluginEvaluate where T : NotuiElement
+    public abstract class GetExtraParamsNodeBase<TInst, TProt> : IPluginEvaluate
+        where TInst : NotuiElement
+        where TProt : ElementPrototype
     {
         [Input("Input")]
-        public Pin<NotuiElement> FIn;
+        public Pin<IElementCommon> In;
         [Output("Is Valid")]
-        public ISpread<bool> FValid;
+        public ISpread<bool> Valid;
 
-        public abstract void GetExtraParameters(int i, T element);
+        public abstract void GetExtraProtParameters(int i, TProt element);
+        public abstract void GetExtraInstParameters(int i, TInst element);
         public abstract void SetSliceCounts();
         public abstract void EmptySpreads();
 
         public void Evaluate(int SpreadMax)
         {
-            if (FIn.IsConnected && FIn.SliceCount > 0 && FIn[0] != null)
+            if (In.IsConnected && In.SliceCount > 0 && In[0] != null)
             {
-                FValid.SliceCount = FIn.SliceCount;
+                Valid.SliceCount = In.SliceCount;
                 SetSliceCounts();
-                for (int i = 0; i < FIn.SliceCount; i++)
+                for (int i = 0; i < In.SliceCount; i++)
                 {
-                    if (FIn[i] is T element)
+                    switch (In[i])
                     {
-                        GetExtraParameters(i, element);
-                        FValid[i] = true;
-                    }
-                    else
-                    {
-                        FValid[i] = false;
+                        case TInst element:
+                            GetExtraInstParameters(i, element);
+                            Valid[i] = true;
+                            break;
+                        case TProt element:
+                            GetExtraProtParameters(i, element);
+                            Valid[i] = true;
+                            break;
+                        default:
+                            Valid[i] = false;
+                            break;
                     }
                 }
             }
             else
             {
-                FValid.SliceCount = 1;
-                FValid[0] = false;
+                Valid.SliceCount = 1;
+                Valid[0] = false;
                 EmptySpreads();
             }
         }
@@ -52,43 +62,48 @@ namespace Notuiv
     public abstract class SetExtraParamsNodeBase<T> : IPluginEvaluate where T : NotuiElement
     {
         [Input("Element In")]
-        public Pin<NotuiElement> FIn;
+        public Pin<NotuiElement> In;
         [Input("Set", IsBang = true)]
-        public ISpread<bool> FSet;
+        public ISpread<bool> Set;
 
         [Output("Thru")]
-        public ISpread<NotuiElement> FOut;
+        public ISpread<NotuiElement> Out;
         [Output("Is Valid")]
-        public ISpread<bool> FValid;
+        public ISpread<bool> Valid;
 
         public abstract void SetExtraParameters(int i, T element);
 
         public void Evaluate(int SpreadMax)
         {
-            if (FIn.IsConnected && FIn.SliceCount > 0 && FIn[0] != null)
+            if (In.IsConnected && In.SliceCount > 0 && In[0] != null)
             {
-                FValid.SliceCount = FOut.SliceCount = FIn.SliceCount;
-                for (int i = 0; i < FIn.SliceCount; i++)
+                Valid.SliceCount = Out.SliceCount = In.SliceCount;
+                for (int i = 0; i < In.SliceCount; i++)
                 {
-                    FOut[i] = FIn[i];
-                    if (FIn[i] is T element)
+                    Out[i] = In[i];
+                    if (In[i] is T element)
                     {
-                        if(FSet[i]) SetExtraParameters(i, element);
-                        FValid[i] = true;
+                        if(Set.TryGetSlice(i)) SetExtraParameters(i, element);
+                        Valid[i] = true;
                     }
                     else
                     {
-                        FValid[i] = false;
+                        Valid[i] = false;
                     }
                 }
             }
             else
             {
-                FValid.SliceCount = 1;
-                FValid[0] = false;
-                FOut.SliceCount = 0;
+                Valid.SliceCount = 1;
+                Valid[0] = false;
+                Out.SliceCount = 0;
             }
         }
+    }
+
+    public static class ElementNodeUtils
+    {
+        public const int ChangedFrames = 2;
     }
 
     public abstract class AbstractElementNode<TPrototype> : IPluginEvaluate where TPrototype : ElementPrototype
@@ -99,73 +114,78 @@ namespace Notuiv
         protected abstract TPrototype ConstructPrototype(int i, string id);
 
         [Input("Set External", Visibility = PinVisibility.OnlyInspector)]
-        public Pin<ElementPrototype> FExternal;
+        public Pin<ElementPrototype> ExternalIn;
 
         [Input("Children")]
-        public IDiffSpread<ISpread<ElementPrototype>> FChildren;
+        public IDiffSpread<ISpread<ElementPrototype>> ChildrenIn;
 
         [Input("Name", DefaultString = "callmenames")]
-        public IDiffSpread<string> FName;
+        public IDiffSpread<string> NameIn;
         [Input("Manual Id", Visibility = PinVisibility.Hidden)]
-        public IDiffSpread<bool> FManId;
+        public IDiffSpread<bool> ManIdIn;
         [Input("Id", DefaultString = "", Visibility = PinVisibility.Hidden)]
-        public IDiffSpread<string> FId;
+        public IDiffSpread<string> IdIn;
 
         [Input("Fade In Time")]
-        public IDiffSpread<float> FFadeIn;
+        public IDiffSpread<float> FadeInIn;
         [Input("Fade Out Time")]
-        public IDiffSpread<float> FFadeOut;
+        public IDiffSpread<float> FadeOutIn;
         [Input("Fade In Delay")]
-        public IDiffSpread<float> FFadeInDel;
+        public IDiffSpread<float> FadeInDelIn;
         [Input("Fade Out Delay")]
-        public IDiffSpread<float> FFadeOutDel;
+        public IDiffSpread<float> FadeOutDelIn;
         [Input("Transformation Follow Time")]
-        public IDiffSpread<float> FTransFollowTime;
+        public IDiffSpread<float> TransFollowTimeIn;
 
         [Input("Behaviors")]
-        public IDiffSpread<ISpread<InteractionBehavior>> FBehaviors;
+        public IDiffSpread<ISpread<InteractionBehavior>> BehaviorsIn;
         [Input("Transparent")]
-        public IDiffSpread<bool> FTransparent;
+        public IDiffSpread<bool> TransparentIn;
         [Input("Active", DefaultBoolean = true)]
-        public IDiffSpread<bool> FActive;
+        public IDiffSpread<bool> ActiveIn;
         [Input("Clip Hitting Through Parent")]
-        public IDiffSpread<bool> FClipParentHitting;
+        public IDiffSpread<bool> ClipParentHittingIn;
 
         [Input("Attached Values", BinSize = 0, Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.Hidden)]
-        public IDiffSpread<ISpread<float>> FAttVals;
+        public IDiffSpread<ISpread<float>> AttValsIn;
         [Input("Attached Texts", BinSize = 0, Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.Hidden)]
-        public IDiffSpread<ISpread<string>> FAttTexts;
+        public IDiffSpread<ISpread<string>> AttTextsIn;
         [Input("Attached Auxiliary Objects", BinSize = 0, Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.Hidden)]
-        public IDiffSpread<ISpread<IAuxiliaryObject>> FAttAux;
+        public IDiffSpread<ISpread<IAuxiliaryObject>> AttAuxIn;
         [Input("Attached Auxiliary Keys", BinSize = 0, Visibility = PinVisibility.Hidden, BinVisibility = PinVisibility.Hidden)]
-        public IDiffSpread<ISpread<string>> FAttAuxKeys;
+        public IDiffSpread<ISpread<string>> AttAuxKeysIn;
 
         [Input("Set Attached Values")]
-        public IDiffSpread<bool> FSetAttVals;
+        public IDiffSpread<bool> SetAttValsIn;
 
         [Input("Display Transform")]
-        public IDiffSpread<VMatrix> FDispTr;
+        public IDiffSpread<VMatrix> DispTrIn;
         [Input("Transformation Update Mode", DefaultEnumEntry = "All")]
-        public IDiffSpread<ISpread<ApplyTransformMode>> FTrUpdateMode;
+        public IDiffSpread<ISpread<ApplyTransformMode>> TrUpdateModeIn;
+
+        [Input("Automatic Update", DefaultBoolean = true)]
+        public IDiffSpread<bool> AutoUpdateIn;
+        [Input("Force Update", IsBang = true)]
+        public IDiffSpread<bool> ForceUpdateIn;
 
         [Input("Sub Context", Visibility = PinVisibility.OnlyInspector)]
-        public IDiffSpread<SubContextOptions> FSubContext;
-
+        public IDiffSpread<SubContextOptions> SubContextIn;
+        
         [Output("Element Prototype")]
-        public ISpread<TPrototype> FElementProt;
+        public ISpread<TPrototype> ElementProtOut;
 
         [Output("Element Id")]
-        public ISpread<string> FElementId;
+        public ISpread<string> ElementIdOut;
 
         protected virtual void FillElementAuxData(TPrototype el, int i) { }
         protected virtual bool AuxDataChanged() { return false; }
 
         protected bool UseExternal(int i, out TPrototype exprot)
         {
-            if (FExternal.IsConnected &&
-                FExternal.SliceCount > 0 &&
-                FExternal[i] != null &&
-                FExternal[i] is TPrototype tprot)
+            if (ExternalIn.IsConnected &&
+                ExternalIn.SliceCount > 0 &&
+                ExternalIn[i] != null &&
+                ExternalIn[i] is TPrototype tprot)
             {
                 exprot = tprot;
                 return true;
@@ -186,54 +206,55 @@ namespace Notuiv
 
         protected TPrototype FillElement(TPrototype el, int i, bool isnew)
         {
-            FDispTr[i].Decompose(out var scale, out Vector4D rotation, out var pos);
-            el.Name = FName[i];
-            el.FadeInTime = FFadeIn[i];
-            el.FadeOutTime = FFadeOut[i];
-            el.Active = FActive[i];
-            el.Transparent = FTransparent[i];
-            if (FBehaviors[i].All(chel => chel != null))
+            DispTrIn[i].Decompose(out var scale, out Vector4D rotation, out var pos);
+            el.Name = NameIn[i];
+            el.FadeInTime = FadeInIn[i];
+            el.FadeOutTime = FadeOutIn[i];
+            el.Active = ActiveIn[i];
+            el.Transparent = TransparentIn[i];
+            if (BehaviorsIn[i].All(chel => chel != null))
             {
-                el.Behaviors = FBehaviors[i].ToList();
+                el.Behaviors = BehaviorsIn[i].ToList();
             }
             el.DisplayTransformation.Position = pos.AsSystemVector();
             el.DisplayTransformation.Rotation = rotation.AsSystemQuaternion();
             el.DisplayTransformation.Scale = scale.AsSystemVector();
-            el.TransformationFollowTime = FTransFollowTime[i];
-            el.FadeInDelay = FFadeInDel[i];
-            el.FadeOutDelay = FFadeOutDel[i];
-            el.SubContextOptions = FSubContext[i];
-            el.OnlyHitIfParentIsHit = FClipParentHitting[i];
-            var setvals = FSetAttVals[i] || isnew;
+            el.TransformationFollowTime = TransFollowTimeIn[i];
+            el.FadeInDelay = FadeInDelIn[i];
+            el.FadeOutDelay = FadeOutDelIn[i];
+            el.SubContextOptions = SubContextIn[i];
+            el.OnlyHitIfParentIsHit = ClipParentHittingIn[i];
+            var setvals = SetAttValsIn.TryGetSlice(i) || isnew;
             el.SetAttachedValues = setvals;
 
-            if (setvals && (FAttAux[i].SliceCount > 0 || FAttTexts[i].SliceCount > 0 || FAttVals[i].SliceCount > 0))
+            if (setvals)
             {
                 if(el.Value == null)
                     el.Value = new AttachedValues();
-                el.Value.Values = FAttVals[i].ToArray();
-                el.Value.Texts = FAttTexts[i].ToArray();
+                el.Value.Values = AttValsIn[i].ToArray();
+                el.Value.Texts = AttTextsIn[i].ToArray();
 
-                for (int j = 0; j < FAttAuxKeys[i].SliceCount; j++)
+                el.Value.Auxiliary.Clear();
+                for (int j = 0; j < AttAuxKeysIn[i].SliceCount; j++)
                 {
-                    if (el.Value.Auxiliary.ContainsKey(FAttAuxKeys[i][j]))
-                        el.Value.Auxiliary[FAttAuxKeys[i][j]] = FAttAux[i][j];
-                    else el.Value.Auxiliary.Add(FAttAuxKeys[i][j], FAttAux[i][j]);
+                    if(string.IsNullOrWhiteSpace(AttAuxKeysIn[i].TryGetSlice(j))) continue;
+                    el.Value.Auxiliary.UpdateGeneric(AttAuxKeysIn[i].TryGetSlice(j), AttAuxIn[i].TryGetSlice(j));
                 }
             }
 
             var trupdmode = isnew ?
                 ApplyTransformMode.All :
-                FTrUpdateMode[i].Aggregate(ApplyTransformMode.None, (current, mode) => current | mode);
+                TrUpdateModeIn[i].Aggregate(ApplyTransformMode.None, (current, mode) => current | mode);
 
             el.TransformApplication = trupdmode;
             el.Children.Clear();
-            foreach (var child in FChildren[i].Where(ch => ch != null))
+            foreach (var child in ChildrenIn[i].Where(ch => ch != null))
             {
                 child.Parent = el;
                 el.Children.Add(child.Id, child);
             }
             FillElementAuxData(el, i);
+            el.IsChanged = ElementNodeUtils.ChangedFrames;
 
             return el;
         }
@@ -249,51 +270,105 @@ namespace Notuiv
 
         private bool AttachedChanged()
         {
-            return BinSizedSpreadChanged(FAttVals) || BinSizedSpreadChanged(FAttTexts) ||
-                   BinSizedSpreadChanged(FAttAux) || BinSizedSpreadChanged(FAttAuxKeys);
+            return BinSizedSpreadChanged(AttValsIn) || BinSizedSpreadChanged(AttTextsIn) ||
+                   BinSizedSpreadChanged(AttAuxIn) || BinSizedSpreadChanged(AttAuxKeysIn);
         }
 
         public void Evaluate(int SpreadMax)
         {
-            bool changewochildren = FName.IsChanged || FManId.IsChanged || FId.IsChanged ||
-                                    FFadeIn.IsChanged || FFadeOut.IsChanged || FFadeInDel.IsChanged || FFadeOutDel.IsChanged ||
-                                    FTransFollowTime.IsChanged || FBehaviors.IsChanged || FTransparent.IsChanged || FActive.IsChanged ||
-                                    FDispTr.IsChanged || FTrUpdateMode.IsChanged || FClipParentHitting.IsChanged || FSubContext.IsChanged ||
-                                    FSetAttVals.IsChanged || AttachedChanged() || AuxDataChanged();
-            bool changed = FChildren.IsChanged || changewochildren;
+            bool changewochildren = (SpreadUtils.AnyChanged(
+                NameIn,
+                ManIdIn,
+                IdIn,
+                FadeInIn,
+                FadeOutIn,
+                FadeInDelIn,
+                FadeOutDelIn,
+                TransFollowTimeIn,
+                BehaviorsIn,
+                TransparentIn,
+                ActiveIn,
+                DispTrIn,
+                TrUpdateModeIn,
+                ClipParentHittingIn,
+                SubContextIn,
+                SetAttValsIn
+            ) || AttachedChanged() || AuxDataChanged()) && AutoUpdateIn.TryGetSlice(0) || ForceUpdateIn.TryGetSlice(0);
 
-            int sprmax = SpreadUtils.SpreadMax(FChildren, FName, FBehaviors, FDispTr);
-            if (FChildren.SliceCount == 0 || FName.SliceCount == 0 || FBehaviors.SliceCount == 0 ||
-                FDispTr.SliceCount == 0)
-                sprmax = 0;
+            bool childrenchanged = AutoUpdateIn.TryGetSlice(0) && ChildrenIn.IsChanged || ForceUpdateIn.TryGetSlice(0);
 
-            FElementProt.Stream.IsChanged = false;
+            bool changed = childrenchanged || changewochildren || SetAttValsIn.TryGetSlice(0);
 
+            int sprmax = SpreadUtils.SpreadMax(
+                ChildrenIn,
+                NameIn,
+                BehaviorsIn,
+                DispTrIn,
+                ActiveIn,
+                AttAuxKeysIn,
+                AttTextsIn,
+                AttValsIn,
+                IdIn
+            );
+
+            ElementProtOut.Stream.IsChanged = false;
+
+            for (int i = 0; i < ElementProtOut.SliceCount; i++)
+            {
+                if(ElementProtOut[i] == null) continue;
+                ElementProtOut[i].IsChanged--;
+            }
             if (changed || init < 2)
             {
-                if (FExternal.IsChanged)
-                    FElementProt.SliceCount = 0;
+                if (ExternalIn.IsChanged)
+                    ElementProtOut.SliceCount = 0;
 
-                FElementProt.ResizeAndDismiss(sprmax, i => FillElement(ProvidePrototype(i, null), i, true));
-                FElementId.SliceCount = sprmax;
-                for (int i = 0; i < FElementProt.SliceCount; i++)
+                ElementProtOut.ResizeAndDismiss(sprmax, i => FillElement(ProvidePrototype(i, null), i, true));
+                ElementIdOut.SliceCount = ElementProtOut.SliceCount;
+                var gchildrenchanged = false;
+
+                for (int i = 0; i < ElementProtOut.SliceCount; i++)
                 {
                     var isnew = false;
-                    if (FElementProt[i] == null)
+                    if (ElementProtOut[i] == null)
                     {
-                        FElementProt[i] = ProvidePrototype(i, FManId[i] ? FId[i] : null);
+                        ElementProtOut[i] = ProvidePrototype(i, ManIdIn[i] ? IdIn[i] : null);
                         isnew = true;
                     }
-                    FillElement(FElementProt[i], i, isnew);
+
+                    bool lchildrenchanged = false;
+                    if (!changewochildren && childrenchanged)
+                    {
+                        if (ChildrenIn[i].SliceCount > 0)
+                        {
+                            for (int j = 0; j < ChildrenIn[i].SliceCount; j++)
+                            {
+                                if (ChildrenIn[i][j] == null) continue;
+                                if (ChildrenIn[i][j].IsChanged > 0) lchildrenchanged = gchildrenchanged = true;
+                                if (ElementProtOut[i].Children.ContainsKey(ChildrenIn[i][j].Id)) continue;
+                                ChildrenIn[i][j].IsChanged = ElementNodeUtils.ChangedFrames;
+                                lchildrenchanged = gchildrenchanged = true;
+                            }
+                        }
+                        else
+                        {
+                            lchildrenchanged = ElementProtOut[i].Children.Count > 0;
+                            gchildrenchanged = gchildrenchanged || lchildrenchanged;
+                        }
+                    }
+
+                    if(changewochildren || lchildrenchanged)
+                        FillElement(ElementProtOut[i], i, isnew || init < 2);
 
                     if (!UseExternal(i, out var tprot))
                     {
-                        if (FManId[i]) FElementProt[i].Id = FId[i];
+                        if (ManIdIn[i]) ElementProtOut[i].Id = IdIn[i];
                     }
-                    FElementId[i] = FElementProt[i].Id;
+                    ElementIdOut[i] = ElementProtOut[i].Id;
                 }
                 //FElementProt.Flush();
-                FElementProt.Stream.IsChanged = true;
+                if(changewochildren || gchildrenchanged)
+                    ElementProtOut.Stream.IsChanged = true;
             }
             init++;
         }
