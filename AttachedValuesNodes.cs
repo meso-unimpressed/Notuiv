@@ -28,6 +28,7 @@ namespace Notuiv
             for (int i = 0; i < FElement.SliceCount; i++)
             {
                 var element = FElement[i];
+                if (element == null) continue;
                 if (element.Value == null)
                 {
                     FVals[i].SliceCount = FTexts[i].SliceCount = FAuxKeys[i].SliceCount = FAuxVals[i].SliceCount = 0;
@@ -72,6 +73,7 @@ namespace Notuiv
             for (int i = 0; i < FElement.SliceCount; i++)
             {
                 var element = FElement[i];
+                if (element == null) continue;
                 if (element.Value == null)
                 {
                     element.Value = new AttachedValues();
@@ -114,6 +116,7 @@ namespace Notuiv
             for (int i = 0; i < FElement.SliceCount; i++)
             {
                 var element = FElement[i];
+                if(element == null) continue;
                 if (element.Value == null)
                 {
                     element.Value = new AttachedValues();
@@ -181,7 +184,8 @@ namespace Notuiv
             
             for (int i = 0; i < FElement.SliceCount; i++)
             {
-                if(FElement[i].Value != null)
+                if (FElement[i] == null) continue;
+                if (FElement[i].Value != null)
                 {
                     if(FElement[i].Value.Auxiliary.Count > 0)
                     {

@@ -210,6 +210,7 @@ namespace Notuiv
 
         protected void AssignElementOutputs(NotuiElement element, int i)
         {
+            if (element == null) return;
             if (element.EnvironmentObject is VEnvironmentData venvdat)
             {
                 TouchesOut[i] = venvdat.Touches;

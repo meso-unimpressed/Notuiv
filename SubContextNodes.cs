@@ -140,10 +140,11 @@ namespace Notuiv
                     for (int j = 0; j < FElements[i].SliceCount; j++)
                     {
                         if (FElements[i][j] == null) continue;
-                        if (_prevElements[i].Contains(FElements[i][j])) continue;
+                        if (_prevElements[i]?.Contains(FElements[i][j]) ?? true) continue;
                         FElements[i][j].IsChanged = ElementNodeUtils.ChangedFrames;
                     }
 
+                    if(_prevElements[i] == null) _prevElements[i] = new Spread<ElementPrototype>();
                     _prevElements[i].AssignFrom(FElements[i]);
 
                     if (_areElementsChanged > 0 && FAutoUpdateElements[i] || FUpdateElements[i])
